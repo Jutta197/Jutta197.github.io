@@ -80,134 +80,18 @@
           </header>
           <div class="e-content entry" itemprop="articleBody">
             
-                  <h2 id="Column"><a href="#Column" class="headerlink" title="@Column"></a>@Column</h2><p>@Column 注解通常会处理数据库列名和Java实体类属性名之间的命名转换，从下划线分隔命名法（snake_case）转换为驼峰命名法（camelCase），或者根据具体的配置来进行命名映射。</p>
-<h2 id="Cast"><a href="#Cast" class="headerlink" title="Cast"></a>Cast</h2><p>“Cast” 是计算机编程中的一个术语，用于表示将一个数据类型转换为另一个数据类型的操作。在不同的编程语言中，”cast” 可能有不同的称呼，例如类型转换、强制类型转换、类型转换操作等。</p>
-<p>数据类型是编程语言中的一个重要概念，它定义了数据的存储方式和允许的操作。在某些情况下，你可能需要将一个数据值从一种数据类型转换为另一种数据类型，以便执行特定的计算或操作。这就是 “cast” 操作的用途。</p>
-<p>以下是一个简单的示例，展示了 “cast” 的概念：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在Java中，将一个整数转换为浮点数</span></span><br><span class="line"><span class="type">int</span> <span class="variable">intValue</span> <span class="operator">=</span> <span class="number">5</span>;</span><br><span class="line"><span class="type">double</span> <span class="variable">doubleValue</span> <span class="operator">=</span> (<span class="type">double</span>) intValue; <span class="comment">// 这里进行了一个强制类型转换，将整数转换为浮点数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 在C++中，将一个浮点数转换为整数</span></span><br><span class="line"><span class="type">float</span> <span class="variable">floatValue</span> <span class="operator">=</span> <span class="number">3.14f</span>;</span><br><span class="line"><span class="type">int</span> <span class="variable">intValue</span> <span class="operator">=</span> (<span class="type">int</span>) floatValue; <span class="comment">// 这里进行了一个强制类型转换，将浮点数转换为整数</span></span><br></pre></td></tr></table></figure>
-
-<p>需要注意的是，数据类型之间的转换可能会导致数据精度丢失或错误，特别是在进行截断或舍入操作时。因此，在进行类型转换时，开发人员需要考虑数据范围和精度，并确保转换不会引起意外的问题。</p>
-<h2 id="spring项目没加载出css"><a href="#spring项目没加载出css" class="headerlink" title="spring项目没加载出css"></a>spring项目没加载出css</h2><p>清除浏览器缓存：有时浏览器可能会缓存旧的CSS文件，导致新的样式无法加载。</p>
-<h2 id="数据库中的-long-类型"><a href="#数据库中的-long-类型" class="headerlink" title="数据库中的 long 类型"></a>数据库中的 long 类型</h2><p>使用 “long” 数据类型来存储 “productid”（产品标识符）通常是基于数据的需求和范围考虑的决策。以下是一些考虑因素：</p>
-<ol>
-<li><p><strong>范围需求：</strong> “long” 数据类型通常支持更大的范围，可以存储比较大的整数值。如果您预计 “productid” 的值可能会很大，例如超过常规整数数据类型（如 “int”）所支持的范围，那么选择 “long” 可以确保您的数据库能够容纳这些值。</p>
-</li>
-<li><p><strong>未来扩展：</strong> 如果您的应用在未来可能会涉及到更大的数据集或更多的产品，使用 “long” 类型可以为未来的扩展性提供更多的余地。这样可以避免在后续需要扩展 “productid” 范围时进行数据库结构的变更。</p>
-</li>
-<li><p><strong>数据一致性：</strong> 如果 “productid” 被用作外键，而关联的表中使用了 “long” 数据类型，那么为了保持数据一致性，”productid” 也应该使用相同的数据类型。</p>
-</li>
-<li><p><strong>与其他系统的集成：</strong> 如果您的数据库需要与其他系统进行集成，并且这些系统使用了 “long” 数据类型来表示产品标识符，那么在数据库中也使用相同的数据类型可以简化数据交换和集成过程。</p>
-</li>
-</ol>
-<p>需要注意的是，选择数据类型是根据项目需求和数据库设计的重要决策。虽然 “long” 数据类型可以支持更大的范围，但也可能会占用更多的存储空间。因此，在选择数据类型时，需要综合考虑数据的范围、存储需求以及系统的未来扩展性等因素。</p>
-<hr>
-<p>jar -xf lombok.jar 是解压 JAR 文件的命令，用于提取 JAR 文件中的内容。<br>java -jar lombok.jar 是运行 JAR 文件中的 Java 程序的命令，用于执行 JAR 文件中的可执行代码。</p>
-<h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><p>域名解析是将人类易于记忆的域名（例如：<a href="http://www.example.com）转换为计算机能够理解的IP地址（例如：192.168.1.1）。当您在浏览器中输入一个域名时，计算机需要知道如何连接到该域名对应的服务器，这就是通过域名解析来实现的。">www.example.com）转换为计算机能够理解的IP地址（例如：192.168.1.1）。当您在浏览器中输入一个域名时，计算机需要知道如何连接到该域名对应的服务器，这就是通过域名解析来实现的。</a></p>
-<p>域名解析的过程涉及到域名系统（Domain Name System，DNS），这是一个分布式的网络系统，用于将域名映射到IP地址以及其他与域名相关的信息。下面是域名解析的基本过程：</p>
-<ol>
-<li><p><strong>发起解析请求：</strong> 当您在浏览器中输入一个域名并按下回车键时，您的计算机会发起一个DNS解析请求，以获取与该域名相关的IP地址。</p>
-</li>
-<li><p><strong>本地域名服务器查询：</strong> 您的计算机首先会查询本地域名服务器，通常是由您的网络服务提供商分配的。如果本地服务器有该域名的缓存记录，它会返回相应的IP地址。</p>
-</li>
-<li><p><strong>递归解析过程：</strong> 如果本地服务器没有相关域名的缓存记录，它会向更高层次的域名服务器发出请求。这个过程会从顶级域名服务器（例如：.com、.org）开始，然后逐级向下查询，直到找到负责管理该域名的域名服务器。</p>
-</li>
-<li><p><strong>域名服务器返回IP地址：</strong> 域名服务器根据您的查询返回与域名相关的IP地址。这个IP地址可以是主机服务器的地址，该服务器存储着与该域名关联的网站或服务。</p>
-</li>
-<li><p><strong>计算机连接服务器：</strong> 一旦您的计算机获得了域名对应的IP地址，它就可以使用该IP地址建立与相应服务器的连接。这使得您能够在浏览器中访问该域名对应的网站或服务。</p>
-</li>
-</ol>
-<h2 id="namesilo-com"><a href="#namesilo-com" class="headerlink" title="namesilo.com"></a>namesilo.com</h2><blockquote>
-<p>在 namesilo.com 上购买域名却又在腾讯云上设置免费域名解析的可能原因：</p>
-<ul>
-<li>备用解析： 有些人认为使用多个域名解析服务可以提供备用的解析选项，以防止一个服务出现故障时可以快速切换到另一个服务。</li>
-<li>地域分布： 一些大型域名解析服务提供商在全球各地都有服务器分布，这可以帮助加速不同地区用户的DNS解析请求。（墙？）</li>
-</ul>
-</blockquote>
-<h3 id="HOSTNAMETYPEADDRESS-VALUEDISTANCE-PRIOTTLSERVICE"><a href="#HOSTNAMETYPEADDRESS-VALUEDISTANCE-PRIOTTLSERVICE" class="headerlink" title="HOSTNAME	TYPE	ADDRESS &#x2F; VALUE	DISTANCE&#x2F;PRIO	TTL	SERVICE"></a>HOSTNAME	TYPE	ADDRESS &#x2F; VALUE	DISTANCE&#x2F;PRIO	TTL	SERVICE</h3><p><img src="/assets/images/Snipaste_2023-08-14_19-11-06.png" alt="图图图" title="图"></p>
-<p>在DNS（Domain Name System） </p>
-<ol>
-<li><p><strong>Hostname</strong>（主机名）：这是你想要设置DNS记录的域名部分。例如，如果你想要设置一个子域名记录，主机名可能是“www”、“blog”等。对于根域名记录，主机名通常为空。</p>
-</li>
-<li><p><strong>Type</strong>（类型）：这指定了DNS记录的类型。不同的记录类型对应不同的功能。一些常见的记录类型包括：</p>
-<ul>
-<li>A：将域名指向IPv4地址。</li>
-<li>AAAA：将域名指向IPv6地址。</li>
-<li>CNAME：将域名指向另一个域名。</li>
-<li>MX：指定邮件服务器的优先级和地址。</li>
-<li>TXT：存储任意文本信息。</li>
-<li>SRV：指定服务的位置和优先级。</li>
-</ul>
-</li>
-<li><p><strong>Address &#x2F; Value</strong>（地址&#x2F;值）：这取决于DNS记录的类型。对于A记录和AAAA记录，这将是一个IP地址；对于CNAME记录，这将是另一个域名；对于MX记录，这将是邮件服务器的地址。</p>
-</li>
-<li><p><strong>Distance&#x2F;PRIO</strong>（距离&#x2F;优先级）：这通常用于MX记录和SRV记录，用于指定优先级。对于MX记录，这表示邮件服务器的优先级，其中较小的数字表示较高的优先级。对于SRV记录，这表示服务的优先级，其中较小的数字同样表示较高的优先级。</p>
-</li>
-<li><p><strong>TTL</strong>（Time To Live，存活时间）：这是DNS记录在缓存中的存储时间，以秒为单位。它控制了缓存记录的过期时间，之后DNS解析器会重新获取最新的记录。</p>
-</li>
-<li><p><strong>Service</strong>（服务）：这通常用于SRV记录，表示提供特定服务的服务器的名称。例如，它可以是“_http”表示HTTP服务，或者是“_smtp”表示SMTP服务。</p>
-</li>
-</ol>
-<p>需要注意的是，具体的字段和意义可能会因DNS记录类型和DNS服务的不同而有所不同。当你在配置DNS记录时，你需要根据所需的功能和上下文来正确填写这些字段。</p>
-<p>TTL（Time To Live）是DNS记录中的一个属性，指定了该记录在DNS缓存中的存储时间。它表示一个DNS记录在被存储在缓存中的时间长度，以秒为单位。当一个DNS查询请求被解析器发送到DNS服务器时，解析器会在缓存中存储从服务器返回的DNS记录，并在TTL时间到期后，将该记录从缓存中删除。</p>
-<p>TTL的作用是控制DNS缓存中的记录的更新频率。较短的TTL会使记录更频繁地从服务器重新获取，这对于经常变化的记录（如DNS迁移或负载均衡设置）很有用。较长的TTL会减少对DNS服务器的查询请求，从而提高效率，但会导致在记录变更时，更新可能需要更长的时间。</p>
-<p>例如，如果一个DNS记录的TTL被设置为3600秒（1小时），那么在解析器从DNS服务器获取该记录后，它会在1小时后尝试重新获取该记录。</p>
-<p>要注意的是，TTL的实际行为可能因DNS解析器、缓存服务器和DNS记录类型等因素而有所不同。当你在配置DNS记录时，你可以设置TTL以适应你的需求。通常来说，较短的TTL对于频繁变更的记录更合适，较长的TTL适用于相对稳定的记录。</p>
-<p>当你在设置DNS记录时，你会被要求提供TTL值，你可以根据你的需求设置合适的值。</p>
-<h2 id="https-jutta-top-和-https-jutta-top"><a href="#https-jutta-top-和-https-jutta-top" class="headerlink" title="https://jutta.top/ 和 https://jutta.top"></a><a target="_blank" rel="noopener" href="https://jutta.top/">https://jutta.top/</a> 和 <a target="_blank" rel="noopener" href="https://jutta.top/">https://jutta.top</a></h2><p><code>https://jutta.top/</code> 和 <code>https://jutta.top</code> 看起来很相似，但在 URL 结构中确实有一个微小的区别，可能会影响网站的访问方式。</p>
-<ol>
-<li><p>**<code>https://jutta.top/</code>**：在这个 URL 中，斜杠 <code>/</code> 表示一个路径分隔符，指示浏览器访问的是域名 <code>jutta.top</code> 下的根目录。这是一种常见的 URL 结构，其中根目录可能包含网站的首页或其他内容。</p>
-</li>
-<li><p>**<code>https://jutta.top</code>**：在这个 URL 中，没有斜杠 <code>/</code>，这意味着浏览器将访问域名 <code>jutta.top</code> 的根目录，而不需要在域名后添加额外的路径。这通常会自动重定向到 <code>https://jutta.top/</code>，因为大多数网站会将没有斜杠的域名重定向到包含斜杠的路径。</p>
-</li>
-</ol>
-<p>总结：这两个 URL 的实际效果可能是相同的，因为大多数网站会自动将没有斜杠的域名重定向到带斜杠的路径。但是，从 URL 结构的角度来看，它们稍微有些不同。最好的做法是使用 <code>https://jutta.top/</code>，因为这是标准的 URL 结构，可以避免可能的重定向问题。</p>
-<p>百度的主要域名 <code>www.baidu.com</code> 以及其他许多网站都选择了将 URL 结尾设置为不带斜杠的版本。但这只是个人或组织的选择，不会对网站的功能产生影响。在大多数情况下，服务器会自动处理重定向，以确保访问的一致性。</p>
-<h2 id="UML"><a href="#UML" class="headerlink" title="UML"></a>UML</h2><p>UML是“统一建模语言”（Unified Modeling Language）的缩写，它是一种用于软件系统设计、建模和文档化的标准化图形化语言。UML提供了一组图形符号和表示法，用于表示系统的结构、行为、交互和其他方面，从而帮助开发人员更清晰地理解和沟通关于软件系统的设计和功能。</p>
-<h2 id="JSON、XML和YAML"><a href="#JSON、XML和YAML" class="headerlink" title="JSON、XML和YAML"></a>JSON、XML和YAML</h2><p>JSON、XML和YAML都是用于数据表示和交换的文本格式，但它们在语法、结构和用途上有一些不同。</p>
-<p><strong>JSON 示例：</strong></p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;book&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;title&quot;</span><span class="punctuation">:</span> <span class="string">&quot;The Great Gatsby&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;author&quot;</span><span class="punctuation">:</span> <span class="string">&quot;F. Scott Fitzgerald&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;year&quot;</span><span class="punctuation">:</span> <span class="number">1925</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;genre&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Novel&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>JSON使用键值对表示数据，具有紧凑的语法，常用于Web应用程序和API中。</p>
-<p><strong>XML 示例：</strong></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">book</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>The Great Gatsby<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">author</span>&gt;</span>F. Scott Fitzgerald<span class="tag">&lt;/<span class="name">author</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">year</span>&gt;</span>1925<span class="tag">&lt;/<span class="name">year</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">genre</span>&gt;</span>Novel<span class="tag">&lt;/<span class="name">genre</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">book</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>XML使用标签和属性表示数据，具有较为灵活的结构，适用于复杂数据和结构化信息的表示。</p>
-<p><strong>YAML 示例：</strong></p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">book:</span></span><br><span class="line">  <span class="attr">title:</span> <span class="string">&quot;The Great Gatsby&quot;</span></span><br><span class="line">  <span class="attr">author:</span> <span class="string">&quot;F. Scott Fitzgerald&quot;</span></span><br><span class="line">  <span class="attr">year:</span> <span class="number">1925</span></span><br><span class="line">  <span class="attr">genre:</span> <span class="string">&quot;Novel&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>YAML强调可读性和简洁性，适用于配置文件、数据存储和文档。</p>
-<p>在选择使用哪种格式时，考虑以下因素：</p>
-<ul>
-<li>数据结构的复杂性：XML适用于复杂数据结构，JSON适用于相对简单的结构，YAML在中等复杂性场景下也表现良好。</li>
-<li>可读性：YAML注重易读性，JSON相对于XML较为紧凑。</li>
-<li>应用场景：JSON常用于Web应用程序和API，XML适用于复杂数据、配置文件等，YAML适用于配置和易读性要求较高的情况。</li>
-</ul>
-<p>在实际应用中，可以根据需求和团队偏好选择最合适的格式。</p>
-<h2 id="yml和yaml"><a href="#yml和yaml" class="headerlink" title="yml和yaml"></a>yml和yaml</h2><p>YAML（YAML Ain’t Markup Language）是一种人类友好的数据序列化格式，用于配置文件、数据存储和文档。它的文件扩展名可以是<code>.yaml</code>或<code>.yml</code>，但是它们在语法和用法上是等价的，可以互相替换使用。<br>最初，YAML的扩展名是<code>.yaml</code>，但由于文件扩展名的长度可能会影响某些场景下的易用性，因此也允许使用<code>.yml</code>作为文件扩展名。实际上，<code>.yml</code>已经成为广泛使用的文件扩展名，因为它更短，更容易记忆。<br>无论你使用<code>.yaml</code>还是<code>.yml</code>，YAML的语法和用法都是相同的。它的主要目标是提供一种易于阅读和编辑的文本格式，适用于配置文件、数据传输、文档等场景。在大多数情况下，你可以根据自己的喜好和团队的偏好来选择使用<code>.yaml</code>或<code>.yml</code>作为文件扩展名。</p>
-<h2 id="域名重定向或转发"><a href="#域名重定向或转发" class="headerlink" title="域名重定向或转发"></a>域名重定向或转发</h2><p>域名重定向或转发是在互联网上管理和引导流量的一种方法。这些技术允许你将一个域名的访问请求导向到另一个域名或URL。以下是一些常见的情况和理由，说明为什么需要域名重定向或转发：</p>
-<ol>
-<li><p><strong>更改域名或品牌</strong>：如果你的网站或业务更改了名称、品牌或域名，你可能希望旧域名的访问请求自动重定向到新的域名，以保持用户的访问和流量不受影响。</p>
-</li>
-<li><p><strong>多个域名指向同一站点</strong>：有时候你可能拥有多个域名，但想要将它们都指向同一个网站。通过域名重定向，你可以确保无论用户使用哪个域名访问，他们都会被引导到同一个网站。</p>
-</li>
-<li><p><strong>保护品牌</strong>：有些公司会注册与自己品牌或商标相似的域名，以防止其他人滥用。通过将这些域名设置为重定向到公司的主要网站，可以避免其他人误导或误用你的品牌。</p>
-</li>
-<li><p><strong>简化访问</strong>：有时候网站的URL可能很长或复杂，通过设置域名重定向，你可以创建一个简化的域名，更方便用户访问。</p>
-</li>
-<li><p><strong>推广活动</strong>：在广告活动、推广或特定活动期间，你可能希望创建一个短暂的域名或URL，然后将其重定向到特定页面，以便更容易分享和宣传。</p>
-</li>
-<li><p><strong>移动设备适配</strong>：你可能希望为移动设备用户提供一个短域名，以便更方便地访问移动友好的版本，而不是使用完整的域名。</p>
-</li>
-<li><p><strong>错误修正</strong>：有时用户可能会手动输入错误的域名，或者老版本的书签可能指向已更改的页面。通过设置重定向，你可以确保这些用户仍然能够找到正确的内容。</p>
-</li>
-</ol>
-<p>总之，域名重定向或转发可以帮助你管理流量、维护品牌一致性、改善用户体验以及简化访问。然而，在设置重定向时，请确保了解其影响，避免错误配置，以免引发问题。</p>
-
-                    
+              <h2 id="Column"><a href="#Column" class="headerlink" title="@Column"></a>@Column</h2><p>@Column 注解通常会处理数据库列名和Java实体类属性名之间的命名转换，从下划线分隔命名法（snake_case）转换为驼峰命名法（camelCase），或者根据具体的配置来进行命名映射。</p>
+                
           </div>
           <footer>
             
               
+                <div class="alignleft">
+                  <a href="/2023/08/14/note-230814/#more" class="more-link">
+                    Read More
+                  </a>
+                </div>
+                
                   
                       
                               <div class="clearfix"></div>
