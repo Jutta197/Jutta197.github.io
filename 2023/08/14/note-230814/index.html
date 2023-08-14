@@ -104,7 +104,7 @@
 <p>需要注意的是，选择数据类型是根据项目需求和数据库设计的重要决策。虽然 “long” 数据类型可以支持更大的范围，但也可能会占用更多的存储空间。因此，在选择数据类型时，需要综合考虑数据的范围、存储需求以及系统的未来扩展性等因素。</p>
 <hr>
 <p>jar -xf lombok.jar 是解压 JAR 文件的命令，用于提取 JAR 文件中的内容。<br>java -jar lombok.jar 是运行 JAR 文件中的 Java 程序的命令，用于执行 JAR 文件中的可执行代码。</p>
-<h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><p>域名解析是将人类易于记忆的域名（例如：<a href="http://www.example.com）转换为计算机能够理解的IP地址（例如：192.168.1.1）。当您在浏览器中输入一个域名时，计算机需要知道如何连接到该域名对应的服务器，这就是通过域名解析来实现的。">www.example.com）转换为计算机能够理解的IP地址（例如：192.168.1.1）。当您在浏览器中输入一个域名时，计算机需要知道如何连接到该域名对应的服务器，这就是通过域名解析来实现的。</a></p>
+<h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><p>域名解析是将人类易于记忆的域名 （例如：<a target="_blank" rel="noopener" href="http://www.example.com)/">www.example.com）</a> 转换为计算机能够理解的IP地址（例如：192.168.1.1）。当您在浏览器中输入一个域名时，计算机需要知道如何连接到该域名对应的服务器，这就是通过域名解析来实现的。</p>
 <p>域名解析的过程涉及到域名系统（Domain Name System，DNS），这是一个分布式的网络系统，用于将域名映射到IP地址以及其他与域名相关的信息。下面是域名解析的基本过程：</p>
 <ol>
 <li><p><strong>发起解析请求：</strong> 当您在浏览器中输入一个域名并按下回车键时，您的计算机会发起一个DNS解析请求，以获取与该域名相关的IP地址。</p>
@@ -125,7 +125,7 @@
 <li>地域分布： 一些大型域名解析服务提供商在全球各地都有服务器分布，这可以帮助加速不同地区用户的DNS解析请求。（墙？）</li>
 </ul>
 </blockquote>
-<h3 id="HOSTNAMETYPEADDRESS-VALUEDISTANCE-PRIOTTLSERVICE"><a href="#HOSTNAMETYPEADDRESS-VALUEDISTANCE-PRIOTTLSERVICE" class="headerlink" title="HOSTNAME	TYPE	ADDRESS &#x2F; VALUE	DISTANCE&#x2F;PRIO	TTL	SERVICE"></a>HOSTNAME	TYPE	ADDRESS &#x2F; VALUE	DISTANCE&#x2F;PRIO	TTL	SERVICE</h3><p><img src="/assets/images/Snipaste_2023-08-14_19-11-06.png" alt="图图图" title="图"></p>
+<h3 id="HOSTNAMETYPEADDRESS-VALUEDISTANCE-PRIOTTLSERVICE"><a href="#HOSTNAMETYPEADDRESS-VALUEDISTANCE-PRIOTTLSERVICE" class="headerlink" title="HOSTNAME	TYPE	ADDRESS &#x2F; VALUE	DISTANCE&#x2F;PRIO	TTL	SERVICE"></a>HOSTNAME	TYPE	ADDRESS &#x2F; VALUE	DISTANCE&#x2F;PRIO	TTL	SERVICE</h3><p><img src="/assets/images/Snipaste_2023-08-14_19-11-06.png" alt="图图图：我只在namesilo上设置了域名解析" title="图"></p>
 <p>在DNS（Domain Name System） </p>
 <ol>
 <li><p><strong>Hostname</strong>（主机名）：这是你想要设置DNS记录的域名部分。例如，如果你想要设置一个子域名记录，主机名可能是“www”、“blog”等。对于根域名记录，主机名通常为空。</p>
@@ -150,7 +150,7 @@
 </li>
 </ol>
 <p>需要注意的是，具体的字段和意义可能会因DNS记录类型和DNS服务的不同而有所不同。当你在配置DNS记录时，你需要根据所需的功能和上下文来正确填写这些字段。</p>
-<p>TTL（Time To Live）是DNS记录中的一个属性，指定了该记录在DNS缓存中的存储时间。它表示一个DNS记录在被存储在缓存中的时间长度，以秒为单位。当一个DNS查询请求被解析器发送到DNS服务器时，解析器会在缓存中存储从服务器返回的DNS记录，并在TTL时间到期后，将该记录从缓存中删除。</p>
+<h4 id="TTL"><a href="#TTL" class="headerlink" title="TTL"></a>TTL</h4><p>TTL（Time To Live）是DNS记录中的一个属性，指定了该记录在DNS缓存中的存储时间。它表示一个DNS记录在被存储在缓存中的时间长度，以秒为单位。当一个DNS查询请求被解析器发送到DNS服务器时，解析器会在缓存中存储从服务器返回的DNS记录，并在TTL时间到期后，将该记录从缓存中删除。</p>
 <p>TTL的作用是控制DNS缓存中的记录的更新频率。较短的TTL会使记录更频繁地从服务器重新获取，这对于经常变化的记录（如DNS迁移或负载均衡设置）很有用。较长的TTL会减少对DNS服务器的查询请求，从而提高效率，但会导致在记录变更时，更新可能需要更长的时间。</p>
 <p>例如，如果一个DNS记录的TTL被设置为3600秒（1小时），那么在解析器从DNS服务器获取该记录后，它会在1小时后尝试重新获取该记录。</p>
 <p>要注意的是，TTL的实际行为可能因DNS解析器、缓存服务器和DNS记录类型等因素而有所不同。当你在配置DNS记录时，你可以设置TTL以适应你的需求。通常来说，较短的TTL对于频繁变更的记录更合适，较长的TTL适用于相对稳定的记录。</p>
