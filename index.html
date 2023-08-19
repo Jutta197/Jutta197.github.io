@@ -80,274 +80,18 @@
           </header>
           <div class="e-content entry" itemprop="articleBody">
             
-                  <h2 id="spring-jpa-hibernate-ddl-auto"><a href="#spring-jpa-hibernate-ddl-auto" class="headerlink" title="spring.jpa.hibernate.ddl-auto"></a>spring.jpa.hibernate.ddl-auto</h2><p>在Java Spring框架中，<code>spring.jpa.hibernate.ddl-auto</code>是一个用于配置Hibernate自动化数据库表生成和更新的属性。Hibernate是一个在Java应用程序和数据库之间提供对象关系映射（ORM）的框架，它允许开发者使用面向对象的方式操作数据库。</p>
-<p><code>spring.jpa.hibernate.ddl-auto</code>属性决定了在应用程序启动时Hibernate如何处理数据库表的创建和更新。它有以下几个可选值：</p>
-<ol>
-<li><p><code>none</code>：这是默认值，Hibernate不会自动创建或更新表结构。这意味着你需要手动创建数据库表，Hibernate不会干涉或更新表结构。</p>
-</li>
-<li><p><code>update</code>：Hibernate会检查应用程序的实体类和数据库表之间的差异，并尝试根据差异来更新数据库表结构。它会尝试保留现有的数据，但这种方式不适合在生产环境中使用，因为它可能会导致数据丢失或不一致。</p>
-</li>
-<li><p><code>create</code>：Hibernate会根据应用程序的实体类自动创建数据库表。如果表已经存在，它会首先删除现有的表再创建新表。这也不适合生产环境，因为它会导致数据丢失。</p>
-</li>
-<li><p><code>create-drop</code>：类似于<code>create</code>，但是在应用程序关闭时会删除数据库表，适用于开发和测试环境，但不适合生产环境。</p>
-</li>
-<li><p><code>validate</code>：Hibernate会校验实体类和数据库表之间的差异，如果存在差异则会抛出异常。</p>
-</li>
-</ol>
-<p>选择合适的值取决于你的应用程序的开发阶段和部署环境。在开发和测试阶段，你可能会选择<code>update</code>或<code>create-drop</code>，以便自动处理表结构的更新或创建。在生产环境中，通常不建议使用自动表结构更新功能，而是手动管理数据库表结构的变更，以避免意外的数据丢失或不一致性。</p>
-<h2 id="跨域问题"><a href="#跨域问题" class="headerlink" title="跨域问题"></a>跨域问题</h2><p>跨域问题是指在浏览器中运行的脚本（例如 JavaScript）试图通过XMLHttpRequest或Fetch等方式从不同源（域、协议或端口）的服务器获取数据时，会受到同源策略（Same-Origin Policy）的限制。为了确保安全性，浏览器限制了跨域请求的能力。</p>
-<p>如果您的前端页面和后端服务位于不同的域名、协议或端口，您需要处理跨域请求。下面是一些常用的跨域解决方法：</p>
-<ol>
-<li><p><strong>CORS（跨源资源共享）：</strong></p>
-<ul>
-<li>CORS是一种由浏览器支持的机制，允许服务器声明哪些源被允许访问其资源。在后端服务器中配置适当的CORS头，以允许特定的域名、端口或协议访问资源。</li>
-<li>在Spring Boot中，您可以使用 <code>@CrossOrigin</code> 注解来实现CORS配置。例如，在您的Controller类或方法上添加此注解即可： <code>@CrossOrigin(origins = &quot;http://yourfrontenddomain.com&quot;)</code>。</li>
-</ul>
-</li>
-<li><p><strong>代理服务器：</strong></p>
-<ul>
-<li>使用代理服务器将前端请求转发到后端，这样请求就在同一个域上执行，从而避免了跨域问题。您可以在前端应用程序中配置代理设置，或者使用反向代理服务器（例如Nginx、Apache）来处理这种转发。</li>
-</ul>
-</li>
-<li><p><strong>JSONP（仅限GET请求）：</strong></p>
-<ul>
-<li>JSONP是一种通过动态创建<code>&lt;script&gt;</code>标签来获取数据的方法，适用于仅限GET请求的情况。后端返回的数据会包裹在一个函数调用中，然后在前端通过回调函数来处理。</li>
-</ul>
-</li>
-<li><p><strong>WebSocket：</strong></p>
-<ul>
-<li>如果您需要实时通信，WebSocket是一种不受同源策略限制的协议。您可以考虑使用WebSocket来进行跨域通信。</li>
-</ul>
-</li>
-</ol>
-<p>在处理跨域问题时，需要确保前端和后端都采取了适当的措施。具体的解决方法取决于您的架构和需求。如果您仍然遇到问题，您可以查看浏览器的开发者工具控制台，通常会显示有关跨域问题的错误信息，从而帮助您进一步调试。</p>
-<h2 id="JDBC-JPA"><a href="#JDBC-JPA" class="headerlink" title="JDBC &amp; JPA"></a>JDBC &amp; JPA</h2><p>JDBC（Java Database Connectivity）和JPA（Java Persistence API）都是Java中用于处理数据库操作的技术，但它们在实现方式和使用上有一些区别。</p>
-<p><strong>JDBC（Java Database Connectivity）：</strong></p>
-<ul>
-<li><p><strong>定义：</strong> JDBC是Java标准库中的API，用于与关系型数据库进行交互。它提供了一组类和方法，使开发人员能够建立数据库连接、执行SQL查询和更新操作、处理结果集等。</p>
-</li>
-<li><p><strong>使用：</strong> 在使用JDBC时，你需要手动编写SQL语句、打开和关闭数据库连接、处理SQL异常等。这意味着你需要处理更多的底层细节。</p>
-</li>
-<li><p><strong>灵活性：</strong> JDBC提供了较高的灵活性，可以完全控制SQL语句的编写和数据库连接的管理。这对于需要处理复杂SQL查询和特定数据库操作的情况非常有用。</p>
-</li>
-</ul>
-<p><strong>JPA（Java Persistence API）：</strong></p>
-<ul>
-<li><p><strong>定义：</strong> JPA是Java EE标准中的一部分，它是用于管理Java对象和关系型数据库之间映射的API。JPA的目标是提供一种更高层次的抽象，让开发人员能够通过面向对象的方式进行数据库操作，而不必关心底层的SQL语句。</p>
-</li>
-<li><p><strong>使用：</strong> 使用JPA时，你将定义实体类来映射数据库表，并使用JPA提供的注解或XML配置来指定映射关系。JPA会自动为你生成适当的SQL语句，执行数据库操作。</p>
-</li>
-<li><p><strong>抽象性：</strong> JPA提供了更高的抽象性，让开发人员能够更专注于领域模型而不必关心具体的SQL语句和数据库连接管理。这对于大部分的CRUD操作非常方便。</p>
-</li>
-</ul>
-<p><strong>选择：</strong></p>
-<ul>
-<li><p>如果你需要对数据库操作有更精细的控制，需要编写复杂的SQL查询，或者与非关系型数据库交互，JDBC可能更适合你。</p>
-</li>
-<li><p>如果你想要更快速地进行数据库操作，专注于领域模型设计，而不必关心底层的数据库细节，JPA可能更适合你。</p>
-</li>
-</ul>
-<p>同时，还有一个中间选项，即使用Spring的JdbcTemplate，它在JDBC的基础上提供了更方便的API，但仍然需要手动编写SQL语句。这取决于你的项目需求和个人偏好，可以选择适合你的数据库操作技术。</p>
-<h2 id="Hutool"><a href="#Hutool" class="headerlink" title="Hutool"></a>Hutool</h2><p>Hutool（也称为HuTool）是一个Java编程工具包，旨在为Java开发人员提供一组功能丰富且易于使用的工具，以简化常见的编程任务。Hutool旨在填补Java标准库中缺失的一些功能，同时提供更简洁的API来增强开发效率。</p>
-<p>以下是Hutool提供的一些功能和特性：</p>
-<ol>
-<li><p><strong>字符串处理：</strong> 提供了各种字符串处理工具，包括判断字符串为空、去除首尾空白字符、驼峰命名转换、字符串模板等。</p>
-</li>
-<li><p><strong>集合工具：</strong> 提供了一系列集合相关的工具，如集合合并、集合是否为空判断、集合类型转换等。</p>
-</li>
-<li><p><strong>日期时间工具：</strong> 提供了日期时间格式化、解析、计算等工具，支持常见的日期时间操作。</p>
-</li>
-<li><p><strong>文件操作：</strong> 提供了文件读写、拷贝、删除、压缩等功能。</p>
-</li>
-<li><p><strong>加密解密：</strong> 支持常见的加密解密算法，如MD5、SHA-256、Base64等。</p>
-</li>
-<li><p><strong>网络工具：</strong> 提供HTTP客户端、IP工具、URL解析等功能。</p>
-</li>
-<li><p><strong>正则表达式工具：</strong> 封装了正则表达式的常用操作，使其更易于使用。</p>
-</li>
-<li><p><strong>图片处理：</strong> 提供了图片缩放、水印添加等图片处理功能。</p>
-</li>
-<li><p><strong>IoC容器：</strong> 提供简单的IoC容器功能，用于管理Bean的创建和生命周期。</p>
-</li>
-<li><p><strong>等等…</strong> Hutool还提供了很多其他实用的工具，包括反射、对象克隆、随机数生成、XML处理等。</p>
-</li>
-</ol>
-<p>总之，Hutool是一个非常实用的Java工具包，它可以帮助开发人员在日常开发中减少重复的编码工作，提高效率。你可以在项目中引入Hutool依赖，然后使用其提供的API来简化和加速开发过程。Hutool的官方网站提供了详细的文档和示例，可以帮助你更好地了解和使用它。</p>
-<h2 id="MyBatis-Plus"><a href="#MyBatis-Plus" class="headerlink" title="MyBatis-Plus"></a>MyBatis-Plus</h2><p>MyBatis-Plus是基于MyBatis的增强工具库，它内部已经集成了MyBatis的核心功能，因此在使用MyBatis-Plus时，你不需要显式地添加MyBatis的依赖，只需要添加MyBatis-Plus的依赖即可。</p>
-<p>MyBatis-Plus是一个基于MyBatis的增强工具库，它提供了许多便捷的功能来简化数据库访问层的开发，让你能更快速、高效地操作数据库。以下是MyBatis-Plus可以做的一些事情：</p>
-<ol>
-<li><p><strong>简化CRUD操作：</strong> MyBatis-Plus可以自动生成常见的增删改查操作，你只需要编写实体类和Mapper接口，MyBatis-Plus会帮你生成相应的SQL语句和方法。</p>
-</li>
-<li><p><strong>分页查询：</strong> MyBatis-Plus提供了内置的分页查询功能，你可以轻松地实现分页查询操作，不需要手动编写分页逻辑。</p>
-</li>
-<li><p><strong>条件构造器：</strong> MyBatis-Plus的条件构造器功能允许你根据条件动态生成查询条件，而无需手动编写复杂的SQL语句。这使得你能够更灵活地构建查询。</p>
-</li>
-<li><p><strong>自动填充：</strong> MyBatis-Plus支持自动填充功能，你可以在实体类中定义字段的自动填充逻辑，例如创建时间、更新时间等。</p>
-</li>
-<li><p><strong>乐观锁支持：</strong> MyBatis-Plus提供了对乐观锁的支持，让你可以更方便地实现乐观锁的机制来处理并发更新。</p>
-</li>
-<li><p><strong>通用Service层封装：</strong> MyBatis-Plus提供了通用的Service层封装，简化了一些常见的业务逻辑操作，如批量插入、批量更新等。</p>
-</li>
-<li><p><strong>代码生成器：</strong> MyBatis-Plus还内置了一个代码生成器，可以根据数据库表结构自动生成实体类、Mapper接口等代码，加速项目开发。</p>
-</li>
-<li><p><strong>动态表名和字段名：</strong> MyBatis-Plus支持在运行时动态设置表名和字段名，适用于一些需要根据条件切换表名的场景。</p>
-</li>
-<li><p><strong>多租户支持：</strong> MyBatis-Plus提供了多租户隔离的支持，可以轻松实现在一个数据库中管理多个租户的数据。</p>
-</li>
-<li><p><strong>Wrapper查询：</strong> MyBatis-Plus的Wrapper查询功能允许你以更灵活的方式构建复杂的查询条件，支持链式操作。</p>
-</li>
-</ol>
-<p>总之，MyBatis-Plus旨在提高开发人员在数据库访问层的开发效率，减少重复性工作，同时提供了一些方便的功能来处理数据库操作中的常见问题。如果你在项目中使用MyBatis作为ORM框架，并希望简化和加速数据库访问层的开发，MyBatis-Plus是一个很好的选择。</p>
-<h2 id=""><a href="#" class="headerlink" title="#!"></a>#!</h2><p>“#!” 是一种在网页开发中常见的符号，被称为 “hashbang” 或 “shebang”。在网页链接中使用 “#!” 时，通常表示这个链接是由 JavaScript 处理的，而不是传统的网页导航链接。</p>
-<p>在您提供的 HTML 代码 <code>&lt;a href=&quot;#!&quot; class=&quot;text-white-50 fw-bold&quot;&gt;新規登録&lt;/a&gt;</code> 中，这个链接可能会通过 JavaScript 触发某种交互式操作，例如弹出注册表单、打开模态窗口或执行其他动态内容加载操作。具体操作将取决于 JavaScript 代码的实现。</p>
-<p>总之，”#!” 在链接中通常表示链接会触发一些 JavaScript 行为，而不会导航到新的页面。如果您需要更<br>具体的信息，您可能需要查看网页的 JavaScript 代码来了解这个链接的实际作用。</p>
-<h2 id="varying"><a href="#varying" class="headerlink" title="varying"></a>varying</h2><p>在数据库中，”varying” 通常是 “VARCHAR” 的缩写，表示可变长度的字符串数据类型。在一些数据库系统中，特别是早期的一些系统，”VARCHAR” 数据类型可能被缩写为 “VARYING”。</p>
-<p>“VARCHAR” 表示可变长度字符数据类型，它允许存储不同长度的字符串。相对于固定长度的字符数据类型（如 “CHAR”），”VARCHAR” 可以节省存储空间，因为它只会占用实际存储的字符数量加上一些额外的字节来表示字符串的长度。</p>
-<p>在现代数据库系统（如 PostgreSQL、MySQL、Oracle 等）中，”VARCHAR” 是一个常见的用于存储字符串数据的数据类型，而 “VARYING” 这个术语在更早的数据库系统中使用较多，现在逐渐被统一为 “VARCHAR”。因此，你可以将 “VARCHAR” 视为 “VARYING” 的现代等效术语。</p>
-<h2 id="COLLATE-pg-catalog-”default”"><a href="#COLLATE-pg-catalog-”default”" class="headerlink" title="COLLATE pg_catalog.”default”"></a>COLLATE pg_catalog.”default”</h2><p>account_name character varying(255) COLLATE pg_catalog.”default”,<br>使用 <code>COLLATE pg_catalog.&quot;default&quot;</code> 或其他排序规则通常取决于以下情况：</p>
-<ol>
-<li><p><strong>多语言支持</strong>：如果你的应用程序需要处理多种语言的文本数据，不同语言可能有不同的排序方式。在这种情况下，你可以根据特定的语言和地区选择适当的排序规则，以确保数据在排序和比较时得到正确的结果。</p>
-</li>
-<li><p><strong>国际化应用程序</strong>：当你开发面向全球用户的应用程序时，不同地区和文化可能使用不同的字符排序规则。为了确保你的应用程序在各种环境下都能正确处理文本数据，你可以选择适当的排序规则。</p>
-</li>
-<li><p><strong>数据库迁移</strong>：如果你正在迁移数据库到另一个环境，例如从一个地区迁移到另一个地区，那么目标地区可能使用不同的排序规则。在这种情况下，你可能需要更新原始数据库的排序规则以适应新的环境。</p>
-</li>
-<li><p><strong>特定排序需求</strong>：有些情况下，你可能需要自定义的排序规则来满足特定需求，例如特定的应用程序逻辑或业务规则。</p>
-</li>
-</ol>
-<p>总之，使用特定的排序规则取决于你的应用程序需求和数据库环境。如果你需要确保文本数据在排序和比较时得到一致的结果，可以选择适当的排序规则，如 <code>COLLATE pg_catalog.&quot;default&quot;</code>，以满足你的需求。</p>
-<h2 id="一个合并冲突的报错-git"><a href="#一个合并冲突的报错-git" class="headerlink" title="一个合并冲突的报错 git"></a>一个合并冲突的报错 git</h2><p>您尝试进行 <code>git pull</code> 操作时，出现了一个合并冲突的错误。错误信息中提到：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">error: Your local changes to the following files would be overwritten by merge:</span><br><span class="line">        README.md</span><br><span class="line">Please commit your changes or stash them before you merge.</span><br><span class="line">Aborting</span><br></pre></td></tr></table></figure>
-
-<p>这意味着在您的本地仓库中，<code>README.md</code> 文件有未提交的更改。在进行 <code>git pull</code> 操作时，远程仓库中的更改与本地未提交的更改发生了冲突，因此 Git 阻止了合并操作。</p>
-<p>您需要在继续进行 <code>git pull</code> 操作之前，解决这个合并冲突。以下是一些可能的解决步骤：</p>
-<ol>
-<li><p><strong>提交本地更改：</strong> 如果您的 <code>README.md</code> 文件中的更改是您想要保留的，您可以先使用 <code>git add README.md</code> 和 <code>git commit -m &quot;Your commit message&quot;</code> 命令将更改提交到本地仓库。然后再尝试进行 <code>git pull</code>。</p>
-</li>
-<li><p><strong>暂存本地更改：</strong> 如果您的 <code>README.md</code> 文件中的更改还没有准备好提交，您可以使用 <code>git stash</code> 命令将这些更改暂时存储起来，然后再进行 <code>git pull</code>。之后可以使用 <code>git stash apply</code> 或 <code>git stash pop</code> 将暂存的更改重新应用到您的工作目录中。</p>
-</li>
-<li><p><strong>丢弃本地更改：</strong> 如果您不需要保留 <code>README.md</code> 文件中的本地更改，您可以使用 <code>git checkout -- README.md</code> 命令来丢弃这些更改，然后再进行 <code>git pull</code>。</p>
-</li>
-</ol>
-<p>无论您选择哪种解决方法，都要确保在进行 <code>git pull</code> 操作之前解决了合并冲突，以避免可能导致更多问题的情况发生。</p>
-<h2 id="character-varying-和-int"><a href="#character-varying-和-int" class="headerlink" title="character varying 和 int"></a>character varying 和 int</h2><p>password character varying(255) COLLATE pg_catalog.”default”,<br>为啥是character varying而不是int<br><code>character varying</code> 和 <code>int</code> 是两种完全不同的数据类型，适用于不同类型的数据。选择使用哪种数据类型取决于你要存储的数据的性质和用途。</p>
-<ol>
-<li><p><strong>character varying</strong>: 这是一个用于存储字符串数据（文本）的数据类型。如果你需要存储像名称、描述、地址等文本信息，那么 <code>character varying</code> 是一个合适的选择。这个类型允许存储可变长度的字符串，根据实际数据的长度进行分配。</p>
-</li>
-<li><p><strong>int</strong>: 这是一个整数数据类型。如果你要存储数值，如计数、年龄、分数等，那么 <code>int</code> 是更适合的选项。整数类型通常用于表示没有小数部分的数字。</p>
-</li>
-</ol>
-<p>所以，选择使用 <code>character varying</code> 还是 <code>int</code> 取决于你要存储的数据类型。如果你需要存储字符数据，如用户名、密码、说明等，那么 <code>character varying</code> 是正确的选择。如果你要存储数值数据，如计数器、标识符等，那么 <code>int</code> 是适合的选择。</p>
-<p>为啥是character varying而不是CHAR<br><code>CHAR</code> 和 <code>character varying</code>（也称为 <code>VARCHAR</code>）是数据库中用于存储字符串数据的两种不同类型。它们的主要区别在于存储方式和处理空间的方式。</p>
-<ol>
-<li><p><strong>CHAR</strong>: <code>CHAR</code> 是一种固定长度的字符数据类型。无论实际存储的字符串长度是多少，<code>CHAR</code> 字段总是会占用指定的固定存储空间。例如，一个 <code>CHAR(10)</code> 字段总是占用 10 个字符的存储空间，无论你实际存储的字符串长度是多少。这可能导致空间浪费，因为如果存储的字符串长度小于字段的最大长度，剩余的空间会被填充空格。</p>
-</li>
-<li><p><strong>character varying (VARCHAR)</strong>: <code>character varying</code> 或 <code>VARCHAR</code> 是一种可变长度的字符数据类型。它会根据实际存储的字符串长度来分配存储空间，避免了不必要的空间浪费。例如，一个 <code>VARCHAR(255)</code> 字段只会占用实际存储的字符串长度所需的存储空间。</p>
-</li>
-</ol>
-<p>选择 <code>character varying</code> 而不是 <code>CHAR</code> 可能有以下原因：</p>
-<ul>
-<li><p><strong>节省空间</strong>：<code>VARCHAR</code> 可以节省存储空间，因为它只会占用实际存储数据所需的空间，而不会填充多余的空格。</p>
-</li>
-<li><p><strong>灵活性</strong>：<code>VARCHAR</code> 允许存储不同长度的字符串，而 <code>CHAR</code> 则需要事先定义固定长度。</p>
-</li>
-<li><p><strong>避免填充字符</strong>：使用 <code>CHAR</code> 可能需要手动删除或处理存储的字符串中的额外空格，而 <code>VARCHAR</code> 不会在存储时填充字符。</p>
-</li>
-</ul>
-<p>总之，选择 <code>CHAR</code> 还是 <code>VARCHAR</code> 取决于你的数据和应用程序的需求。如果你需要存储可变长度的字符串，避免空间浪费，并且更灵活地处理不同长度的文本，那么 <code>VARCHAR</code> 通常是更好的选择。</p>
-<h2 id="character-varying和varying"><a href="#character-varying和varying" class="headerlink" title="character varying和varying"></a>character varying和varying</h2><p><code>character varying</code> 和 <code>varying</code> 都是数据库中用于定义可变长度字符串数据类型的关键词，但它们有一些细微的差别。</p>
-<ol>
-<li><p><strong>character varying</strong>: 这是 PostgreSQL 数据库中用于定义可变长度字符串的数据类型的关键词。它表示字段可以存储可变长度的字符数据，长度根据实际存储的数据来确定。在 PostgreSQL 中，<code>character varying</code> 可以缩写为 <code>varchar</code>。</p>
-</li>
-<li><p><strong>varying</strong>: 在一些其他数据库管理系统（DBMS）中，例如 Oracle 数据库，<code>varying</code> 可能被用作类似于 PostgreSQL 的 <code>character varying</code> 的关键词。它也表示可变长度的字符串数据类型。</p>
-</li>
-</ol>
-<p>实际上，这两个关键词在不同的数据库系统中可能有不同的含义和用法。如果你正在使用 PostgreSQL，那么应该使用 <code>character varying</code> 或 <code>varchar</code> 来定义可变长度字符串。如果你使用其他 DBMS，你可能需要查阅该数据库的文档来了解正确的可变长度字符串数据类型的关键词是什么。</p>
-<p>总之，<code>character varying</code> 和 <code>varying</code> 都表示可变长度字符串，但具体的用法和可用性可能因数据库系统而异。</p>
-<p>CREATE TABLE user_accounts (<br>    account_id serial PRIMARY KEY,<br>    account_name varchar(255) NOT NULL,<br>    account_email varchar(255) NOT NULL,<br>    password varchar(255) NOT NULL<br>);<br>varchar是可变的，为啥还要加上255<br>你说得对，<code>VARCHAR</code> 数据类型本身就是可变长度的，不需要显式指定最大长度。我之前的回答中在创建表时给出了一个长度为 255 的示例，但实际上在大多数情况下，你可以不指定长度，或者根据你的需要选择一个适当的长度。感谢你的纠正。</p>
-<p>在创建表时，以下示例展示了不指定长度的情况：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> user_accounts (</span><br><span class="line">    account_id serial <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">    account_name <span class="type">varchar</span>,</span><br><span class="line">    account_email <span class="type">varchar</span>,</span><br><span class="line">    password <span class="type">varchar</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>或者，如果你认为有一个合适的最大长度，你也可以在 <code>VARCHAR</code> 数据类型中指定一个适当的长度，比如：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> user_accounts (</span><br><span class="line">    account_id serial <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">    account_name <span class="type">varchar</span>(<span class="number">50</span>),</span><br><span class="line">    account_email <span class="type">varchar</span>(<span class="number">100</span>),</span><br><span class="line">    password <span class="type">varchar</span>(<span class="number">128</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>这个长度的选择通常基于你的业务需求和预期数据长度。不过需要注意的是，指定长度并不会限制你在插入数据时输入的实际字符数，只是影响数据库内部分配的存储空间。</p>
-<h2 id="为啥一般varchar都指定255"><a href="#为啥一般varchar都指定255" class="headerlink" title="为啥一般varchar都指定255"></a>为啥一般varchar都指定255</h2><p>在关系型数据库中，为 <code>VARCHAR</code> 字段指定长度是一个常见的做法，通常长度为 255。这是由于历史原因和一些实践经验所致。然而，这不是固定的规则，实际应用中需要根据需求进行选择。</p>
-<p>以下是一些可能的原因，解释为什么一般会为 <code>VARCHAR</code> 字段指定长度为 255：</p>
-<ol>
-<li><p><strong>兼容性和迁移性</strong>: 一些数据库系统，特别是旧版本的数据库，可能对不带长度的 <code>VARCHAR</code> 字段定义行为不一致。指定一个合理的长度可以增加数据库迁移和兼容性方面的灵活性。</p>
-</li>
-<li><p><strong>数据存储的默认规定</strong>: 在某些数据库系统中，如果未指定 <code>VARCHAR</code> 的长度，默认长度可能是 1。为了避免这种情况，人们可能倾向于指定一个较大的长度。</p>
-</li>
-<li><p><strong>限制输入</strong>: 为 <code>VARCHAR</code> 字段指定长度可以帮助强制用户在输入时限制字符串的长度，防止输入过长的文本。</p>
-</li>
-<li><p><strong>避免过度的空间分配</strong>: 虽然 <code>VARCHAR</code> 是可变长度的，但在某些情况下，数据库可能会分配一些额外的存储空间来处理可变长度的数据。指定一个相对较小的长度可以帮助避免分配过多的空间。</p>
-</li>
-</ol>
-<p>需要强调的是，长度为 255 并不是一定要遵循的规则，而是一个通用的选择。在实际设计中，你应该根据你的数据需求和数据库系统的特性来选择合适的长度。如果你知道你的数据很少会超过某个特定长度，你也可以选择更小的长度。最终，根据实际情况来权衡不同的因素，以便得出最适合你应用程序的决策。</p>
-<h2 id="数据的完整性、安全性和查询需求"><a href="#数据的完整性、安全性和查询需求" class="headerlink" title="数据的完整性、安全性和查询需求"></a>数据的完整性、安全性和查询需求</h2><p>当设计数据库时，需要考虑以下几个方面，以确保数据的完整性、安全性和满足查询需求：</p>
-<ol>
-<li><p><strong>数据完整性</strong>：</p>
-<ul>
-<li><strong>主键和唯一性约束</strong>：确保每个记录都有唯一的标识，主键和唯一性约束可以防止重复数据。</li>
-<li><strong>外键约束</strong>：建立表与表之间的关联，确保引用关系的数据是有效的。</li>
-<li><strong>默认值</strong>：为字段设置默认值，确保即使没有显式提供值，也不会出现空值。</li>
-<li><strong>检查约束</strong>：通过自定义规则限制字段值的范围和值，确保数据的有效性。</li>
-</ul>
-</li>
-<li><p><strong>数据安全性</strong>：</p>
-<ul>
-<li><strong>敏感信息的加密和哈希</strong>：例如，用户密码应该以安全的方式存储，而不是明文存储。</li>
-<li><strong>访问控制</strong>：限制谁可以访问数据库、哪些操作是允许的，通过角色和权限管理来实现。</li>
-<li><strong>防止 SQL 注入</strong>：使用参数化查询或存储过程等来避免 SQL 注入攻击。</li>
-<li><strong>数据备份和恢复</strong>：定期备份数据以防止数据丢失，同时有恢复计划来应对意外情况。</li>
-</ul>
-</li>
-<li><p><strong>查询需求</strong>：</p>
-<ul>
-<li><strong>索引</strong>：根据查询需求创建适当的索引，以提高查询性能。</li>
-<li><strong>优化查询语句</strong>：编写高效的查询语句，避免不必要的连接和子查询，优化数据库查询计划。</li>
-<li><strong>视图和存储过程</strong>：创建视图以简化常见的查询操作，创建存储过程以执行复杂的操作。</li>
-</ul>
-</li>
-<li><p><strong>容灾和可扩展性</strong>：</p>
-<ul>
-<li><strong>冗余和备份</strong>：为了防止硬件故障，数据中心故障等，需要考虑数据的冗余备份策略。</li>
-<li><strong>分布式和集群</strong>：如果应用程序需要处理大量数据或高负载，考虑使用分布式数据库或集群来保证可扩展性和高可用性。</li>
-</ul>
-</li>
-</ol>
-<p>以上只是一些常见的考虑因素，实际应用中可能会有更多的具体需求和约束。在设计数据库时，需要根据应用程序的需求、数据的特性以及数据库系统的能力进行权衡和选择。同时，遵循最佳实践可以帮助你创建一个更安全、高效和可靠的数据库系统。</p>
-<p>密码<br>处理用户密码是数据库设计中的一个关键安全问题。以下是一些处理密码的最佳实践：</p>
-<ol>
-<li><p><strong>密码哈希</strong>：绝对不要将密码明文存储在数据库中。相反，应该将密码使用哈希函数进行哈希处理，然后存储哈希值。常用的密码哈希算法包括 bcrypt、Argon2、PBKDF2 等。这样即使数据库泄露，攻击者也不会轻易获取用户的真实密码。</p>
-</li>
-<li><p><strong>加盐哈希</strong>：为了增加安全性，每个用户的密码都应该使用唯一的随机盐进行哈希处理。盐是一个随机字符串，它会与密码一起哈希，使得相同密码在不同用户之间也会产生不同的哈希值。</p>
-</li>
-<li><p><strong>迭代次数</strong>：哈希算法通常可以设置迭代次数，以增加破解密码的难度。更高的迭代次数会让密码破解更加困难，但也会增加服务器的计算开销。</p>
-</li>
-<li><p><strong>存储哈希和盐</strong>：在数据库中存储密码哈希值和相应的盐值。哈希和盐的存储通常是两个单独的字段。</p>
-</li>
-<li><p><strong>密码重置</strong>：实现安全的密码重置机制，可能通过发送电子邮件或其他身份验证方式。</p>
-</li>
-<li><p><strong>HTTPS</strong>：确保在用户输入密码时使用 HTTPS 来加密通信，以防止密码在传输过程中被截获。</p>
-</li>
-<li><p><strong>强密码策略</strong>：鼓励用户使用强密码，可能包括字母、数字、特殊字符的组合，并且要求密码长度达到一定的要求。</p>
-</li>
-<li><p><strong>两因素身份验证</strong>：为用户提供额外的安全性层，要求他们在登录时输入密码以外的另一因素，如验证码、手机短信等。</p>
-</li>
-</ol>
-<p>总之，处理用户密码需要谨慎，因为密码安全是用户隐私的关键部分。采用最佳实践来保护用户密码，确保密码不容易被泄露或破解。</p>
-<br>
----
-
-<p>在绝大多数情况下，ER 图（实体关系图）中的表名首字母使用大写是一种常见的约定，但这并不是强制性的规则。</p>
-
-                    
+              <h2 id="spring-jpa-hibernate-ddl-auto"><a href="#spring-jpa-hibernate-ddl-auto" class="headerlink" title="spring.jpa.hibernate.ddl-auto"></a>spring.jpa.hibernate.ddl-auto</h2><p>在Java Spring框架中，<code>spring.jpa.hibernate.ddl-auto</code>是一个用于配置Hibernate自动化数据库表生成和更新的属性。Hibernate是一个在Java应用程序和数据库之间提供对象关系映射（ORM）的框架，它允许开发者使用面向对象的方式操作数据库。</p>
+                
           </div>
           <footer>
             
               
+                <div class="alignleft">
+                  <a href="/2023/08/19/note-230819/#more" class="more-link">
+                    Read More
+                  </a>
+                </div>
+                
                   
                       
                               <div class="clearfix"></div>
@@ -445,7 +189,7 @@
 <!-- 是否开启评论？ -->
 
 
-  <article id="post-note_230809" class="h-entry post" itemprop="blogPost" itemscope
+  <article id="post-note-230809" class="h-entry post" itemprop="blogPost" itemscope
   itemtype="https://schema.org/BlogPosting">
   
         <div class="post-content">
@@ -453,13 +197,13 @@
             
               <div class="icon"></div>
               <time class="dt-published" datetime="2023-08-08T16:00:00.000Z"><a
-                  href="/2023/08/09/note_230809/">
+                  href="/2023/08/09/note-230809/">
                   2023-08-09
                 </a></time>
               
                 
   
-    <h1 class="title"><a href="/2023/08/09/note_230809/">note_230809</a></h1>
+    <h1 class="title"><a href="/2023/08/09/note-230809/">note_230809</a></h1>
   
 
           </header>
@@ -474,7 +218,7 @@
             
               
                 <div class="alignleft">
-                  <a href="/2023/08/09/note_230809/#more" class="more-link">
+                  <a href="/2023/08/09/note-230809/#more" class="more-link">
                     Read More
                   </a>
                 </div>
