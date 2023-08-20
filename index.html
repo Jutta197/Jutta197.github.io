@@ -60,6 +60,71 @@
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article id="post-Week-2-of-AWS" class="h-entry post" itemprop="blogPost" itemscope
+  itemtype="https://schema.org/BlogPosting">
+  
+        <div class="post-content">
+          <header>
+            
+              <div class="icon"></div>
+              <time class="dt-published" datetime="2023-08-20T15:47:24.000Z"><a
+                  href="/2023/08/20/Week-2-of-AWS/">
+                  2023-08-20
+                </a></time>
+              
+                
+  
+    <h1 class="title"><a href="/2023/08/20/Week-2-of-AWS/">Week-2-of-AWS</a></h1>
+  
+
+          </header>
+          <div class="e-content entry" itemprop="articleBody">
+            
+                  <p><strong>high availability and fault tolerance.</strong><br><br><br><br></p>
+<h2 id="choose-a-Region"><a href="#choose-a-Region" class="headerlink" title="choose a Region"></a>choose a Region</h2><p><strong>Four key factors to choose a Region: Compliance, proximity, feature availability, and pricing.</strong></p>
+<ol>
+<li>Compliance with data governance and legal requirements:Depending on your company and location, you might need to run your data out of specific areas.</li>
+<li>Proximity to your customers</li>
+<li>Available services within a Region: feature availability: Sometimes the closest Region may not have all the AWS features you want.</li>
+<li>Suppose that you are considering running applications in both the United States and Brazil. The way Brazil’s tax structure is set up, it might cost 50% more to run the same workload out of the São Paulo Region compared to the Oregon Region.</li>
+</ol>
+<h2 id="AZ"><a href="#AZ" class="headerlink" title="AZ"></a>AZ</h2><p>AWS calls a single data center or a group of data centers, an Availability Zone or AZ.Each Availability Zone is one or more discrete data centers with redundant power, networking, and connectivity.<br>AWS（Amazon Web Services）的基础架构设计:如何设计和实现其Regions和Availability Zones (AZs)以确保高可用性和容灾能力。简言之，AWS鼓励在多个AZs中运行应用，以确保即使一个AZ受到影响，应用仍然可以正常运行。</p>
+<p>关于您的问题：“所以是不是同一个服务最好买2个ec2？”的答案是：<br><strong>是的</strong>，为了确保高可用性和容错能力，您应该考虑在至少两个不同的Availability Zones中运行两个或更多的EC2实例。这样，如果一个AZ发生故障或受到影响，其他的AZ中的实例仍然可以为用户提供服务。这不仅增加了冗余，而且还提供了容灾和故障恢复能力。<br>Running Amazon EC2 instances in multiple Availability Zones</p>
+<h2 id="AZ-Region"><a href="#AZ-Region" class="headerlink" title="AZ &amp; Region"></a>AZ &amp; Region</h2><p>在AWS（Amazon Web Services）的上下文中，一个单独的数据中心或一个区域内的一组数据中心被称为”Availability Zone”（常简称为AZ）。</p>
+<ol>
+<li><p>**Availability Zone (AZ)**：这是AWS基础设施的一个关键部分，用于提供高可用性和容错能力。</p>
+<ul>
+<li>一个AZ可以是一个单独的数据中心，也可以是一个地理区域内的几个物理上接近的数据中心。</li>
+<li>每个AZ都有独立的电源、网络、冷却系统等，从而确保它可以在其他AZs出现问题时独立运行。</li>
+<li>不同的AZs之间有低延迟的网络连接，从而确保在一个AZ内的资源可以与另一个AZ内的资源快速互相通信。</li>
+</ul>
+</li>
+<li><p><strong>Region</strong>：一个Region是AWS全球基础设施的一个地理区域。每个Region都包括两个或多个Availability Zones。</p>
+<ul>
+<li>例如：<code>us-east-1</code> 是北弗吉尼亚的一个Region，它包括多个AZs。</li>
+<li>选择不同的Regions可以帮助您满足法规要求、降低延迟或提供距离用户更近的服务。</li>
+</ul>
+</li>
+</ol>
+<p>为了提供高可用性和容错能力，AWS鼓励用户在一个Region的多个AZs中分布式部署他们的应用和服务。这样，如果一个AZ出现问题，其他AZs仍然可以继续为用户提供服务。</p>
+<h2 id="Edge-Locations"><a href="#Edge-Locations" class="headerlink" title="Edge Locations:"></a>Edge Locations:</h2><p>An edge location is a site that Amazon CloudFront uses to store cached copies of your content. </p>
+
+                    
+          </div>
+          <footer>
+            
+              
+                  
+                      
+                              <div class="clearfix"></div>
+          </footer>
+        </div>
+</article>
+
+
+<!-- 是否开启评论？ -->
+
+
   <article id="post-note-230819" class="h-entry post" itemprop="blogPost" itemscope
   itemtype="https://schema.org/BlogPosting">
   
@@ -312,7 +377,7 @@
   
     <li><a href="/tags/AI/">AI</a><small>3</small></li>
   
-    <li><a href="/tags/AWS/">AWS</a><small>1</small></li>
+    <li><a href="/tags/AWS/">AWS</a><small>2</small></li>
   
     <li><a href="/tags/Hexo/">Hexo</a><small>1</small></li>
   
