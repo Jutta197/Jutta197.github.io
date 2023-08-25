@@ -26,8 +26,25 @@
 <meta name="generator" content="Hexo 6.3.0"></head>
 
 
-<body>
-  <header id="header" class="inner"><div class="alignleft">
+
+  <body>
+    <!-- 这里是改动过的 -->
+    <!-- 插入获取IP地址和浏览器语言的JavaScript代码 -->
+    <script>
+      fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+          const ipAddress = data.ip;
+          document.getElementById('ipAddress').textContent = ipAddress;
+        })
+        .catch(error => console.error(error));
+
+      const browserLanguage = navigator.language;
+      document.getElementById('browserLanguage').textContent = browserLanguage;
+    </script>
+
+
+    <header id="header" class="inner"><div class="alignleft">
   <h1><a href="/">
       Jutta&#39;s Blog
     </a></h1>
@@ -58,8 +75,65 @@
   <div class="clearfix"></div>
 </nav>
 <div class="clearfix"></div></header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
+    <div id="content" class="inner">
+
+      <div id="main-col" class="alignleft">
+        <div id="wrapper">
+  <article id="post-ip-and-lang-test" class="h-entry post" itemprop="blogPost" itemscope
+  itemtype="https://schema.org/BlogPosting">
+  
+        <div class="post-content">
+          <header>
+            
+              <div class="icon"></div>
+              <time class="dt-published" datetime="2023-08-25T14:54:12.000Z"><a
+                  href="/2023/08/25/ip-and-lang-test/">
+                  2023-08-25
+                </a></time>
+              
+                
+  
+    <h1 class="title"><a href="/2023/08/25/ip-and-lang-test/">ip and lang test</a></h1>
+  
+
+          </header>
+          <div class="e-content entry" itemprop="articleBody">
+            
+                  <!-- 在这里插入获取IP地址的JavaScript代码 -->
+<script>
+fetch('https://ipinfo.io')
+  .then(response => response.json())
+  .then(data => {
+    const ipAddress = data.ip;
+    console.log(ipAddress);
+  })
+  .catch(error => console.error(error));
+</script>
+
+<!-- 在这里插入获取浏览器语言的JavaScript代码 -->
+<script>
+const browserLanguage = navigator.language;
+console.log(browserLanguage);
+</script>
+
+<p>这是正文的Markdown内容。</p>
+
+                    
+          </div>
+          <footer>
+            
+              
+                  
+                      
+                              <div class="clearfix"></div>
+          </footer>
+        </div>
+</article>
+
+
+<!-- 是否开启评论？ -->
+
+
   <article id="post-note-230824" class="h-entry post" itemprop="blogPost" itemscope
   itemtype="https://schema.org/BlogPosting">
   
@@ -80,630 +154,18 @@
           </header>
           <div class="e-content entry" itemprop="articleBody">
             
-                  <p>在大多数现代框架和应用程序设计中，我们通常会听到“models”和“entities”这样的术语。它们与POJO有关，但又有所不同，取决于上下文和框架。</p>
-<ol>
-<li><p><strong>Models</strong>: 在MVC（模型-视图-控制器）设计模式中，“model”通常指代用于表示数据的对象。它不仅包括数据，还可能包括与数据相关的业务逻辑。</p>
-</li>
-<li><p><strong>Entities</strong>: 在许多ORM（对象关系映射）框架（如Hibernate、JPA、MyBatis等）中，“entity”是一个特殊的POJO，它代表了数据库中的一个表。Entities通常会有特定的注解或配置来描述如何将对象的字段映射到数据库表的列。例如，在JPA中，你会使用<code>@Entity</code>注解来标记一个Java类作为实体。</p>
-</li>
-</ol>
-<p>可以说，一个entity是一个特殊的model，它直接与数据库中的数据表相对应。同时，entity也是一个特殊的POJO，因为它通常会包含一些特定的注解或元数据，以描述如何与数据库进行交互。</p>
-<p>简单例子：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span>  <span class="comment">// JPA注解，标识这是一个entity</span></span><br><span class="line"><span class="meta">@Table(name = &quot;person_table&quot;)</span>  <span class="comment">// 指定对应的数据库表名</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span>  <span class="comment">// 标识这是一个主键</span></span><br><span class="line">    <span class="meta">@GeneratedValue(strategy = GenerationType.IDENTITY)</span>  <span class="comment">// 主键的生成策略</span></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column(name = &quot;person_name&quot;)</span>  <span class="comment">// 指定对应的数据库列名</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ... 其他字段、getter、setter和方法 ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这个例子中，<code>Person</code>类是一个entity，它代表了名为<code>person_table</code>的数据库表。尽管它有一些特定的注解，但在Java代码的层面上，它仍然是一个POJO。</p>
-<p>总之，entity通常是models的一部分，但并非所有models都是entities。而所有的entities基本上都是POJO，但它们包含了额外的元数据来描述如何与数据库进行交互。</p>
-<p>在Java的持久化框架JPA（Java Persistence API）中，当你创建一个实体类（entity）来映射数据库表时，经常需要为该实体的某个字段（通常是主键字段）定义一个生成策略，以决定该字段的值如何生成。</p>
-<p><code>@GeneratedValue</code> 注解用于指定这种生成策略。它通常与 <code>@Id</code> 注解一起使用，后者标识实体的主键字段。</p>
-<p><code>strategy</code> 属性是 <code>@GeneratedValue</code> 的核心属性，它定义了主键的生成策略。以下是常见的几种策略：</p>
-<ol>
-<li><p><strong>GenerationType.IDENTITY</strong>:</p>
-<ul>
-<li>这种策略意味着主键的值由数据库自动生成，通常通过自增字段完成。当插入一个新记录时，数据库会自动为这个自增字段生成一个新值。</li>
-<li>这种策略特别适合那些支持自增主键的数据库，如MySQL的<code>AUTO_INCREMENT</code>、PostgreSQL的<code>SERIAL</code>等。</li>
-</ul>
-</li>
-<li><p><strong>GenerationType.SEQUENCE</strong>:</p>
-<ul>
-<li>使用数据库的序列来生成主键值。</li>
-<li>这需要数据库支持序列（例如Oracle、PostgreSQL等）。</li>
-<li>这种策略还可以通过 <code>@SequenceGenerator</code> 注解来定制，例如指定序列名称、初始值、增量等。</li>
-</ul>
-</li>
-<li><p><strong>GenerationType.TABLE</strong>:</p>
-<ul>
-<li>这种策略使用一个特定的数据库表来模拟序列，并从该表中获取主键值。</li>
-<li>这是一种可移植的策略，可用于不支持序列的数据库。</li>
-</ul>
-</li>
-<li><p><strong>GenerationType.AUTO</strong>:</p>
-<ul>
-<li>默认策略。JPA实现会根据数据库的特性选择最合适的策略（可能是<code>IDENTITY</code>、<code>SEQUENCE</code>或<code>TABLE</code>）。</li>
-<li>这可以确保代码的可移植性，但有时可能不如明确指定策略那么高效。</li>
-</ul>
-</li>
-</ol>
-<p>示例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue(strategy = GenerationType.IDENTITY)</span></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ... 其他字段和方法 ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这个例子中，<code>id</code> 字段是 <code>Person</code> 实体的主键，其值由数据库自动生成，使用数据库的自增机制。当你向数据库中插入一个新的 <code>Person</code> 时，不需要手动为 <code>id</code> 字段赋值，数据库会自动为它生成一个唯一的值。</p>
-<p>POJO 是 “Plain Old Java Object” 的缩写，直译为“普通的旧Java对象”。但实际上，这个术语的意思是一个普通的Java对象，不受任何特定Java框架或环境的限制。POJO的概念由Martin Fowler, Rebecca Parsons, Josh MacKenzie于2000年提出，目的是强调业务逻辑应该在一个不依赖特定编程模型的简单对象中进行编写。</p>
-<p>特点：</p>
-<ol>
-<li><strong>没有约束</strong>：它不必继承或实现某些特定的接口或类。</li>
-<li><strong>不包含业务逻辑</strong>：它通常只包含属性（fields）、它们的getter和setter方法，以及其他标准Java对象方法（如 <code>toString()</code>, <code>equals()</code>, <code>hashCode()</code> 等）。</li>
-<li><strong>不依赖特定的框架</strong>：它不应该包含任何与特定框架或方法关联的注解或配置。</li>
-</ol>
-<p>例子：</p>
-<p>以下是一个简单的POJO，表示一个人：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 默认的无参构造函数</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 带参构造函数</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(String name, <span class="type">int</span> age)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Getter 和 Setter 方法</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getAge</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setAge</span><span class="params">(<span class="type">int</span> age)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 其他标准方法，例如 toString()</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Person[name=&quot;</span> + name + <span class="string">&quot;, age=&quot;</span> + age + <span class="string">&quot;]&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>此对象只是一个简单的Java对象，没有继承任何特定的基类，也没有实现任何特定的接口。它也没有任何特定的注解或其他与框架相关的元数据。</p>
-<p>POJO的概念对于Java开发很重要，因为它鼓励开发者创建松耦合、可重用和可维护的代码。</p>
-<p>在Spring Boot应用中，<code>server.servlet.context-path</code> 是一个属性，用于设置应用的上下文路径。换句话说，它定义了应用的基础URI路径。</p>
-<p>如果你设置了这个属性，例如 <code>server.servlet.context-path=/boot</code>，那么所有的应用映射都会基于这个路径。这意味着你必须在请求的URI前加上<code>/boot</code>来访问你的应用。</p>
-<p>举例：</p>
-<ol>
-<li>假设你有一个如下的控制器映射：</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloWorldController</span> &#123;</span><br><span class="line">    <span class="meta">@GetMapping(&quot;/hello&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">hello</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Hello, World!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>如果你<strong>没有</strong>设置 <code>server.servlet.context-path</code>，你可以通过以下URL访问该方法：</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:8080/hello</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>但是，如果你设置了 <code>server.servlet.context-path=/boot</code>，那么你应该使用以下URL来访问上述方法：</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:8080/boot/hello</span><br></pre></td></tr></table></figure>
-
-<p>这个属性在以下情况下特别有用：</p>
-<ul>
-<li>当你想把多个Spring Boot应用部署在同一个服务器上时，可以为每个应用设置一个唯一的上下文路径。</li>
-<li>当你的应用需要与其他系统或应用共享同一主机名和端口，但需要有其独特的基础路径时。</li>
-<li>当你需要将你的Spring Boot应用与其他非Spring Boot应用混合部署在同一服务器上时。</li>
-</ul>
-<p>在Spring (和特别是Spring Boot) 中，<code>@RequestMapping</code> 和 <code>@GetMapping</code> 都是用来处理HTTP请求的注解。但它们之间存在一些差异：</p>
-<ol>
-<li><p><strong>定义和用途</strong>:</p>
-<ul>
-<li><code>@RequestMapping</code>: 是一个通用的注解，用于定义一个请求映射。你可以使用它来处理任何类型的HTTP请求（如GET, POST, PUT, DELETE等）。</li>
-<li><code>@GetMapping</code>: 是一个组合注解，其实是 <code>@RequestMapping</code> 的一个缩写版本，专门用来处理HTTP GET请求。</li>
-</ul>
-</li>
-<li><p><strong>属性</strong>:</p>
-<ul>
-<li><code>@RequestMapping</code>:<ul>
-<li><code>value</code> 或 <code>path</code>: 请求的URL。</li>
-<li><code>method</code>: HTTP请求方法（例如 <code>RequestMethod.GET</code> 或 <code>RequestMethod.POST</code>）。</li>
-<li>还有其他属性，例如 <code>headers</code>, <code>params</code>, <code>consumes</code>, 和 <code>produces</code>。</li>
-</ul>
-</li>
-<li><code>@GetMapping</code>: 主要属性是<code>value</code> 或 <code>path</code>，但它是固定处理GET请求的。</li>
-</ul>
-</li>
-<li><p><strong>示例</strong>:</p>
-<p>使用<code>@RequestMapping</code>:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &quot;/hello&quot;, method = RequestMethod.GET)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">sayHello</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hello World!&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用<code>@GetMapping</code>:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/hello&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">sayHello</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hello World!&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>简洁性</strong>:</p>
-<ul>
-<li>使用 <code>@GetMapping</code>, <code>@PostMapping</code>, <code>@PutMapping</code>, <code>@DeleteMapping</code> 和 <code>@PatchMapping</code> 可以使你的代码更简洁、更具可读性，因为你不再需要指定 <code>method</code> 属性。</li>
-</ul>
-</li>
-<li><p><strong>版本</strong>:</p>
-<ul>
-<li><code>@RequestMapping</code> 在早期的Spring版本中就存在。</li>
-<li><code>@GetMapping</code> 及其兄弟注解 (<code>@PostMapping</code>, <code>@PutMapping</code> 等) 在Spring 4.3中被引入，因此，如果你在使用较老的Spring版本，可能不会有这些组合注解。</li>
-</ul>
-</li>
-</ol>
-<p><strong>总结</strong>: 选择哪个注解取决于你的具体需求和所使用的Spring版本。对于Spring 4.3及更高版本，为了简洁和明确性，许多开发人员更喜欢使用<code>@GetMapping</code>和其兄弟注解。但<code>@RequestMapping</code>更通用，适用于所有情况。</p>
-<p>Spring Boot推崇的是一个约定优于配置的理念，所以它对于项目的结构有一个默认的推荐，但不是强制的。当使用Spring Boot和MVC设计模式时，你通常会看到以下的文件夹结构：</p>
-<ol>
-<li><p><strong>src&#x2F;main&#x2F;java</strong>: 该文件夹包含所有的Java源代码。</p>
-<ul>
-<li><strong>com.example.projectname.controller</strong>: 这里存放所有的控制器类。这些类通常负责处理HTTP请求，并返回相应的视图或数据。</li>
-<li><strong>com.example.projectname.model</strong>: 这里存放模型类。模型可以代表应用的业务逻辑，也可以是与数据库表对应的实体。</li>
-<li><strong>com.example.projectname.repository</strong> (或 <strong>dao</strong>): 这里存放数据访问对象或仓库接口。在Spring Data JPA中，这通常是一些接口，用于与数据库交互。</li>
-<li><strong>com.example.projectname.service</strong>: 这里存放服务类。服务类通常封装了业务逻辑，并被控制器调用。</li>
-<li><strong>com.example.projectname.config</strong>: 用于存放配置类，如安全配置、数据库配置等。</li>
-<li><strong>com.example.projectname.dto</strong>: （如果需要的话）这里存放数据传输对象（DTO）。DTOs常用于从控制器向前端传递数据或从前端接收数据，特别是当实体类与API客户端需要的数据结构不完全匹配时。</li>
-</ul>
-</li>
-<li><p><strong>src&#x2F;main&#x2F;resources</strong>:</p>
-<ul>
-<li><strong>static</strong>: 存放静态资源，如CSS、JavaScript、图片等。</li>
-<li><strong>templates</strong>: 如果你使用的是模板引擎（如Thymeleaf、Freemarker等），则此处存放模板文件，它们将由控制器用于生成HTML视图。</li>
-<li><strong>application.properties</strong> 或 <strong>application.yml</strong>: 主配置文件，用于配置Spring Boot应用。</li>
-</ul>
-</li>
-<li><p><strong>src&#x2F;test&#x2F;java</strong>: 存放测试类，通常为上面提到的每个组件都提供相应的测试。</p>
-</li>
-</ol>
-<p>这只是一个常见的Spring Boot项目结构，实际上，你可以根据项目的需求和团队的偏好进行调整。但遵循这样的结构可以确保你的项目组织得当，易于维护，且与其他Spring Boot项目保持一致性。</p>
-<p>LoginController:<br>返回的模板名称不应包含文件扩展名：在 Spring Boot 中，当你使用 Thymeleaf (或其他模板引擎) 时，你应该只返回模板的名称，不包括 .html。Spring Boot 和 Thymeleaf 将会自动寻找这个名字的模板文件。</p>
-<p>DAO，全称为Data Access Object（数据访问对象），是一个设计模式，用于从数据源（如数据库、XML文件、REST API等）中抽象和封装数据访问逻辑。其核心思想是将数据访问逻辑与业务逻辑分离，使得业务逻辑不直接依赖于数据源的具体实现，从而提高代码的模块性和可维护性。</p>
-<p>以下是DAO的主要特点和功能：</p>
-<ol>
-<li><p><strong>抽象性</strong>：DAO模式提供了一种高度抽象的方式来访问数据。不同的数据存储机制（例如关系数据库、NoSQL数据库、文件系统等）可以有不同的DAO实现。</p>
-</li>
-<li><p><strong>隔离性</strong>：由于业务逻辑与数据访问逻辑分离，更改底层数据存储机制或数据库的实现细节不会影响到上层的业务逻辑。这样，如果你决定从一个数据库迁移到另一个数据库，只需更改DAO实现，而不是整个应用程序。</p>
-</li>
-<li><p><strong>统一的API</strong>：所有的DAO通常会提供一个统一的API（如增、删、查、改），使得应用程序能够以统一的方式处理数据。</p>
-</li>
-<li><p><strong>易于测试</strong>：因为DAO提供了数据访问的抽象，所以可以更容易地为它编写单元测试。你可以创建模拟的DAO实现来测试上层的业务逻辑，而无需连接真实的数据库。</p>
-</li>
-</ol>
-<p>在Java和许多现代框架中（如Spring和Java EE&#x2F;Jakarta EE），DAO模式被广泛使用。以下是一个简单的Java + Spring的DAO示例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">PersonDAO</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">addPerson</span><span class="params">(Person person)</span>;</span><br><span class="line">    Person <span class="title function_">getPersonById</span><span class="params">(<span class="type">int</span> id)</span>;</span><br><span class="line">    List&lt;Person&gt; <span class="title function_">getAllPersons</span><span class="params">()</span>;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">deletePerson</span><span class="params">(<span class="type">int</span> id)</span>;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">updatePerson</span><span class="params">(Person person)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PersonDAOImpl</span> <span class="keyword">implements</span> <span class="title class_">PersonDAO</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> JdbcTemplate jdbcTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addPerson</span><span class="params">(Person person)</span> &#123;</span><br><span class="line">        <span class="comment">// jdbcTemplate logic to add person</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Person <span class="title function_">getPersonById</span><span class="params">(<span class="type">int</span> id)</span> &#123;</span><br><span class="line">        <span class="comment">// jdbcTemplate logic to get person by id</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ... other methods&#x27; implementations</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在上述示例中，<code>PersonDAO</code>接口定义了数据访问的方法，而<code>PersonDAOImpl</code>类提供了这些方法的实现，使用Spring的<code>JdbcTemplate</code>来与关系数据库进行交互。</p>
-<p>当使用如Spring Data JPA这样的更高级框架时，DAO的实现甚至可能更加简洁，因为该框架提供了自动化的数据访问方法，无需手动编写SQL或其他数据访问代码。</p>
-<p>JpaRepository:</p>
-<p>AccountDao继承了JpaRepository，这意味着它自动继承了很多标准的CRUD（创建、读取、更新和删除）方法，例如save(), findOne(), findAll(), count(), delete()等。<br>通过继承JpaRepository&lt;AccountEntity, Long&gt;，你告诉Spring Data JPA这个DAO是用于AccountEntity这个实体，并且该实体的主键是Long类型。<br>使用Spring Data JPA的好处之一是，只要你按照其命名规范定义了方法名，它就会为你自动生成相关的查询，无需手动编写SQL或其他查询代码。</p>
-<p>findByAccountName(String accountName):</p>
-<p>此方法用于根据给定的账户名查询一个AccountEntity。<br>Spring Data JPA允许你通过方法名定义查询，findByAccountName会被自动解析为一个查询，其大致意思是“从AccountEntity找到一个实体，其中AccountName属性等于给定的值”</p>
-<p>使用Spring Data JPA来定义DAO是非常简便的，因为很多工作都由框架自动完成。基于你提供的<code>AccountDao</code>接口，我将提供一系列步骤来说明如何创建这种DAO：</p>
-<ol>
-<li><p><strong>设置Spring Boot项目</strong>:<br>如果你还没有设置Spring Boot项目，你可以使用<a target="_blank" rel="noopener" href="https://start.spring.io/">Spring Initializr</a>来创建一个，并在其中包括<code>Spring Web</code>和<code>Spring Data JPA</code>的依赖。</p>
-</li>
-<li><p><strong>配置数据库连接</strong>:<br>在<code>src/main/resources/application.properties</code>文件中，你需要配置数据库连接。例如，对于MySQL数据库，配置可能如下：</p>
-</li>
-</ol>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring.datasource.url</span>=<span class="string">jdbc:mysql://localhost:3306/mydb</span></span><br><span class="line"><span class="attr">spring.datasource.username</span>=<span class="string">myuser</span></span><br><span class="line"><span class="attr">spring.datasource.password</span>=<span class="string">mypassword</span></span><br><span class="line"><span class="attr">spring.jpa.hibernate.ddl-auto</span>=<span class="string">update</span></span><br><span class="line"><span class="attr">spring.datasource.driver-class-name</span>=<span class="string">com.mysql.cj.jdbc.Driver</span></span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li><strong>定义实体类</strong> (<code>AccountEntity</code>):<br>根据你的DAO接口，似乎已经存在一个<code>AccountEntity</code>类。确保它使用JPA注解正确地标注，例如<code>@Entity</code>, <code>@Table</code>, <code>@Id</code>等。</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table(name = &quot;account&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AccountEntity</span> &#123;</span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue(strategy = GenerationType.IDENTITY)</span></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line">    <span class="keyword">private</span> String accountName;</span><br><span class="line">    <span class="keyword">private</span> String accountEmail;</span><br><span class="line">    <span class="keyword">private</span> String accountPassword;</span><br><span class="line">    <span class="comment">// getters, setters, etc.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li><strong>定义DAO接口</strong>:<br>如你所提供，直接创建一个接口<code>AccountDao</code>，它继承自<code>JpaRepository</code>。指定的方法名应遵循Spring Data JPA的命名约定。</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">AccountDao</span> <span class="keyword">extends</span> <span class="title class_">JpaRepository</span>&lt;AccountEntity, Long&gt; &#123;</span><br><span class="line">    AccountEntity <span class="title function_">findByAccountName</span><span class="params">(String accountName)</span>;</span><br><span class="line">    AccountEntity <span class="title function_">findByAccountEmailAndPassword</span><span class="params">(String email, String password)</span>;</span><br><span class="line">    AccountEntity <span class="title function_">findByAccountNameAndPassword</span><span class="params">(String name, String password)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="5">
-<li><strong>使用DAO</strong>:<br>无需为<code>AccountDao</code>接口提供实现。Spring Data JPA在运行时会自动为你提供实现。你只需要在服务或控制器中注入<code>AccountDao</code>，并使用它：</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AccountService</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> AccountDao accountDao;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> AccountEntity <span class="title function_">findByName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> accountDao.findByAccountName(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ... other methods</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="6">
-<li><strong>启动应用程序</strong>:<br>启动你的Spring Boot应用程序，Spring Data JPA将自动为<code>AccountDao</code>接口生成实现，并与数据库进行交互。</li>
-</ol>
-<p>总的来说，使用Spring Data JPA可以极大地简化数据访问代码，因为你不需要手动编写实现或查询。只要正确地命名方法并设置相关的JPA注解，框架就会为你处理大部分工作。</p>
-<p>在Spring Data JPA中，当你的DAO接口继承了<code>JpaRepository</code>或其他Spring Data JPA提供的接口，一些基本的CRUD方法（如<code>save</code>, <code>findAll</code>, <code>findById</code>, <code>delete</code>等）已经隐式地为你提供了实现。这意味着，你实际上不需要手动实现这些方法。</p>
-<p>对于<code>save(AccountEntity accountEntity)</code>这个方法，只要你在DAO接口中声明它，Spring Data JPA会在运行时为你提供实现。</p>
-<p>以下是一些简单的步骤：</p>
-<ol>
-<li><strong>声明方法</strong>:<br>在你的DAO接口中，只需声明<code>save</code>方法：</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">AccountDao</span> <span class="keyword">extends</span> <span class="title class_">JpaRepository</span>&lt;AccountEntity, Long&gt; &#123;</span><br><span class="line">    AccountEntity <span class="title function_">save</span><span class="params">(AccountEntity accountEntity)</span>;</span><br><span class="line">    <span class="comment">// ... other methods</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li><strong>使用方法</strong>:<br>在你的Service类或其他需要使用的地方，你可以注入<code>AccountDao</code>，然后直接调用<code>save</code>方法：</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AccountService</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> AccountDao accountDao;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> AccountEntity <span class="title function_">createOrUpdateAccount</span><span class="params">(AccountEntity account)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> accountDao.save(account);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ... other methods</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li><strong>实际运行</strong>:<br>当你实际运行你的应用程序并调用<code>save</code>方法时，Spring Data JPA会自动为你处理这个方法的实现。如果<code>AccountEntity</code>有一个ID并且这个ID在数据库中已经存在，它会执行更新操作；如果<code>AccountEntity</code>没有ID或ID在数据库中不存在，它会执行插入操作。</li>
-</ol>
-<p>总之，使用Spring Data JPA的一个主要好处是它为常见的数据库操作提供了自动化的实现，所以你不需要手动编写这些操作的代码。</p>
-<p>在Spring和许多其他软件框架中，”service”通常指的是应用程序中的业务逻辑层。这一层位于数据访问层（如DAO）和表示层（如控制器或UI）之间，负责处理应用程序的主要业务流程和操作。</p>
-<p>以下是关于”service”的详细描述：</p>
-<ol>
-<li><p><strong>定义</strong>：</p>
-<ul>
-<li>Service层主要负责业务逻辑的实现。它处理应用程序的核心功能，并与DAO层交互以获取和存储数据。</li>
-<li>通常，Service层将是无状态的，这意味着它不会存储有关特定用户或会话的信息。相反，它接受请求、处理它，并返回结果。</li>
-</ul>
-</li>
-<li><p><strong>功能</strong>：</p>
-<ul>
-<li>数据验证和处理：Service层经常负责验证传入的数据，确保它们满足业务规则。</li>
-<li>事务管理：在需要多个数据库操作来完成一个业务操作的情况下，Service层通常负责事务的管理。</li>
-<li>缓存：为了提高性能，某些业务操作可能会涉及缓存，Service层可以管理这些缓存。</li>
-<li>调用其他服务：在微服务架构中，一个服务可能需要调用另一个服务，Service层是这种调用的好地方。</li>
-</ul>
-</li>
-<li><p><strong>与DAO的区别</strong>：</p>
-<ul>
-<li>DAO层主要关心数据的获取和存储，而不关心业务逻辑。</li>
-<li>Service层主要处理业务逻辑，并调用DAO层来访问数据。</li>
-</ul>
-</li>
-<li><p><strong>Spring中的Service</strong>：</p>
-<ul>
-<li>在Spring中，Service层通常由使用<code>@Service</code>注解的类表示。这使得Spring可以自动检测和管理这些类作为beans。</li>
-<li>Service类通常会使用<code>@Autowired</code>或构造函数注入来获得所需的DAO或其他Service。</li>
-</ul>
-</li>
-<li><p><strong>示例</strong>：</p>
-</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AccountService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AccountDao accountDao;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">AccountService</span><span class="params">(AccountDao accountDao)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.accountDao = accountDao;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> AccountEntity <span class="title function_">createOrUpdateAccount</span><span class="params">(AccountEntity account)</span> &#123;</span><br><span class="line">        <span class="comment">// 业务逻辑，例如验证账户信息等</span></span><br><span class="line">        <span class="keyword">return</span> accountDao.save(account);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ... other business methods</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="6">
-<li><strong>测试</strong>：<ul>
-<li>为了保证Service层的业务逻辑正确，通常会为其编写单元和集成测试。</li>
-<li>在测试Service层时，常常会使用模拟（Mock）对象模拟DAO层或其他外部依赖，以确保测试仅关注业务逻辑。</li>
-</ul>
-</li>
-</ol>
-<p>总的来说，Service层是应用程序的核心，它处理应用程序的主要业务逻辑，与数据访问层和表示层交互，确保数据的正确性和业务流程的正确性。</p>
-<p><code>JDBC</code>、<code>ORM</code> 和 <code>JPA</code> 在 Java 数据库交互领域中有不同的层次和角色。它们之间的关系可以从以下几个方面来理解：</p>
-<ol>
-<li><p><strong>基础到高级</strong>:</p>
-<ul>
-<li><strong>JDBC</strong>: 这是 Java 与数据库交互的基础层。JDBC 提供了一组接口和类，使 Java 应用程序能够与各种关系数据库进行通信。</li>
-<li><strong>ORM</strong>: 这是在 JDBC 之上的一种技术抽象，旨在提供对象与数据库之间的映射，使程序员可以用面向对象的方式操作数据库。</li>
-<li><strong>JPA</strong>: 是 ORM 的一种规范。它并不直接提供 ORM 功能，而是定义了如何进行 ORM。实际的 ORM 功能由遵循 JPA 规范的提供者（如 Hibernate、EclipseLink 等）实现。</li>
-</ul>
-</li>
-<li><p><strong>实现关系</strong>:</p>
-<ul>
-<li>虽然 ORM 工具（如 Hibernate）可能提供自己的 API 来与数据库交互，但在底层，它们通常使用 JDBC 进行实际的数据库操作。</li>
-<li>JPA 只是一个规范，而不是实际的实现。例如，Hibernate 不仅是一个 ORM 工具，还是 JPA 的一个实现。</li>
-</ul>
-</li>
-<li><p><strong>功能与抽象层次</strong>:</p>
-<ul>
-<li><strong>JDBC</strong>: 与数据库的交互是明确且显式的，涉及明确的 SQL 语句和数据库操作。</li>
-<li><strong>ORM</strong>: 允许更抽象的数据库操作，其中 SQL 通常是隐式生成的，并且程序员主要与对象和类而不是直接的数据库表和查询进行交互。</li>
-<li><strong>JPA</strong>: 为 ORM 提供了一个标准化的方法，这意味着在理论上，您可以将一个 JPA 实现（例如 Hibernate）替换为另一个（例如 EclipseLink），而不必大量更改代码。</li>
-</ul>
-</li>
-</ol>
-<p>综上所述，<code>JDBC</code>、<code>ORM</code> 和 <code>JPA</code> 在 Java 数据库交互领域中有不同的关系和作用。JDBC 是基础，而 ORM 和 JPA 提供了不同层次的抽象和标准化，使得数据库操作更加简洁和高效。</p>
-<p><code>ssh: connect to host github.com port 22: Connection timed out</code> 错误意味着您在尝试通过SSH端口（即端口22）连接到github.com时遇到了问题。这可能是由于多种原因造成的，以下是一些建议的解决方法：</p>
-<ol>
-<li><p><strong>检查网络连接</strong>：</p>
-<ul>
-<li>确保您的互联网连接正常。</li>
-<li>如果您处于公司或学校网络，SSH端口可能被阻止。您可能需要与网络管理员联系以获取更多信息。</li>
-</ul>
-</li>
-<li><p><strong>使用HTTPS而不是SSH</strong>：</p>
-<ul>
-<li>GitHub同时支持SSH和HTTPS进行代码推送和拉取。如果您无法通过SSH连接，尝试使用HTTPS。为此，您需要将远程URL从SSH更改为HTTPS。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote set-url origin https://github.com/username/repo.git</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><strong>使用其他SSH端口</strong>：</p>
-<ul>
-<li>GitHub支持SSH通过端口22和443。如果您的网络阻止了端口22，尝试使用端口443。<ul>
-<li>为此，您可以编辑您的<code>~/.ssh/config</code>文件（如果它不存在，您可以创建一个）并添加以下内容：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">  Hostname ssh.github.com</span><br><span class="line">  Port 443</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>测试SSH连接</strong>：</p>
-<ul>
-<li>您可以使用以下命令测试与GitHub的SSH连接：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-<ul>
-<li>如果连接成功，您应该会看到一条消息说您已经被认证。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>检查SSH密钥</strong>：</p>
-<ul>
-<li>确保您已将公钥添加到您的GitHub帐户，并且私钥在您的机器上。</li>
-<li>您可以使用<code>ssh-add -l</code>检查已加载的SSH密钥。</li>
-<li>如果需要，使用<code>ssh-add ~/.ssh/your-private-key</code>手动添加您的密钥。</li>
-</ul>
-</li>
-<li><p><strong>代理或VPN</strong>：</p>
-<ul>
-<li>如果您正在使用代理或VPN，请尝试直接连接，看看问题是否仍然存在。</li>
-</ul>
-</li>
-<li><p><strong>检查防火墙设置</strong>：</p>
-<ul>
-<li>确保您的防火墙或安全软件没有阻止SSH连接。</li>
-</ul>
-</li>
-</ol>
-<p>如果上述方法都不能解决问题，您可能需要进一步诊断网络问题或与您的网络服务提供商联系。</p>
-<p>如果你遇到 “ssh: connect to host github.com port 22: Connection timed out” 错误，表示你在尝试连接到 GitHub 的时候遇到了问题。下面是一些可能的解决方案：</p>
-<ol>
-<li><p><strong>使用其他SSH端口</strong>：<br>GitHub 同时支持端口22和443。你可以试着用443端口连接到GitHub。</p>
-<ul>
-<li>为此，你需要编辑你的 <code>~/.ssh/config</code> 文件（如果没有，就创建一个），然后添加以下内容：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">  Hostname ssh.github.com</span><br><span class="line">  Port 443</span><br></pre></td></tr></table></figure></li>
-<li>保存文件并再次尝试 <code>ssh -T git@github.com</code>。</li>
-</ul>
-</li>
-<li><p><strong>切换到HTTPS</strong>：<br>如果SSH连接仍然有问题，你可以考虑使用HTTPS而不是SSH来与GitHub通信。</p>
-<ul>
-<li>更改你的远程URL从SSH到HTTPS：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote set-url origin https://github.com/username/repo.git</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><strong>检查网络设置</strong>：</p>
-<ul>
-<li>有些网络环境（如学校、公司或特定的国家&#x2F;地区）可能会阻止特定的端口连接，特别是端口22。</li>
-<li>如果你使用的是公司或学校网络，请询问网络管理员是否SSH端口（22）被阻止了。</li>
-<li>如果你使用的是家庭网络，你可以登录到路由器的后台，查看是否有端口阻止或者其他相关的安全设置。</li>
-</ul>
-</li>
-<li><p><strong>使用VPN</strong>：<br>在某些地方，直接的SSH连接可能会受到ISP或国家政策的影响。在这种情况下，使用VPN可以帮助绕过这些限制。</p>
-</li>
-<li><p><strong>防火墙和安全软件</strong>：<br>请检查你的操作系统的防火墙设置，以确保没有阻止SSH的出站连接。如果你有其他的安全软件或防病毒软件，请检查它们的设置，确保它们没有阻止SSH连接。</p>
-</li>
-<li><p><strong>重新生成和添加SSH密钥</strong>：</p>
-<ul>
-<li>检查你的SSH密钥是否已经添加到GitHub。如果没有，你可以重新生成一个新的SSH密钥，并将其添加到你的GitHub帐户。</li>
-<li>使用命令 <code>ssh-keygen</code> 生成一个新的密钥。</li>
-<li>将公钥（通常是 <code>~/.ssh/id_rsa.pub</code>）添加到你的GitHub帐户中。</li>
-</ul>
-</li>
-<li><p><strong>网络诊断工具</strong>：<br>使用 <code>ping</code>, <code>traceroute</code> 或 <code>tracert</code>（Windows上）等工具来检查与github.com的网络连接路径，这可以帮助你诊断连接问题的根源。</p>
-</li>
-</ol>
-<p>如果尝试了上述所有建议都没有成功，你可能需要进一步深入了解你的网络环境，或者与网络服务提供商联系。</p>
-<p>从你的 <code>ping</code> 结果来看，你无法成功地与 <code>github.com</code> 建立连接。这意味着网络通信被某种方式阻断了。</p>
-<p>以下是几种可能的原因和相应的解决办法：</p>
-<ol>
-<li><p><strong>网络问题</strong>：你当前所在的网络可能有问题，或者与GitHub服务器之间的通信路径有问题。你可以试着重启路由器或切换到另一个网络（例如使用移动数据）来进行测试。</p>
-</li>
-<li><p><strong>ISP 限制</strong>：某些互联网服务提供商可能会限制访问某些网站或服务，尤其是在某些国家或地区。在这种情况下，你可以考虑使用VPN或代理来绕过这些限制。</p>
-</li>
-<li><p><strong>本地防火墙</strong>：你的操作系统的防火墙或安全软件可能阻止了与GitHub的通信。请检查并确保没有任何规则阻止访问 <code>github.com</code>。</p>
-</li>
-<li><p><strong>路由器&#x2F;硬件防火墙</strong>：如果你在公司、学校或公共网络上，网络硬件可能设置了访问限制。与网络管理员沟通以获得更多信息。</p>
-</li>
-<li><p><strong>DNS问题</strong>：虽然不太可能，但DNS解析问题可能会导致连接问题。尝试更改你的DNS服务器到8.8.8.8（Google的公共DNS）或1.1.1.1（Cloudflare的DNS）。</p>
-</li>
-<li><p><strong>GitHub宕机或维护</strong>：这也是可能的，尽管很少发生。你可以查看 <a target="_blank" rel="noopener" href="https://www.githubstatus.com/">GitHub Status</a> 页面来检查GitHub的当前状态。</p>
-</li>
-</ol>
-<p>解决此类问题可能需要一些技术知识和耐心。你可能需要多次尝试，或与网络专家或服务提供商沟通，以确定和解决问题。</p>
-<p>确实，防火墙和其他安全软件可能会阻止或限制某些网络连接，尤其是SSH连接。为了确保你的SSH连接没有被阻止，你可以采取以下步骤来检查和调整你的防火墙设置：</p>
-<ol>
-<li><p><strong>Windows系统防火墙</strong>:</p>
-<p>如果你使用的是Windows操作系统，你可以按照以下步骤检查防火墙设置：</p>
-<ul>
-<li>打开“控制面板”。</li>
-<li>选择“系统和安全”。</li>
-<li>点击“Windows Defender 防火墙”。</li>
-<li>在左侧面板中，点击“高级设置”。</li>
-<li>在出现的“Windows 防火墙和高级安全”窗口中，查看“出站规则”，确保没有阻止SSH的规则。</li>
-<li>如果有任何阻止SSH或端口22的规则，考虑将其禁用或删除。</li>
-</ul>
-</li>
-<li><p><strong>Mac系统防火墙</strong>:</p>
-<p>如果你使用的是Mac操作系统，你可以按照以下步骤检查防火墙设置：</p>
-<ul>
-<li>打开“系统偏好设置”。</li>
-<li>选择“安全性与隐私”。</li>
-<li>转到“防火墙”选项卡。</li>
-<li>点击“防火墙选项…”并确保没有阻止SSH的相关规则。</li>
-</ul>
-</li>
-<li><p><strong>Linux系统防火墙</strong>:</p>
-<p>在Linux系统上，你可能会使用<code>iptables</code>, <code>ufw</code>或其他防火墙管理工具。你需要根据你的系统和使用的防火墙工具相应地检查设置。例如，使用<code>ufw</code>时，你可以运行<code>sudo ufw status</code>来查看活跃的规则。</p>
-</li>
-<li><p><strong>其他安全软件</strong>:</p>
-<p>如果你安装了其他安全软件或防病毒软件，它们可能也有自己的防火墙或网络访问控制功能。请查看这些软件的文档或设置，确保它们没有阻止SSH连接。</p>
-</li>
-</ol>
-<p>进行上述检查后，如果你发现有任何可能与SSH连接相关的阻止规则，请考虑暂时禁用或修改它们，并尝试重新连接。如果问题解决，那么你可以考虑创建一个允许SSH连接的规则，以便在保持安全性的同时，仍然可以进行SSH连接。</p>
-<ol start="2">
-<li><p><strong>检查阻止SSH的规则</strong>：</p>
-<ul>
-<li>在“出站规则”列表中，查看是否有任何与SSH或端口22相关的规则。</li>
-<li>你可以查看规则的“名称”，“协议”和“本地&#x2F;远程端口”列。如果你看到与SSH或端口22相关的规则，并且在“操作”列中标记为“阻止”，则该规则可能是导致问题的原因。</li>
-<li>如果找到此类规则，你可以右键点击该规则并选择“属性”以查看更多详情。如果你确定该规则是问题所在，可以考虑禁用或删除它。</li>
-</ul>
-</li>
-<li><p><strong>创建允许SSH的规则</strong>（如果需要）：</p>
-<p>如果你没有找到与SSH相关的出站规则，但仍然遇到连接问题，可以考虑添加一个明确允许SSH连接的规则：</p>
-<ul>
-<li>在“出站规则”列表的右侧面板中，点击“新建规则…”。</li>
-<li>选择“端口”，点击“下一步”。</li>
-<li>选择“TCP”并输入“22”作为端口号。</li>
-<li>在接下来的屏幕中，选择“允许连接”。</li>
-<li>继续点击“下一步”并为新规则命名，例如“Allow SSH”。然后点击“完成”。</li>
-</ul>
-</li>
-</ol>
-<p>解决 IP 地址冲突问题需要确保在您的网络中每个设备都被分配了唯一的 IP 地址。以下是一些步骤可以帮助您解决这个问题：</p>
-<ol>
-<li><p><strong>查找冲突的设备</strong>:</p>
-<ul>
-<li>在您的局域网络中，查找可能分配了相同 IP 地址的设备。这些设备可能是计算机、移动设备、网络打印机等。</li>
-</ul>
-</li>
-<li><p><strong>手动分配 IP 地址</strong>:</p>
-<ul>
-<li>在您的路由器设置中，可以选择手动分配 IP 地址。这又称为静态 IP 地址分配。通过将每个设备的 IP 地址设置为独特的值，可以防止冲突。通常，路由器的设置界面中会有一个区域用于设置静态 IP 地址。</li>
-</ul>
-</li>
-<li><p><strong>使用 DHCP 保留</strong>:</p>
-<ul>
-<li>DHCP 保留是一种方法，可以将某个设备与一个特定的 IP 地址相关联。在路由器的 DHCP 设置中，您可以将设备的 MAC 地址与一个特定的 IP 地址关联起来，这样每次设备连接时，路由器都会为该设备分配保留的 IP 地址。</li>
-</ul>
-</li>
-<li><p><strong>检查其他网络设备</strong>:</p>
-<ul>
-<li>确保您的网络中没有其他路由器、交换机或 DHCP 服务器在分配 IP 地址，这可能会导致冲突。</li>
-</ul>
-</li>
-<li><p><strong>重新启动设备</strong>:</p>
-<ul>
-<li>如果您怀疑某个设备分配了相同的 IP 地址，尝试重新启动该设备。有时，重新启动可以解决冲突。</li>
-</ul>
-</li>
-<li><p><strong>刷新 IP 地址</strong>:</p>
-<ul>
-<li>如果您的计算机已经分配了相同的 IP 地址，您可以尝试刷新 IP 地址。在 Windows 中，您可以使用以下命令来释放和续订 IP 地址：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ipconfig /release</span><br><span class="line">ipconfig /renew</span><br></pre></td></tr></table></figure>
-在 Linux 中，您可以使用以下命令：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo dhclient -r</span><br><span class="line">sudo dhclient</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ol>
-<p>解决 IP 地址冲突可能需要一些技术步骤，具体步骤可能因您所使用的路由器和操作系统而异。如果您对如何执行上述步骤感到不确定，建议您在需要时寻求网络管理员或技术支持的帮助。</p>
-<p>非常抱歉之前的误解。如果您在命令提示符中尝试通过ping命令ping <a target="_blank" rel="noopener" href="http://www.google.com/">www.google.com</a> 失败，但可以通过ping命令ping 8.8.8.8成功，这可能涉及到DNS解析的问题。</p>
-<p>下面是一些可能的解决方案：</p>
-<ol>
-<li><p><strong>DNS解析问题：</strong> 您的计算机可能无法正确解析域名。虽然ping 8.8.8.8可以成功，但这只是一个IP地址，而不是域名。尝试在命令提示符中运行以下命令，以查看是否可以正确解析域名：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nslookup www.google.com</span><br></pre></td></tr></table></figure>
-
-<p>如果无法解析域名，可能是DNS设置不正确或者被限制导致的。您可以尝试更改DNS设置为一些公共DNS服务器，如Google的8.8.8.8或Cloudflare的1.1.1.1。</p>
-</li>
-<li><p><strong>DNS污染：</strong> 在一些地区，DNS可能受到干扰，导致无法正常解析特定的域名。这可能会影响某些域名的解析，但不影响其他域名。尝试在命令提示符中使用不同的域名，看看是否可以解析其他域名。</p>
-</li>
-<li><p><strong>Hosts文件问题：</strong> 检查一下您计算机的hosts文件是否有异常。hosts文件可以用来手动映射域名到IP地址，如果存在异常的映射可能导致无法访问特定的域名。</p>
-</li>
-<li><p><strong>VPN DNS设置：</strong> 检查您的VPN连接是否设置了自定义的DNS服务器。有些VPN会自动修改您的DNS设置，可能会导致解析问题。您可以尝试在连接VPN的同时手动设置DNS服务器。</p>
-</li>
-</ol>
-<p>如果您尝试了上述方法仍然无法解决问题，建议您联系您的VPN提供商或网络管理员寻求进一步的帮助。</p>
-<p>There was an unexpected error (type&#x3D;Method Not Allowed, status&#x3D;405).<br>这个错误 “Method Not Allowed” (方法不允许) 是由于在请求处理中使用了不支持的 HTTP 方法。通常情况下，这意味着你在你的控制器方法上使用了错误的 <code>@RequestMapping</code> 注解，或者你的表单提交的请求方法与控制器方法不匹配。</p>
-<p>具体来说，当你在访问注册界面时，可能在表单提交时使用了不正确的请求方法，比如使用了 GET 方法，但你的控制器方法只支持 POST 方法。</p>
-<p>以下是一个处理注册表单提交的示例代码，假设你的表单提交使用 POST 方法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> blog.com.ex.controllers;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.PostMapping;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RegisterController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/register&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">showRegisterPage</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;register&quot;</span>; <span class="comment">// 返回注册页面的模板名称</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/register&quot;)</span> <span class="comment">// 注意这里使用了 POST 方法</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">processRegistration</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 处理注册逻辑</span></span><br><span class="line">        <span class="comment">// 返回适当的页面，比如注册成功页面或错误页面</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在上面的代码中，<code>showRegisterPage</code> 方法用于返回注册页面，这个方法使用了 GET 请求。而 <code>processRegistration</code> 方法用于处理注册表单的提交，这个方法使用了 POST 请求。</p>
-<p>如果你的注册表单提交使用了 GET 方法，那么你需要将相应的控制器方法中的注解改为 <code>@GetMapping</code>。如果使用了 POST 方法，需要将注解改为 <code>@PostMapping</code>。</p>
-<p>确保在表单提交和控制器方法之间使用相同的 HTTP 方法，这样可以避免 “Method Not Allowed” 错误。</p>
-<p>提交 Maven Wrapper 文件到版本控制系统可能会导致团队中的开发人员在使用不同环境时遇到问题，主要是因为 Maven Wrapper 文件中包含了与环境相关的配置和设置。这可能导致以下几种情况：</p>
-<ol>
-<li><p><strong>不同操作系统的问题：</strong> Maven Wrapper 文件中的脚本和配置可能会因操作系统而异。例如，Windows 和类Unix系统的脚本语法可能不同，路径分隔符也可能不同。如果将特定于一个操作系统的 Maven Wrapper 文件提交到版本控制，其他开发人员在不同操作系统上使用时可能会遇到脚本执行问题。</p>
-</li>
-<li><p><strong>Maven 版本一致性：</strong> Maven Wrapper 文件中的配置会指定特定的 Maven 版本用于构建项目。如果一个开发人员在不同的 Maven 版本下进行构建，可能会导致构建结果不一致，甚至出现构建失败或错误。</p>
-</li>
-<li><p><strong>固定路径问题：</strong> Maven Wrapper 文件可能包含了与项目路径相关的信息，如果这些路径被提交到版本控制，其他开发人员的项目目录结构与提交者不同，就可能导致脚本执行失败。</p>
-</li>
-<li><p><strong>不必要的文件冲突：</strong> 如果多个开发人员在不同环境下生成了不同版本的 Maven Wrapper 文件，并将它们提交到版本控制，这可能会导致代码库中存在多个不同版本的文件，增加了冲突和维护的复杂性。</p>
-</li>
-</ol>
-<p>为了避免这些问题，通常建议将 Maven Wrapper 文件添加到 <code>.gitignore</code> 文件中，以便每个开发人员可以在其本地环境中根据需要生成这些文件，确保在不同环境中构建的一致性和可重复性。这有助于简化团队协作和减少潜在的构建问题。</p>
-<h1 id="Ignore-Maven-Wrapper-files"><a href="#Ignore-Maven-Wrapper-files" class="headerlink" title="Ignore Maven Wrapper files"></a>Ignore Maven Wrapper files</h1><p>.mvn&#x2F;wrapper&#x2F;<br>mvnw<br>mvnw.cmd</p>
-<p>如果你只是删除了.mvn&#x2F;wrapper&#x2F;目录以及mvnw、mvnw.cmd等 Maven Wrapper 相关的文件，而保留了pom.xml中的Maven配置和其他必要的文件，那么理论上是可以的，因为pom.xml中的Maven配置可以指定所需的Maven版本以及其他构建设置。</p>
-<p>在计算机安全领域中，”salt” 和 “pepper” 都是用来增加密码散列（hashing）安全性的术语。</p>
-<ol>
-<li><p><strong>Salt（盐）</strong>：盐是一个随机生成的字符串，与密码一起用于加密哈希算法。它的作用是为了防止彩虹表攻击（Rainbow Table Attack）。彩虹表是一种预先计算好的密码散列值与明文密码的对应表，攻击者可以通过对比这个表来破解密码。使用盐，可以确保即使两个用户使用相同的密码，其最终的哈希值也会不同，因为每个用户都有不同的盐。这增加了破解密码的难度。</p>
-</li>
-<li><p><strong>Pepper（胡椒粉）</strong>：胡椒粉与盐类似，但是不同之处在于它是一个全局的、秘密的、静态的字符串，而不是与用户密码关联的。胡椒粉通常在服务器端被应用于密码哈希之前，以增加密码散列的安全性。与盐不同，胡椒粉对于每个用户都是一样的，所以它不会在用户之间区分密码，而是提供了一个额外的层次的保护，以防止数据库泄露后的攻击。</p>
-</li>
-</ol>
-<p>综合来说，盐和胡椒粉都是用来增加密码散列的安全性的技术，但它们的应用方式略有不同。使用适当的盐和&#x2F;或胡椒粉可以显著提高密码存储的安全性，降低攻击者破解密码的成功率。</p>
-<p>当将测试分为三类时，通常可以按照以下方式划分：</p>
-<ol>
-<li><p><strong>静态测试（Static Testing）</strong>：这种类型的测试是在不实际执行代码的情况下进行的，主要关注于代码和文档的分析。它有助于发现潜在的问题和错误，以及确保代码的一致性和符合性。静态测试包括：</p>
-<ul>
-<li><strong>代码审查（Code Review）</strong>：开发人员对彼此的代码进行审查，以发现错误、改进代码质量，并确保代码遵循最佳实践。</li>
-<li><strong>静态分析（Static Analysis）</strong>：使用自动化工具对代码进行分析，以检测潜在的错误、代码风格问题和安全漏洞。</li>
-</ul>
-</li>
-<li><p><strong>动态测试（Dynamic Testing）</strong>：这种类型的测试是在实际执行代码的情况下进行的，旨在验证软件在运行时的行为。动态测试包括：</p>
-<ul>
-<li><strong>单元测试（Unit Testing）</strong>：测试单个代码单元，如函数或方法，以验证其功能是否正确。</li>
-<li><strong>集成测试（Integration Testing）</strong>：测试不同单元之间的交互，确保它们在组合时能够正常工作。</li>
-<li><strong>功能测试（Functional Testing）</strong>：验证软件的功能是否按照规格说明正常运行。</li>
-<li><strong>性能测试（Performance Testing）</strong>：评估软件在不同负载下的性能表现。</li>
-</ul>
-</li>
-<li><p><strong>非功能性测试（Non-functional Testing）</strong>：这种类型的测试关注软件的非功能性特征，如性能、安全性和可用性。非功能性测试包括：</p>
-<ul>
-<li><strong>性能测试（Performance Testing）</strong>：评估系统在各种负载条件下的性能表现。</li>
-<li><strong>安全测试（Security Testing）</strong>：检查系统中的安全漏洞和弱点。</li>
-<li><strong>兼容性测试（Compatibility Testing）</strong>：验证系统在不同环境中的兼容性。</li>
-<li><strong>可用性测试（Usability Testing）</strong>：评估用户界面的易用性和用户体验。</li>
-</ul>
-</li>
-</ol>
-<p>这种三类划分提供了对不同测试类型的高级分类，有助于组织测试活动并确保全面覆盖软件质量方面的需求。</p>
-<p>“白盒测试”、”灰盒测试”和”黑盒测试”是软件测试中常用的测试方法，它们基于测试者是否了解内部代码和系统结构的情况，可以按如下方式分类：</p>
-<ol>
-<li><p><strong>白盒测试（White Box Testing）</strong>：</p>
-<ul>
-<li>也称为结构测试或透明盒测试。</li>
-<li>在这种测试中，测试人员了解被测试的代码、算法、数据结构以及内部逻辑。</li>
-<li>白盒测试的目标是验证内部逻辑是否按照预期工作，是否正确执行，以及是否覆盖了所有可能的路径和分支。</li>
-<li>常见的白盒测试方法包括语句覆盖、分支覆盖、路径覆盖等。</li>
-</ul>
-</li>
-<li><p><strong>灰盒测试（Gray Box Testing）</strong>：</p>
-<ul>
-<li>灰盒测试介于白盒测试和黑盒测试之间。</li>
-<li>在这种测试中，测试人员部分了解被测试系统的内部结构，但不需要详细了解所有细节。</li>
-<li>灰盒测试的目标是结合对系统内部的一些了解，以及对用户需求和功能的了解，进行测试。</li>
-<li>一个常见的应用是对系统的集成测试，其中可以根据系统的内部信息有针对性地选择测试用例。</li>
-</ul>
-</li>
-<li><p><strong>黑盒测试（Black Box Testing）</strong>：</p>
-<ul>
-<li>也称为功能测试。</li>
-<li>在这种测试中，测试人员不需要了解内部代码或系统结构，只关注输入和输出，以及系统的功能。</li>
-<li>黑盒测试的目标是验证系统是否按照规格说明正常工作，而不考虑内部实现。</li>
-<li>常见的黑盒测试方法包括等价类划分、边界值分析、场景测试等。</li>
-</ul>
-</li>
-</ol>
-<p>这些测试方法可以根据测试者是否了解系统内部来进行分类，每种方法都有其适用的场景和优势。通常，在实际测试中，不同的测试方法会结合使用，以确保对软件的不同方面进行全面测试。</p>
-<p>单元测试是一种软件测试方法，旨在验证代码中最小可测试单元（通常是函数、方法或类）是否按照预期工作。以下是关于单元测试的一些重要信息：</p>
-<ol>
-<li><p><strong>目的</strong>：单元测试的主要目的是确保每个代码单元（最小功能块）的功能正确性。通过独立测试每个单元，可以在早期发现和修复问题，减少集成和系统测试阶段的错误。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>单元测试通常是自动化的，测试用例可以编写成代码，并由自动化测试框架运行。</li>
-<li>单元测试是独立的，一个单元测试的失败不应该影响其他测试的运行。</li>
-<li>单元测试通常是小规模的，关注代码的一个特定功能。</li>
-<li>单元测试应该是可重复的，即无论何时运行，都应该得到相同的结果。</li>
-</ul>
-</li>
-<li><p><strong>优点</strong>：</p>
-<ul>
-<li>提前发现问题：在代码编写过程中或后续的修改中，可以及早发现并修复问题，减少后期成本。</li>
-<li>提高代码质量：通过频繁运行单元测试，鼓励开发人员编写更健壮、可靠的代码。</li>
-<li>支持重构：在修改代码结构时，单元测试可以验证重构后的代码是否仍然正确。</li>
-</ul>
-</li>
-<li><p><strong>流程</strong>：</p>
-<ul>
-<li>选择单元：选择要测试的单元，通常是函数、方法或类。</li>
-<li>编写测试用例：为每个单元编写多个测试用例，以覆盖不同的输入情况和边界条件。</li>
-<li>运行测试：使用单元测试框架运行测试用例，记录测试结果。</li>
-<li>分析结果：检查测试结果，如果有失败的测试，确定问题的原因。</li>
-<li>修复代码：在发现问题后，修改代码以解决问题，并确保测试通过。</li>
-<li>循环重复：持续运行单元测试，确保代码的稳定性和可靠性。</li>
-</ul>
-</li>
-</ol>
-<p>单元测试在敏捷开发和持续集成等开发方法中具有重要作用，它有助于提供更快的反馈、更高的代码质量和更可靠的软件。</p>
-<p>assertEquals：<br>JUnit 4或更高：<br>import org.junit.Test;<br>import static org.junit.Assert.assertEquals;<br>JUnit 5：<br>import org.junit.jupiter.api.Test;<br>import static org.junit.jupiter.api.Assertions.assertEquals;</p>
-<p>EclEmma（也称为 EclEmma Java Code Coverage）是一个用于Eclipse集成开发环境（IDE）的插件，用于测量代码覆盖率。代码覆盖率是一个用来衡量测试是否覆盖了代码的度量指标，它显示了在测试运行期间代码的哪些部分被执行过（覆盖）以及哪些部分没有被执行过（未覆盖）。</p>
-<p>EclEmma 提供了图形化的界面，帮助开发人员了解他们的测试用例在多大程度上覆盖了源代码。通过颜色编码的方式，EclEmma在源代码中标记已执行的代码（绿色）和未执行的代码（红色），以及部分执行的代码（黄色），从而帮助开发人员更直观地分析测试覆盖情况。</p>
-<p>EclEmma 支持多种代码覆盖度的度量标准，包括：</p>
-<ol>
-<li><strong>语句覆盖率（Statement Coverage）</strong>：衡量已执行的语句占总语句数的比例。</li>
-<li><strong>分支覆盖率（Branch Coverage）</strong>：衡量已执行的分支（如 if 语句的两个分支）占总分支数的比例。</li>
-<li><strong>方法覆盖率（Method Coverage）</strong>：衡量已执行的方法占总方法数的比例。</li>
-<li><strong>行覆盖率（Line Coverage）</strong>：衡量已执行的行数占总行数的比例。</li>
-<li><strong>类覆盖率（Class Coverage）</strong>：衡量已执行的类占总类数的比例。</li>
-</ol>
-<p>使用 EclEmma，您可以更好地了解哪些部分的代码需要更多的测试用例来覆盖，以及哪些部分可能需要更多关注来提高代码质量。这有助于确保您的测试套件对代码的各个部分都进行了足够的测试，以降低潜在的缺陷风险。<br>在 IntelliJ IDEA 中，可以用 “Code Coverage” 功能来查看测试覆盖率并分析测试的效果。</p>
-<p>使用了 @Data 注解，Lombok会自动生成 getters、setters、equals、hashCode 和 toString 方法，从而简化了代码。</p>
-<p>@Test<br>public void testBuildAccount_InvaildUserName_Null() {<br>Account account &#x3D; demo.buildAccount(4L, “Ana”, “12345678”);<br>assertNull(account);}<br>写和不写assertNull(account);有啥区别</p>
-<p>在此测试方法中，使用 <code>assertNull(account)</code> 验证 <code>account</code> 对象是否为 <code>null</code>。这个断言用于确保在测试中创建的 <code>account</code> 对象在 <code>buildAccount</code> 方法中没有被正确构建，预期它应该是 <code>null</code>。</p>
-<p>如果不写 <code>assertNull(account)</code>，那么测试方法就不会对 <code>account</code> 进行任何断言，这意味着测试方法不会显式地验证 <code>account</code> 是否为 <code>null</code>。这将导致以下情况之一：</p>
-<ol>
-<li><p><strong>测试通过</strong>：如果 <code>buildAccount</code> 方法返回了一个非 <code>null</code> 的 <code>account</code> 对象，而测试方法没有进行断言验证，那么测试将会通过，即使实际上 <code>buildAccount</code> 方法的行为与预期不符。</p>
-</li>
-<li><p><strong>测试失败</strong>：如果 <code>buildAccount</code> 方法返回了一个 <code>null</code> 值，而测试方法没有进行断言验证，测试也会通过。这将掩盖了一个潜在的问题，因为测试方法没有检测到这个问题。</p>
-</li>
-</ol>
-<p>在编写测试用例时，使用适当的断言是非常重要的，因为它们帮助您确保代码按预期工作，并捕捉潜在的问题。因此，编写 <code>assertNull(account)</code> 断言是推荐的做法，以确保在测试中验证 <code>buildAccount</code> 方法的行为是否与预期一致。如果测试通过，便可以确信在这种情况下 <code>buildAccount</code> 方法确实返回了 <code>null</code>，而不是其他意外情况。</p>
-
-                    
+              <p>在大多数现代框架和应用程序设计中，我们通常会听到“models”和“entities”这样的术语。它们与POJO有关，但又有所不同，取决于上下文和框架。</p>
+                
           </div>
           <footer>
             
               
+                <div class="alignleft">
+                  <a href="/2023/08/24/note-230824/#more" class="more-link">
+                    Read More
+                  </a>
+                </div>
+                
                   
                       
                               <div class="clearfix"></div>
@@ -981,8 +443,9 @@
   
   
   <div class="clearfix"></div>
-</nav></div></div>
-    <aside id="sidebar" class="alignright">
+</nav></div>
+      </div>
+      <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
     <input type="search" name="q" results="0" placeholder="Search">
@@ -1019,16 +482,22 @@
 </div>
 
 </aside>
-    <div class="clearfix"></div>
-  </div>
-  <footer id="footer" class="inner"><div class="alignleft">
+      <div class="clearfix"></div>
+    </div>
+    <!-- 这里是改动过的 -->
+    <div id="footer" class="inner">
+      <p>IP: <span id="ipAddress"></span></p>
+      <p>Language: <span id="browserLanguage"></span></p>
+    </div>
+    <footer id="footer" class="inner"><div class="alignleft">
   
     &copy; 2023
       Jutta
         
 </div>
 <div class="clearfix"></div></footer>
-  
+
+    
 <script src="/js/jquery-3.4.1.min.js"></script>
 
 
@@ -1053,5 +522,6 @@
 })(jQuery);
 </script>
 
-</body>
+  </body>
+
 </html>

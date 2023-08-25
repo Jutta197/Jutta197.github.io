@@ -26,8 +26,25 @@
 <meta name="generator" content="Hexo 6.3.0"></head>
 
 
-<body>
-  <header id="header" class="inner"><div class="alignleft">
+
+  <body>
+    <!-- 这里是改动过的 -->
+    <!-- 插入获取IP地址和浏览器语言的JavaScript代码 -->
+    <script>
+      fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+          const ipAddress = data.ip;
+          document.getElementById('ipAddress').textContent = ipAddress;
+        })
+        .catch(error => console.error(error));
+
+      const browserLanguage = navigator.language;
+      document.getElementById('browserLanguage').textContent = browserLanguage;
+    </script>
+
+
+    <header id="header" class="inner"><div class="alignleft">
   <h1><a href="/">
       Jutta&#39;s Blog
     </a></h1>
@@ -58,8 +75,10 @@
   <div class="clearfix"></div>
 </nav>
 <div class="clearfix"></div></header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
+    <div id="content" class="inner">
+
+      <div id="main-col" class="alignleft">
+        <div id="wrapper">
 <h2 class="archive-title tag">AI</h2>
 
 
@@ -102,8 +121,9 @@
       </article>
     
   </div>
-</div></div>
-    <aside id="sidebar" class="alignright">
+</div>
+      </div>
+      <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
     <input type="search" name="q" results="0" placeholder="Search">
@@ -140,16 +160,22 @@
 </div>
 
 </aside>
-    <div class="clearfix"></div>
-  </div>
-  <footer id="footer" class="inner"><div class="alignleft">
+      <div class="clearfix"></div>
+    </div>
+    <!-- 这里是改动过的 -->
+    <div id="footer" class="inner">
+      <p>IP: <span id="ipAddress"></span></p>
+      <p>Language: <span id="browserLanguage"></span></p>
+    </div>
+    <footer id="footer" class="inner"><div class="alignleft">
   
     &copy; 2023
       Jutta
         
 </div>
 <div class="clearfix"></div></footer>
-  
+
+    
 <script src="/js/jquery-3.4.1.min.js"></script>
 
 
@@ -174,5 +200,6 @@
 })(jQuery);
 </script>
 
-</body>
+  </body>
+
 </html>

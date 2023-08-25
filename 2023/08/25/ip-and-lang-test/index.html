@@ -3,12 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | Jutta&#39;s Blog</title>
+  <title>ip and lang test | Jutta&#39;s Blog</title>
   <meta name="author" content="Jutta">
+  
+  <meta name="description" content="fetch(&#39;https://ipinfo.io&#39;)
+  .then(response =&gt; response.json())
+  .then(data =&gt; {
+    const ipAddress = data.ip;
+    console.log(ipAddress);
+  })
+  .c">
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="ip and lang test"/>
   <meta property="og:site_name" content="Jutta&#39;s Blog"/>
 
   
@@ -78,109 +86,59 @@
     <div id="content" class="inner">
 
       <div id="main-col" class="alignleft">
-        <div id="wrapper">
-<h2 class="archive-title">Archives</h2>
+        <div id="wrapper"><article id="post-ip-and-lang-test" class="h-entry post" itemprop="blogPost" itemscope
+  itemtype="https://schema.org/BlogPosting">
+  
+        <div class="post-content">
+          <header>
+            
+              <div class="icon"></div>
+              <time class="dt-published" datetime="2023-08-25T14:54:12.000Z"><a
+                  href="/2023/08/25/ip-and-lang-test/">
+                  2023-08-25
+                </a></time>
+              
+                
+  
+    <h1 class="p-name title" itemprop="headline name">ip and lang test</h1>
+  
+
+          </header>
+          <div class="e-content entry" itemprop="articleBody">
+            
+                  <!-- 在这里插入获取IP地址的JavaScript代码 -->
+<script>
+fetch('https://ipinfo.io')
+  .then(response => response.json())
+  .then(data => {
+    const ipAddress = data.ip;
+    console.log(ipAddress);
+  })
+  .catch(error => console.error(error));
+</script>
+
+<!-- 在这里插入获取浏览器语言的JavaScript代码 -->
+<script>
+const browserLanguage = navigator.language;
+console.log(browserLanguage);
+</script>
+
+<p>这是正文的Markdown内容。</p>
+
+                    
+          </div>
+          <footer>
+            
+                        
+                          
+                            
+                              <div class="clearfix"></div>
+          </footer>
+        </div>
+</article>
 
 
-  <div class="archive">
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2023-08-25T14:54:12.000Z"><a href="/2023/08/25/ip-and-lang-test/">2023-08-25</a></time>
-            
-              <h1 class="title"><a href="/2023/08/25/ip-and-lang-test/">ip and lang test</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2023-08-24T15:59:21.000Z"><a href="/2023/08/24/note-230824/">2023-08-24</a></time>
-            
-              <h1 class="title"><a href="/2023/08/24/note-230824/">note_230824</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2023-08-20T15:47:24.000Z"><a href="/2023/08/20/Week-2-of-AWS/">2023-08-20</a></time>
-            
-              <h1 class="title"><a href="/2023/08/20/Week-2-of-AWS/">Week 2 of AWS</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2023-08-19T15:07:35.000Z"><a href="/2023/08/19/note-230819/">2023-08-19</a></time>
-            
-              <h1 class="title"><a href="/2023/08/19/note-230819/">note_230819</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2023-08-14T11:01:25.000Z"><a href="/2023/08/14/note-230814/">2023-08-14</a></time>
-            
-              <h1 class="title"><a href="/2023/08/14/note-230814/">note_230814</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2023-08-12T12:05:14.000Z"><a href="/2023/08/12/Week-1-of-AWS/">2023-08-12</a></time>
-            
-              <h1 class="title"><a href="/2023/08/12/Week-1-of-AWS/">Week 1 of AWS</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2023-08-08T16:00:00.000Z"><a href="/2023/08/09/note-230809/">2023-08-09</a></time>
-            
-              <h1 class="title"><a href="/2023/08/09/note-230809/">note_230809</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2023-08-06T16:27:26.518Z"><a href="/2023/08/07/hello-world/">2023-08-07</a></time>
-            
-              <h1 class="title"><a href="/2023/08/07/hello-world/">Hello World</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-  </div>
+<!-- 是否开启评论？ -->
 </div>
       </div>
       <aside id="sidebar" class="alignright">

@@ -6,9 +6,7 @@
   <title>note_230824 | Jutta&#39;s Blog</title>
   <meta name="author" content="Jutta">
   
-  <meta name="description" content="在大多数现代框架和应用程序设计中，我们通常会听到“models”和“entities”这样的术语。它们与POJO有关，但又有所不同，取决于上下文和框架。
-
-Models: 在MVC（模型-视图-控制器）设计模式中，“model”通常指代用于表示数据的对象。它不仅包括数据，还可能包括与数据相关的业务逻">
+  <meta name="description" content="在大多数现代框架和应用程序设计中，我们通常会听到“models”和“entities”这样的术语。它们与POJO有关，但又有所不同，取决于上下文和框架。">
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -30,8 +28,25 @@ Models: 在MVC（模型-视图-控制器）设计模式中，“model”通常�
 <meta name="generator" content="Hexo 6.3.0"></head>
 
 
-<body>
-  <header id="header" class="inner"><div class="alignleft">
+
+  <body>
+    <!-- 这里是改动过的 -->
+    <!-- 插入获取IP地址和浏览器语言的JavaScript代码 -->
+    <script>
+      fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+          const ipAddress = data.ip;
+          document.getElementById('ipAddress').textContent = ipAddress;
+        })
+        .catch(error => console.error(error));
+
+      const browserLanguage = navigator.language;
+      document.getElementById('browserLanguage').textContent = browserLanguage;
+    </script>
+
+
+    <header id="header" class="inner"><div class="alignleft">
   <h1><a href="/">
       Jutta&#39;s Blog
     </a></h1>
@@ -62,8 +77,10 @@ Models: 在MVC（模型-视图-控制器）设计模式中，“model”通常�
   <div class="clearfix"></div>
 </nav>
 <div class="clearfix"></div></header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-note-230824" class="h-entry post" itemprop="blogPost" itemscope
+    <div id="content" class="inner">
+
+      <div id="main-col" class="alignleft">
+        <div id="wrapper"><article id="post-note-230824" class="h-entry post" itemprop="blogPost" itemscope
   itemtype="https://schema.org/BlogPosting">
   
         <div class="post-content">
@@ -84,6 +101,8 @@ Models: 在MVC（模型-视图-控制器）设计模式中，“model”通常�
           <div class="e-content entry" itemprop="articleBody">
             
                   <p>在大多数现代框架和应用程序设计中，我们通常会听到“models”和“entities”这样的术语。它们与POJO有关，但又有所不同，取决于上下文和框架。</p>
+<span id="more"></span>
+
 <ol>
 <li><p><strong>Models</strong>: 在MVC（模型-视图-控制器）设计模式中，“model”通常指代用于表示数据的对象。它不仅包括数据，还可能包括与数据相关的业务逻辑。</p>
 </li>
@@ -724,8 +743,9 @@ Models: 在MVC（模型-视图-控制器）设计模式中，“model”通常�
 
     
   </section>
-  </div></div>
-    <aside id="sidebar" class="alignright">
+  </div>
+      </div>
+      <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
     <input type="search" name="q" results="0" placeholder="Search">
@@ -762,16 +782,22 @@ Models: 在MVC（模型-视图-控制器）设计模式中，“model”通常�
 </div>
 
 </aside>
-    <div class="clearfix"></div>
-  </div>
-  <footer id="footer" class="inner"><div class="alignleft">
+      <div class="clearfix"></div>
+    </div>
+    <!-- 这里是改动过的 -->
+    <div id="footer" class="inner">
+      <p>IP: <span id="ipAddress"></span></p>
+      <p>Language: <span id="browserLanguage"></span></p>
+    </div>
+    <footer id="footer" class="inner"><div class="alignleft">
   
     &copy; 2023
       Jutta
         
 </div>
 <div class="clearfix"></div></footer>
-  
+
+    
 <script src="/js/jquery-3.4.1.min.js"></script>
 
 
@@ -796,5 +822,6 @@ Models: 在MVC（模型-视图-控制器）设计模式中，“model”通常�
 })(jQuery);
 </script>
 
-</body>
+  </body>
+
 </html>
