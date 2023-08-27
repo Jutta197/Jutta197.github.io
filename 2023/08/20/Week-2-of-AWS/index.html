@@ -130,7 +130,82 @@
 </li>
 </ol>
 <p>为了提供高可用性和容错能力，AWS鼓励用户在一个Region的多个AZs中分布式部署他们的应用和服务。这样，如果一个AZ出现问题，其他AZs仍然可以继续为用户提供服务。</p>
-<h2 id="Edge-Locations"><a href="#Edge-Locations" class="headerlink" title="Edge Locations:"></a>Edge Locations:</h2><p>An edge location is a site that Amazon CloudFront uses to store cached copies of your content. </p>
+<h2 id="Edge-Locations"><a href="#Edge-Locations" class="headerlink" title="Edge Locations:"></a>Edge Locations:</h2><p>An edge location is a site that Amazon CloudFront uses to store cached copies of your content closer to your customers for faster delivery.</p>
+<p>“Edge Locations” 和 “regional zone” 是两个不同概念，分别指代了 AWS 中的不同部分。</p>
+<ol>
+<li><p><strong>Edge Locations（边缘位置）：</strong> 这是 Amazon CloudFront CDN（内容分发网络）的一部分。Edge Locations 是分布在全球各地的服务器节点，用于将内容和数据缓存在距离用户更近的位置，以提供更快速、高效的内容分发。Edge Locations 位于多个城市，用于加速内容传输并减少延迟。它们并不是 AWS 云基础设施的一部分，而是为了加速内容分发而存在的。</p>
+</li>
+<li><p><strong>Regional Zone（区域性区域）：</strong> 在 AWS 基础设施中，一个区域（Region）代表了一个地理上的独立数据中心集合，每个区域都由多个可用区（Availability Zones）组成。每个可用区是一个独立的数据中心，通常位于一个区域内的不同地理位置，以提高可用性和冗余性。一个区域可以包括多个可用区，以支持高可用性和灾难恢复。</p>
+</li>
+</ol>
+<p>总结来说，Edge Locations 是用于内容分发的服务器节点，而 Regional Zone 是 AWS 云基础设施中的一部分，用于实现高可用性和冗余性。</p>
+<ul>
+<li>They run a domain name service, or DNS, known as Amazon Route 53, helping direct customers to the correct web locations with reliably low latency.</li>
+<li>Introducing AWS Outposts, where AWS will basically install a fully operational mini Region, right inside your own data center. That’s owned and operated by AWS, using 100% of AWS functionality, but isolated within your own building.</li>
+</ul>
+<p>Here’s the key points. Number one, Regions are geographically isolated areas, where you can access services needed to run your enterprise. Number two, Regions contain Availability Zones, that allow you to run across physically separated buildings, tens of miles of separation, while keeping your application logically unified. Availability Zones help you solve high availability and disaster recovery scenarios, without any additional effort on your part, and number three, AWS Edge locations run Amazon CloudFront to help get content closer to your customers, no matter where they are in the world.</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=841kyd_mfH0" title="video">What is Cloud CDN?</a></p>
+<p><img src="/assets/images/Reading_2.8.png" alt="Instead of requiring your customers to get their data from Brazil, you can cache a copy locally at an edge location that is close to your customers in China." title="Edge Locations"></p>
+<blockquote>
+<p>When a customer in China requests one of your files, Amazon CloudFront retrieves the file from the cache in the edge location and delivers the file to the customer. The file is delivered to the customer faster because it came from the edge location near China instead of the original source in Brazil.</p>
+</blockquote>
+<h2 id="How-to-Provision-AWS-Resources"><a href="#How-to-Provision-AWS-Resources" class="headerlink" title="How to Provision AWS Resources"></a>How to Provision AWS Resources</h2><p>For example, you can launch an EC2 instance or you can create an AWS Lambda function. Each of those would be different requests and different API calls to AWS.<br>You can use the AWS Management Console, the AWS Command Line Interface, the AWS Software Development Kits, or various other tools like AWS CloudFormation, to create requests to send to AWS APIs to create and manage AWS resources.</p>
+<p>Interacting with AWS:</p>
+<ol>
+<li>AWS Management Console</li>
+<li>CLI</li>
+<li>SDKs</li>
+<li>AWS Elastic Beanstalk</li>
+<li>AWS CloudFormation</li>
+</ol>
+<p>Provisioning a resource:</p>
+<ol>
+<li>Log in to the AWS Management Console </li>
+<li>Write commands</li>
+<li>Write programs</li>
+</ol>
+<p>By using AWS Command Line Interface (AWS CLI) we don’t need to perform operations in web user interface of AWS, instead we can send command programmatically through our application to speed up processes.</p>
+<p>Manage tools:<br>AWS Elastic Beanstalk and AWS CloudFormation<br>AWS Elastic Beanstalk 适用于简化 Web 应用程序的部署和扩展，而 AWS CloudFormation 则适用于以代码方式管理复杂基础设施的情况。</p>
+<p>AWS Global Infrastructure:<br>Availability Zones<br>Regions<br>Deploy infrastructure across at least 2 Availability Zones<br>Edge locations<br>AWS Outposts</p>
+<p>Summary:<br>AWS Outposts is a service that enables you to run infrastructure in a hybrid cloud approach.<br>AWS Fargate is a serverless compute engine for containers.<br>Amazon CloudFront is a content delivery service.<br>AWS Outposts can extend AWS infrastructure and services to your on-premises data center.<br>The AWS Command Line Interface (AWS CLI) is used to automate actions for AWS services and applications through scripts.<br>The AWS Management Console includes wizards and workflows that you can use to complete tasks in AWS services.<br>Software development kits (SDKs) enable you to develop AWS applications in supported programming languages.</p>
+<p><a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/about-aws/global-infrastructure/regions_az/">Interactive map of the AWS Global Infrastructure</a><br><a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/blogs/networking-and-content-delivery/">AWS Networking and Content Delivery Blog</a></p>
+<h1 id="Networking"><a href="#Networking" class="headerlink" title="Networking"></a>Networking</h1><p>Amazon Virtual Private Cloud (Amazon VPC)</p>
+<p>These resources can be public facing so they have access to the internet, or private with no internet access, usually for backend services like databases or application servers. The public and private grouping of resources are known as subnets and they are ranges of IP addresses in your VPC.</p>
+<p>VPC lets you provision a logically isolated section of the AWS Cloud where you can separate resources you want to be public from private. That way we can place resources as part of a public subnet while others remain on the private subnet.</p>
+<p>VPC（Virtual Private Cloud）是 AWS 中的一个服务，用于创建一个逻辑隔离的虚拟网络环境。在这个虚拟网络环境内可以定义自己的 IP 地址范围、子网、路由表、安全组等网络设置，并将 AWS 资源部署在其中。<br>If you want to establish an encrypted VPN connection to your private internal AWS resources, you would need to attach a virtual private gateway to your VPC.虽然 VPN 连接是私密的且加密的，但它们仍然使用共享的互联网连接，可能会受到互联网流量拥塞和影响。<br>Direct Connect allows you to establish a completely private, dedicated fiber connection from your data center to AWS.这是一种能够在数据中心与 AWS 之间建立私有、专用的光纤连接的服务。它提供了物理连接，旨在满足高规制和合规性需求，避免带宽问题。<br>It’s also important to note that one VPC might have multiple types of gateways attached for multiple types of resources all residing in the same VPC, just in different subnets. </p>
+<p>子网（Subnet）是在一个大型网络中划分出的较小的、逻辑上隔离的网络分区。在计算机网络中，子网的存在允许网络管理员更有效地管理和组织 IP 地址，同时也有助于提高网络的性能、安全性和可管理性。<br>在 AWS 中，子网是在虚拟私有云（VPC）内部划分出的一块 IP 地址范围，用于将 VPC 进一步分隔成更小的网络区域。每个子网可以关联一个特定的可用区（Availability Zone），使得资源可以在特定的地理位置部署。<br>子网是网络中划分的较小的区域，它允许更好地管理 IP 地址、资源组织和访问控制，尤其在 AWS 的 VPC 中，子网有助于更好地利用和配置资源。</p>
+<ul>
+<li><strong>IP 地址范围：</strong> 每个子网有一个自己的 IP 地址范围，它是从 VPC 的 IP 地址范围中分配的一部分。</li>
+<li><strong>隔离性：</strong> 子网之间是隔离的，这意味着位于不同子网中的资源不能直接通信，除非在 VPC 级别的网络访问控制规则中允许。</li>
+<li><strong>关联可用区：</strong> 每个子网可以关联到一个特定的可用区，这使得您可以在不同的地理位置部署资源，从而提高可用性和容错性。</li>
+<li><strong>公共和私有访问：</strong> 通过适当配置路由表和网络访问控制列表，您可以控制子网中资源的公共或私有访问性。</li>
+<li><strong>资源分组：</strong> 子网允许您根据需要将资源组织在一起，例如将公共资源放在一个子网，将私有资源放在另一个子网。</li>
+</ul>
+<p>VPC（Virtual Private Cloud），VPN（Virtual Private Network），以及 VPS（Virtual Private Server）都是与虚拟化和网络相关的概念，但它们在 AWS 和计算领域中具有不同的含义和用途。</p>
+<ol>
+<li><p><strong>VPC（Virtual Private Cloud）：</strong></p>
+<ul>
+<li>VPC 是 Amazon Web Services（AWS）提供的一种虚拟网络服务。它允许您在 AWS 云中创建一个逻辑隔离的网络环境，类似于在云上构建自己的专用数据中心。</li>
+<li>VPC 可用于创建子网、路由表、安全组等，使您可以控制网络配置、资源隔离和安全性设置。</li>
+<li>主要用途是在 AWS 云中创建自定义的网络拓扑，将资源划分为公共子网和私有子网，实现安全且可管理的网络环境。</li>
+</ul>
+</li>
+<li><p><strong>VPN（Virtual Private Network）：</strong></p>
+<ul>
+<li>VPN 是一种网络技术，用于在公共网络上创建一个加密的、安全的连接，以连接远程地点或用户到私有网络。</li>
+<li>VPN 允许用户在 Internet 上建立安全通信通道，使远程用户、分支机构等能够安全地访问私有网络内的资源。</li>
+<li>主要用途是实现远程访问和安全通信，通常用于将分散在不同地点的网络连接起来。</li>
+</ul>
+</li>
+<li><p><strong>VPS（Virtual Private Server）：</strong></p>
+<ul>
+<li>VPS 是一种虚拟服务器，它是在物理服务器上通过虚拟化技术创建的一个独立的虚拟服务器实例。</li>
+<li>VPS 允许用户拥有一个类似于物理服务器的虚拟环境，可以安装操作系统、应用程序和服务。</li>
+<li>主要用途是为个人或企业提供经济实惠的服务器托管解决方案，允许用户获得独立的计算资源和控制权。</li>
+</ul>
+</li>
+</ol>
+<p>总结来说，VPC 是 AWS 提供的虚拟网络服务，VPN 是网络技术用于加密连接，VPS 是虚拟服务器实例，每个概念都在不同的层面解决了虚拟化和网络需求。</p>
 <blockquote>
 <p>未完</p>
 </blockquote>
