@@ -8,6 +8,10 @@
       Week 3: Storage and Databases | Jutta&#39;s Blog</title>
   <meta name="author" content="Jutta">
   
+  <meta name="description" content="Module 5: Storage and DatabasesInstance Stores and Amazon Elastic Block Store (Amazon EBS)Instance Store:
+
+An Instance Store provides temporary block-">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <meta property="og:title" content="Week 3: Storage and Databases"/>
@@ -99,7 +103,78 @@
           </header>
           <div class="e-content entry" itemprop="articleBody">
             
-                  
+                  <h1 id="Module-5-Storage-and-Databases"><a href="#Module-5-Storage-and-Databases" class="headerlink" title="Module 5: Storage and Databases"></a>Module 5: Storage and Databases</h1><h2 id="Instance-Stores-and-Amazon-Elastic-Block-Store-Amazon-EBS"><a href="#Instance-Stores-and-Amazon-Elastic-Block-Store-Amazon-EBS" class="headerlink" title="Instance Stores and Amazon Elastic Block Store (Amazon EBS)"></a>Instance Stores and Amazon Elastic Block Store (Amazon EBS)</h2><p><strong>Instance Store</strong>:</p>
+<ul>
+<li>An Instance Store provides temporary block-level storage for an Amazon EC2 instance.</li>
+<li>It is disk storage physically attached to the host computer for an EC2 instance, sharing the same lifespan as the instance.</li>
+<li>When an EC2 instance is terminated, any data stored in the Instance Store is lost, making it suitable for temporary storage needs.</li>
+</ul>
+<p><strong>Amazon Elastic Block Storage (Amazon EBS)</strong>:</p>
+<ul>
+<li>Amazon EBS is a service that offers block-level storage volumes for use with Amazon EC2 instances.</li>
+<li>When you stop or terminate an Amazon EC2 instance, all data on the attached EBS volume remains intact.</li>
+<li>To create an EBS volume, you define its configuration, including volume size and type, and then provision it. Once created, an EBS volume can be attached to an Amazon EC2 instance.</li>
+<li>Since EBS volumes are meant for data that needs to persist, it’s crucial to back up the data. Incremental backups of EBS volumes can be achieved by creating Amazon EBS snapshots.</li>
+</ul>
+<p><strong>Amazon EBS Snapshots</strong>:</p>
+<ul>
+<li>An EBS snapshot is an incremental backup method. The initial backup of a volume copies all the data, while subsequent backups save only the blocks of data that have changed since the most recent snapshot.</li>
+<li>Incremental backups differ from full backups, where all data in a storage volume is copied during each backup. Full backups include data that hasn’t changed since the last backup.</li>
+</ul>
+<p>In summary, Instance Store is used for temporary data and is volatile, whereas Amazon EBS provides persistent block-level storage, requiring regular backups through EBS snapshots to protect data.</p>
+<h2 id="Amazon-Simple-Storage-Service-Amazon-S3"><a href="#Amazon-Simple-Storage-Service-Amazon-S3" class="headerlink" title="Amazon Simple Storage Service (Amazon S3)"></a>Amazon Simple Storage Service (Amazon S3)</h2><ol>
+<li><p><strong>Amazon S3 Standard</strong>:</p>
+<ul>
+<li>Designed for frequently accessed data.</li>
+<li>Provides high availability, storing data in a minimum of three Availability Zones.</li>
+<li>Suitable for a wide range of use cases like websites, content distribution, and data analytics.</li>
+<li>Higher cost compared to storage classes intended for infrequently accessed data.</li>
+</ul>
+</li>
+<li><p><strong>Amazon S3 Standard-Infrequent Access (S3 Standard-IA)</strong>:</p>
+<ul>
+<li>Ideal for infrequently accessed data that requires high availability.</li>
+<li>Lower storage cost but higher retrieval cost compared to the standard class.</li>
+<li>Data is stored in a minimum of three Availability Zones, offering the same availability as the standard class.</li>
+<li>Suitable for data like backups.</li>
+</ul>
+</li>
+<li><p><strong>Amazon S3 One Zone-Infrequent Access (S3 One Zone-IA)</strong>:</p>
+<ul>
+<li>Stores data in a single Availability Zone, reducing costs.</li>
+<li>Suitable if data can be easily reproduced in case of an Availability Zone failure.</li>
+<li>Lacks redundancy across multiple Availability Zones.</li>
+</ul>
+</li>
+<li><p><strong>Amazon S3 Intelligent-Tiering</strong>:</p>
+<ul>
+<li>Ideal for data with unknown or changing access patterns.</li>
+<li>Automatically moves objects to different storage tiers based on access patterns to reduce costs.</li>
+<li>Requires a small monthly monitoring and automation fee per object.</li>
+</ul>
+</li>
+<li><p><strong>Amazon S3 Glacier Instant Retrieval</strong>:</p>
+<ul>
+<li>Works well for archived data that requires immediate access.</li>
+<li>Objects can be retrieved within milliseconds, with performance similar to the standard class.</li>
+</ul>
+</li>
+<li><p><strong>Amazon S3 Glacier Flexible Retrieval</strong>:</p>
+<ul>
+<li>Low-cost storage class designed for data archiving.</li>
+<li>Objects can be retrieved within minutes to hours.</li>
+<li>Suitable for long-term data retention and archiving.</li>
+</ul>
+</li>
+<li><p><strong>Amazon S3 Glacier Deep Archive</strong>:</p>
+<ul>
+<li>Lowest-cost object storage class ideal for archiving.</li>
+<li>Objects can be retrieved within 12 hours.</li>
+<li>All objects are replicated and stored across at least three geographically dispersed Availability Zones.</li>
+</ul>
+</li>
+</ol>
+
                     
           </div>
           <footer>
