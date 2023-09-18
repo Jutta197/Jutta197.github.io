@@ -217,6 +217,47 @@
 </li>
 </ol>
 <p>这些都是良好架构的一部分，可以提供基本的防御，但仍然需要考虑其他高级安全措施，以应对更复杂和有针对性的攻击。AWS Shield Advanced等服务可以提供额外的安全性，以应对分布式拒绝服务（DDoS）等高级威胁。</p>
+<h3 id="AWS-Shield-with-AWS-WAF"><a href="#AWS-Shield-with-AWS-WAF" class="headerlink" title="AWS Shield with AWS WAF"></a>AWS Shield with AWS WAF</h3><p>是 AWS 提供的网络安全解决方案，用于保护应用程序和网络资源：</p>
+<ul>
+<li><p><strong>AWS Shield：</strong> 防范 DDoS 攻击的服务。</p>
+<ul>
+<li><strong>Shield Standard：</strong> 包含在基本支持计划中，提供基本 DDoS 保护。</li>
+<li><strong>Shield Advanced：</strong> 付费服务，提供高级 DDoS 防护和实时攻击监控。</li>
+</ul>
+</li>
+<li><p><strong>AWS WAF（Web Application Firewall）：</strong> 用于保护 Web 应用程序，防范 Web 攻击。</p>
+<ul>
+<li>检测和拦截常见 Web 攻击，如 XSS、SQL 注入等。</li>
+<li>使用规则和策略阻止潜在恶意流量。</li>
+</ul>
+</li>
+</ul>
+<h2 id="Additional-Security-Services"><a href="#Additional-Security-Services" class="headerlink" title="Additional Security Services"></a>Additional Security Services</h2><p><strong>数据安全和AWS的安全服务</strong></p>
+<ul>
+<li><p><strong>数据加密<sup>Encryption</sup>：</strong> 数据加密是一种保护数据安全的方法，分为两种类型：</p>
+<ul>
+<li><strong>静止时<sup>at rest</sup>的加密：</strong> 当数据处于空闲状态并存储时，例如在DynamoDB表上启用的服务器端静止加密，可防止未经授权的访问。DynamoDB的静止时加密还与AWS KMS（密钥管理服务）集成，用于管理用于加密表的加密密钥。</li>
+<li><strong>传输时<sup>in transit</sup>的加密：</strong> 当数据在两个点之间传输时，AWS使用SSL连接来加密数据，并可以使用服务证书来验证和授权客户端。此功能存在于众多AWS服务中，如SQS、S3、RDS等。</li>
+</ul>
+</li>
+<li><p><strong>Amazon Inspector：</strong> 是一项自动化安全评估服务，用于检查安全最佳实践的偏差、EC2实例的暴露和漏洞。它提供详细的安全问题说明和修复建议。</p>
+</li>
+<li><p><strong>Amazon GuardDuty：</strong> 是一项威胁检测服务，它分析生成的持续元数据流，包括AWS CloudTrail事件、Amazon VPC流量日志和DNS日志。它使用已知的恶意IP地址、异常检测和机器学习等集成威胁情报来更准确地识别威胁。GuardDuty运行独立于其他AWS服务，不会影响现有基础架构和工作负载的性能和可用性。</p>
+</li>
+</ul>
+<p>这些AWS安全服务帮助确保数据和应用程序的安全性，提供了静止时和传输时的数据保护，同时进行安全评估和威胁检测。</p>
+<h3 id="AWS-KMS-Key-Management-Service"><a href="#AWS-KMS-Key-Management-Service" class="headerlink" title="AWS KMS: Key Management Service"></a>AWS KMS: Key Management Service</h3><ul>
+<li>用于执行加密和解密操作。</li>
+<li>加密密钥是一串随机数字，用于加锁（加密）和解锁（解密）数据。</li>
+<li>允许创建、管理和使用加密密钥，并可控制密钥在各种服务和应用程序中的使用。</li>
+<li>可以选择特定的访问控制级别来管理密钥，包括指定哪些IAM用户和角色可以管理密钥。</li>
+<li>还可以临时禁用密钥，以确保它们不再被使用，密钥始终保留在AWS KMS中，可控。</li>
+</ul>
+<h3 id="AWS-WAF-web-application-firewall"><a href="#AWS-WAF-web-application-firewall" class="headerlink" title="AWS WAF: web application firewall"></a>AWS WAF: web application firewall</h3><ul>
+<li>是Web应用程序防火墙，用于监视网络请求进入Web应用程序。</li>
+<li>它与Amazon CloudFront和应用程序负载均衡器一起工作。</li>
+<li>使用Web访问控制列表（ACL）来阻止或允许流量，保护AWS资源。</li>
+</ul>
 
                     
           </div>
@@ -260,7 +301,7 @@
   
     <li><a href="/categories/Front-End/">Front-End</a><small>1</small></li>
   
-    <li><a href="/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1/">云服务</a><small>4</small></li>
+    <li><a href="/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1/">云服务</a><small>5</small></li>
   
   </ul>
 </div>
@@ -271,7 +312,7 @@
   <h3 class="title">Tags</h3>
   <ul class="entry">
   
-    <li><a href="/tags/AWS/">AWS</a><small>4</small></li>
+    <li><a href="/tags/AWS/">AWS</a><small>5</small></li>
   
     <li><a href="/tags/Hexo/">Hexo</a><small>1</small></li>
   
@@ -285,7 +326,7 @@
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/AWS/" style="font-size: 20px;">AWS</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Note/" style="font-size: 20px;">Note</a>
+    <a href="/tags/AWS/" style="font-size: 20px;">AWS</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Note/" style="font-size: 15px;">Note</a>
   </div>
 </div>
 
