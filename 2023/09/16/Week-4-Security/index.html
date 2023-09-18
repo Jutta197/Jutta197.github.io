@@ -103,12 +103,137 @@
             
                   <p>haha</p>
 <span id="more"></span>
+
+<h2 id="Shared-Responsibility-Model-共同责任模型"><a href="#Shared-Responsibility-Model-共同责任模型" class="headerlink" title="Shared Responsibility Model 共同责任模型"></a>Shared Responsibility Model 共同责任模型</h2><p><small>AWS负责云的安全(of)，客户负责云中的安全(in)。</small></p>
+<ol>
+<li><p><strong>共同责任模型</strong>：共同责任模型意味着在安全方面，AWS和客户都有责任。</p>
+</li>
+<li><p><strong>AWS的责任</strong>：云基础设施的安全</p>
+<ul>
+<li>AWS负责数据中心的物理安全，包括基础设施如铁、混凝土、围栏和安全警卫。</li>
+<li>AWS确保底层网络和超级管理程序技术的安全，确保它们防篡改和稳健。</li>
+<li>AWS接受第三方审计，以验证其安全实践，并提供客户安全合规要求的文档。</li>
+</ul>
+</li>
+<li><p><strong>客户的责任</strong>：操作系统、应用和数据的安全</p>
+<ul>
+<li>客户可以控制运行在AWS服务如EC2（弹性计算云）上的操作系统。</li>
+<li>客户负责保护操作系统，包括补丁管理。</li>
+<li>客户完全掌控在AWS上运行的应用程序，负责其维护和安全性。</li>
+<li>数据安全主要由客户负责。AWS提供加密和访问控制工具。</li>
+</ul>
+</li>
+</ol>
+<h2 id="用户权限和访问"><a href="#用户权限和访问" class="headerlink" title="用户权限和访问"></a>用户权限和访问</h2><p><small>Principle of least privilege: A user is granted access only to what they need.</small></p>
+<ol>
+<li><p><strong>AWS Identity and Access Management (IAM)</strong>: IAM是用于安全管理对AWS服务和资源的访问的工具，可根据公司的运营和安全需求进行配置。</p>
+</li>
+<li><p><strong>AWS账户根用户</strong>:</p>
+<ul>
+<li>root用户是AWS账户的所有者，具有完全的访问权限。</li>
+<li>不建议经常使用根用户，最好用来创建其他IAM用户并授权权限。</li>
+</ul>
+</li>
+<li><p><strong>IAM用户</strong>:</p>
+<ul>
+<li>IAM用户是由名称和凭证组成的身份，代表与AWS服务和资源交互的人员或应用程序。</li>
+<li>默认情况下，IAM用户没有与之关联的权限，需要显式授权。</li>
+</ul>
+</li>
+<li><p><strong>IAM策略</strong>:</p>
+<ul>
+<li>IAM策略是定义对AWS服务和资源的权限的文档。</li>
+<li>可以通过IAM策略自定义用户对资源的访问级别，建议遵循最小权限原则。</li>
+</ul>
+</li>
+<li><p><strong>IAM组</strong>:</p>
+<ul>
+<li>IAM组是一组IAM用户的集合，可以向组分配IAM策略。</li>
+<li>组级别的权限分配可帮助更轻松地管理用户权限。</li>
+</ul>
+</li>
+<li><p><strong>IAM角色</strong>:</p>
+<ul>
+<li>IAM角色是用于临时授予访问权限的身份，适用于需要临时授予服务或资源访问权限而不是长期授权的情况。</li>
+</ul>
+</li>
+<li><p><strong>多因素认证 Multi-factor Authentication（MFA）</strong>:</p>
+<ul>
+<li>MFA提供额外的安全层，要求用户提供多个身份验证因素来验证其身份，以增强安全性。</li>
+</ul>
+</li>
+</ol>
+<h2 id="AWS-Organizations"><a href="#AWS-Organizations" class="headerlink" title="AWS Organizations"></a>AWS Organizations</h2><ul>
+<li><p><strong>为何需要AWS组织机构</strong>:</p>
+<ul>
+<li>随着公司的增长和云服务的采用，需要分离不同的职责和资源。</li>
+<li>AWS Organizations是一项服务，用于管理多个AWS账户，帮助组织更好地管理账户，控制成本，确保合规性，实施安全性，并共享资源。</li>
+</ul>
+</li>
+<li><p><strong>主要功能</strong>:</p>
+<ol>
+<li><strong>中央管理</strong>: 可以将多个AWS账户集中管理，建立组织结构。</li>
+<li><strong>账单合并</strong>: 使用主账户合并和支付所有成员账户的费用，还可获得批量折扣。Consolidated billing</li>
+<li><strong>分层组织</strong>: 可以将账户分组成组织单位（OUs），以满足安全、合规或预算需求。Organizational Units</li>
+<li><strong>服务控制策略</strong>: 可以使用服务控制策略（SCPs）限制成员账户的AWS服务、资源和API权限。</li>
+</ol>
+</li>
+<li><p>Even though you have placed these accounts into OUs, you can continue to provide access for users, groups, and roles through IAM.</p>
+</li>
+</ul>
+<h2 id="IAM-policies-SCPs"><a href="#IAM-policies-SCPs" class="headerlink" title="IAM policies &amp; SCPs"></a>IAM policies &amp; SCPs</h2><ul>
+<li>In AWS Organizations, you can apply service control policies (SCPs) to the organization root, an individual member account, or an OU. An SCP affects all IAM users, groups, and roles within an account, including the AWS account root user. You can apply IAM policies to IAM users, groups, or roles. You cannot apply an IAM policy to the AWS account root user.</li>
+</ul>
+<p>在AWS Organizations中，服务控制策略（SCP）可以应用于组织根、单个成员账户或组织单位（OU），影响账户内的所有IAM用户、组和角色，但不能应用于AWS账户的根用户。与之不同的是，IAM策略是应用于IAM用户、组或角色的权限策略，用于定义其对AWS资源的访问权限和操作权限。根用户的权限主要由SCP管理，而IAM用户、组和角色的权限由IAM策略管理。这有助于实现权限控制和安全管理。</p>
+<h2 id="Compliance"><a href="#Compliance" class="headerlink" title="Compliance"></a>Compliance</h2><p>AWS合规性和审计的关键点：</p>
+<ol>
+<li><p>合规性标准：根据行业和地区要求，确保符合特定合规性标准，如GDPR或HIPAA。</p>
+</li>
+<li><p>AWS安全基础设施：AWS提供安全的数据中心和网络，继承AWS的最佳实践。</p>
+</li>
+<li><p>区域选择：选择合适的AWS区域以满足法规要求。</p>
+</li>
+<li><p>数据控制：在AWS中，您拥有数据的完全控制权，可以使用加密等机制保护数据。</p>
+</li>
+<li><p>合规性文件和报告：通过AWS Artifact等服务获取合规性报告和第三方验证的文件。</p>
+</li>
+<li><p>分享责任模型：AWS和您共同负责安全，根据共享责任模型，您需要确保构建的应用程序和解决方案合规且安全。</p>
+</li>
+</ol>
+<h2 id="Denial-of-Service-Attacks-DDoS"><a href="#Denial-of-Service-Attacks-DDoS" class="headerlink" title="Denial-of-Service Attacks (DDoS)"></a>Denial-of-Service Attacks (DDoS)</h2><p>The objective of a DDoS attack is to shut down your application’s ability to function by overwhelming the system to the point it can no longer operate.</p>
+<p>DDoS攻击旨在通过超载系统来关闭应用程序。攻击者使用多台计算机来发动攻击。AWS提供了多种防御措施，包括安全组<sub>UDP floods or reflection attacks</sub>、弹性负载均衡器<sub>Slowloris attacks</sub>和AWS Shield with AWS WAF<sub>HTTP level attacks</sub>，可帮助您保护系统免受DDoS攻击。良好的架构可以提供基本的防御，而AWS Shield Advanced则提供了更高级的保护。</p>
+<h3 id="良好的架构可以提供基本的防御："><a href="#良好的架构可以提供基本的防御：" class="headerlink" title="良好的架构可以提供基本的防御："></a>良好的架构可以提供基本的防御：</h3><p>一个经过良好设计的系统架构本身具备基本的安全防御能力。</p>
+<p>比如，如果应用程序架构合理，包括网络安全措施、访问控制、数据加密等，那么它可能会防止一些常见的网络攻击，例如：</p>
+<ol>
+<li><p><strong>SQL注入攻击：</strong> 良好的架构可以使用参数化查询等技术来预防SQL注入攻击，确保用户输入不会被误解为恶意SQL命令。</p>
+</li>
+<li><p><strong>跨站脚本攻击（XSS）：</strong> 安全的前端设计和输入验证可以减少XSS攻击的风险，防止恶意脚本在用户浏览器上执行。</p>
+</li>
+<li><p><strong>跨站请求伪造攻击（CSRF）：</strong> 使用安全令牌和合适的验证机制可以有效地防止CSRF攻击。</p>
+</li>
+<li><p><strong>未经授权的访问：</strong> 适当的身份验证和授权机制可以确保只有经过授权的用户能够访问敏感数据或功能。</p>
+</li>
+<li><p><strong>敏感数据泄露：</strong> 数据加密、访问控制和数据保护策略可以保护敏感数据免受未经授权访问或泄露。</p>
+</li>
+</ol>
+<p>这些都是良好架构的一部分，可以提供基本的防御，但仍然需要考虑其他高级安全措施，以应对更复杂和有针对性的攻击。AWS Shield Advanced等服务可以提供额外的安全性，以应对分布式拒绝服务（DDoS）等高级威胁。</p>
+
                     
           </div>
           <footer>
             
                         
+  
+  <div class="categories">
+    <a href="/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1/">云服务</a>
+  </div>
+
                           
+  
+  <div class="tags">
+    <a href="/tags/AWS/">AWS</a>
+  </div>
+
                             
                               <div class="clearfix"></div>
           </footer>
@@ -135,7 +260,7 @@
   
     <li><a href="/categories/Front-End/">Front-End</a><small>1</small></li>
   
-    <li><a href="/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1/">云服务</a><small>3</small></li>
+    <li><a href="/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1/">云服务</a><small>4</small></li>
   
   </ul>
 </div>
@@ -146,7 +271,7 @@
   <h3 class="title">Tags</h3>
   <ul class="entry">
   
-    <li><a href="/tags/AWS/">AWS</a><small>3</small></li>
+    <li><a href="/tags/AWS/">AWS</a><small>4</small></li>
   
     <li><a href="/tags/Hexo/">Hexo</a><small>1</small></li>
   
@@ -160,7 +285,7 @@
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/AWS/" style="font-size: 15px;">AWS</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Note/" style="font-size: 20px;">Note</a>
+    <a href="/tags/AWS/" style="font-size: 20px;">AWS</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Note/" style="font-size: 20px;">Note</a>
   </div>
 </div>
 

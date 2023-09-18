@@ -103,7 +103,7 @@
             
                   <p>第三周：有空就学学，没空就不学 </p>
 <span id="more"></span>
-<h1 id="Module-5-Storage-and-Databases"><a href="#Module-5-Storage-and-Databases" class="headerlink" title="Module 5: Storage and Databases"></a>Module 5: Storage and Databases</h1><h2 id="Instance-Stores-and-Amazon-Elastic-Block-Store-Amazon-EBS"><a href="#Instance-Stores-and-Amazon-Elastic-Block-Store-Amazon-EBS" class="headerlink" title="Instance Stores and Amazon Elastic Block Store (Amazon EBS)"></a>Instance Stores and Amazon Elastic Block Store (Amazon EBS)</h2><p><strong>Instance Store</strong>:</p>
+<h2 id="Instance-Stores-and-Amazon-Elastic-Block-Store-Amazon-EBS"><a href="#Instance-Stores-and-Amazon-Elastic-Block-Store-Amazon-EBS" class="headerlink" title="Instance Stores and Amazon Elastic Block Store (Amazon EBS)"></a>Instance Stores and Amazon Elastic Block Store (Amazon EBS)</h2><p><strong>Instance Store</strong>:</p>
 <ul>
 <li>An Instance Store provides temporary block-level storage for an Amazon EC2 instance.</li>
 <li>It is disk storage physically attached to the host computer for an EC2 instance, sharing the same lifespan as the instance.</li>
@@ -306,12 +306,14 @@
 </li>
 </ol>
 <h2 id="Additional-Database-Services"><a href="#Additional-Database-Services" class="headerlink" title="Additional Database Services"></a>Additional Database Services</h2><ol>
-<li><strong>数据库</strong>：<small>
-+ **Amazon DynamoDB**：
-   - 适用于需要快速、高可用、高度可扩展的键-值对数据库的用例。
-   - 常用于应用程序数据、用户配置、会话存储等需要快速读写的工作负载。
-
+<li><p><strong>数据库</strong>：</p>
 <ul>
+<li><p><strong>Amazon DocumentDB</strong>：</p>
+<ul>
+<li>适用于需要快速、高可用、高度可扩展的键-值对数据库的用例。</li>
+<li>常用于应用程序数据、用户配置、会话存储等需要快速读写的工作负载。</li>
+</ul>
+</li>
 <li><p><strong>Amazon DocumentDB</strong>：</p>
 <ul>
 <li>适用于需要处理半结构化文档数据的用例，如内容管理系统、目录、用户配置文件等。</li>
@@ -332,31 +334,29 @@
 </li>
 </ul>
 </li>
-</ol>
-</small>
-
-<ol start="2">
-<li><strong>加速选项</strong>：提高数据库读取速度，特别适用于常见请求的快速读取。<small>
-+ **Amazon ElastiCache**
-   - a service that adds caching layers on top of your databases to help improve the read times of common requests.
-   - It supports two types of data stores: Redis and Memcached.
-
+<li><p><strong>加速选项</strong>：提高数据库读取速度，特别适用于常见请求的快速读取。</p>
 <ul>
-<li><strong>Amazon DynamoDB Accelerator</strong><ul>
+<li><p><strong>Amazon ElastiCache</strong></p>
+<ul>
+<li>a service that adds caching layers on top of your databases to help improve the read times of common requests.</li>
+<li>It supports two types of data stores: Redis and Memcached.</li>
+</ul>
+</li>
+<li><p><strong>Amazon DynamoDB Accelerator</strong></p>
+<ul>
 <li>an in-memory cache for DynamoDB.</li>
 <li>It helps improve response times from single-digit milliseconds to microseconds.</li>
 </ul>
 </li>
 </ul>
 </li>
+<li><p><strong>总结</strong>：确保选择适合特定工作负载的最佳工具，而不是迫使数据适应数据库的要求。根据业务需求，可以选择不同类型的数据库和加速选项。</p>
+</li>
 </ol>
-</small>
-
-<ol start="3">
-<li><strong>总结</strong>：确保选择适合特定工作负载的最佳工具，而不是迫使数据适应数据库的要求。根据业务需求，可以选择不同类型的数据库和加速选项。</li>
-</ol>
-<p>甚至还有：Amazon Managed Blockchain<br><small>—— a distributed ledger system that lets multiple parties run transactions and share data without a central authority.</small></p>
-
+<br/>
+甚至还有：
+Amazon Managed Blockchain 
+<small>—— a distributed ledger system that lets multiple parties run transactions and share data without a central authority.</small>
                     
           </div>
           <footer>
@@ -399,7 +399,7 @@
   
     <li><a href="/categories/Front-End/">Front-End</a><small>1</small></li>
   
-    <li><a href="/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1/">云服务</a><small>3</small></li>
+    <li><a href="/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1/">云服务</a><small>4</small></li>
   
   </ul>
 </div>
@@ -410,7 +410,7 @@
   <h3 class="title">Tags</h3>
   <ul class="entry">
   
-    <li><a href="/tags/AWS/">AWS</a><small>3</small></li>
+    <li><a href="/tags/AWS/">AWS</a><small>4</small></li>
   
     <li><a href="/tags/Hexo/">Hexo</a><small>1</small></li>
   
@@ -424,7 +424,7 @@
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/AWS/" style="font-size: 15px;">AWS</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Note/" style="font-size: 20px;">Note</a>
+    <a href="/tags/AWS/" style="font-size: 20px;">AWS</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Note/" style="font-size: 20px;">Note</a>
   </div>
 </div>
 
