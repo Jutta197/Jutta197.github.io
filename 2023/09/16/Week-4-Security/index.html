@@ -104,7 +104,7 @@
                   <p>haha</p>
 <span id="more"></span>
 
-<h2 id="Shared-Responsibility-Model-共同责任模型"><a href="#Shared-Responsibility-Model-共同责任模型" class="headerlink" title="Shared Responsibility Model 共同责任模型"></a>Shared Responsibility Model 共同责任模型</h2><p><small>AWS负责云的安全(of)，客户负责云中的安全(in)。</small></p>
+<h2 id="Shared-Responsibility-Model-共同责任模型"><a href="#Shared-Responsibility-Model-共同责任模型" class="headerlink" title="Shared Responsibility Model 共同责任模型"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/compliance/shared-responsibility-model/">Shared Responsibility Model</a> 共同责任模型</h2><p><small>AWS负责云的安全(of)，客户负责云中的安全(in)。</small></p>
 <ol>
 <li><p><strong>共同责任模型</strong>：共同责任模型意味着在安全方面，AWS和客户都有责任。</p>
 </li>
@@ -126,7 +126,7 @@
 </ol>
 <h2 id="用户权限和访问"><a href="#用户权限和访问" class="headerlink" title="用户权限和访问"></a>用户权限和访问</h2><p><small>Principle of least privilege: A user is granted access only to what they need.</small></p>
 <ol>
-<li><p><strong>AWS Identity and Access Management (IAM)</strong>: IAM是用于安全管理对AWS服务和资源的访问的工具，可根据公司的运营和安全需求进行配置。</p>
+<li><p><strong><a target="_blank" rel="noopener" href="https://aws.amazon.com/iam/">AWS Identity and Access Management (IAM)</a></strong>: IAM是用于安全管理对AWS服务和资源的访问的工具，可根据公司的运营和安全需求进行配置。</p>
 </li>
 <li><p><strong>AWS账户根用户</strong>:</p>
 <ul>
@@ -163,7 +163,7 @@
 </ul>
 </li>
 </ol>
-<h2 id="AWS-Organizations"><a href="#AWS-Organizations" class="headerlink" title="AWS Organizations"></a>AWS Organizations</h2><ul>
+<h2 id="AWS-Organizations"><a href="#AWS-Organizations" class="headerlink" title="AWS Organizations"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/organizations/">AWS Organizations</a></h2><ul>
 <li><p><strong>为何需要AWS组织机构</strong>:</p>
 <ul>
 <li>随着公司的增长和云服务的采用，需要分离不同的职责和资源。</li>
@@ -185,23 +185,28 @@
 <li>In AWS Organizations, you can apply service control policies (SCPs) to the organization root, an individual member account, or an OU. An SCP affects all IAM users, groups, and roles within an account, including the AWS account root user. You can apply IAM policies to IAM users, groups, or roles. You cannot apply an IAM policy to the AWS account root user.</li>
 </ul>
 <p>在AWS Organizations中，服务控制策略（SCP）可以应用于组织根、单个成员账户或组织单位（OU），影响账户内的所有IAM用户、组和角色，但不能应用于AWS账户的根用户。与之不同的是，IAM策略是应用于IAM用户、组或角色的权限策略，用于定义其对AWS资源的访问权限和操作权限。根用户的权限主要由SCP管理，而IAM用户、组和角色的权限由IAM策略管理。这有助于实现权限控制和安全管理。</p>
-<h2 id="Compliance"><a href="#Compliance" class="headerlink" title="Compliance"></a>Compliance</h2><p>AWS合规性和审计的关键点：</p>
-<ol>
-<li><p>合规性标准：根据行业和地区要求，确保符合特定合规性标准，如GDPR或HIPAA。</p>
+<h2 id="AWS-Artifact"><a href="#AWS-Artifact" class="headerlink" title="AWS Artifact"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/artifact/">AWS Artifact</a></h2><ul>
+<li><p><strong>合规性需求：</strong> 根据公司所属行业，可能需要满足特定标准和法规以确保信息安全。</p>
 </li>
-<li><p>AWS安全基础设施：AWS提供安全的数据中心和网络，继承AWS的最佳实践。</p>
+<li><p><strong>审计和检查：</strong> 审计和检查用于验证公司是否满足必要的合规性要求。</p>
 </li>
-<li><p>区域选择：选择合适的AWS区域以满足法规要求。</p>
+<li><p><strong>AWS Artifact 包括两个部分：</strong> AWS Artifact 包括 AWS Artifact 协议和 AWS Artifact 报告两个主要部分。</p>
+<ul>
+<li><p><strong>AWS Artifact 协议：</strong> 允许公司与 AWS 签订有关在 AWS 服务中使用特定信息的协议。适用于单个帐户和 AWS 组织中的所有帐户。</p>
 </li>
-<li><p>数据控制：在AWS中，您拥有数据的完全控制权，可以使用加密等机制保护数据。</p>
+<li><p><strong>AWS Artifact 报告：</strong> 提供来自第三方审计员的合规性报告，证明 AWS 符合全球、区域和行业安全标准和法规。</p>
 </li>
-<li><p>合规性文件和报告：通过AWS Artifact等服务获取合规性报告和第三方验证的文件。</p>
+</ul>
 </li>
-<li><p>分享责任模型：AWS和您共同负责安全，根据共享责任模型，您需要确保构建的应用程序和解决方案合规且安全。</p>
+<li><p><strong>开发人员资源：</strong> 对于开发人员，AWS Artifact 报告提供了关于合规性责任的信息，特别是在构建应用程序时。</p>
 </li>
-</ol>
+<li><p><strong>审计和监管证据：</strong> 公司可以向审计员和监管机构提供 AWS Artifact 报告，作为 AWS 安全控制和合规性的证据。</p>
+</li>
+<li><p><strong>多样的合规性报告：</strong> AWS Artifact 包含多种与不同法规相关的合规性报告。</p>
+</li>
+</ul>
 <h2 id="Denial-of-Service-Attacks-DDoS"><a href="#Denial-of-Service-Attacks-DDoS" class="headerlink" title="Denial-of-Service Attacks (DDoS)"></a>Denial-of-Service Attacks (DDoS)</h2><p>The objective of a DDoS attack is to shut down your application’s ability to function by overwhelming the system to the point it can no longer operate.</p>
-<p>DDoS攻击旨在通过超载系统来关闭应用程序。攻击者使用多台计算机来发动攻击。AWS提供了多种防御措施，包括安全组<sub>UDP floods or reflection attacks</sub>、弹性负载均衡器<sub>Slowloris attacks</sub>和AWS Shield with AWS WAF<sub>HTTP level attacks</sub>，可帮助您保护系统免受DDoS攻击。良好的架构可以提供基本的防御，而AWS Shield Advanced则提供了更高级的保护。</p>
+<p>DDoS攻击旨在通过超载系统来关闭应用程序。攻击者使用多台计算机来发动攻击。AWS提供了多种防御措施，包括安全组<sub>UDP floods or reflection attacks</sub>、弹性负载均衡器<sub>Slowloris attacks</sub>和<a target="_blank" rel="noopener" href="https://aws.amazon.com/shield/">AWS Shield</a> with AWS WAF<sub>HTTP level attacks</sub>，可帮助您保护系统免受DDoS攻击。良好的架构可以提供基本的防御，而AWS Shield Advanced则提供了更高级的保护。</p>
 <h3 id="良好的架构可以提供基本的防御："><a href="#良好的架构可以提供基本的防御：" class="headerlink" title="良好的架构可以提供基本的防御："></a>良好的架构可以提供基本的防御：</h3><p>一个经过良好设计的系统架构本身具备基本的安全防御能力。</p>
 <p>比如，如果应用程序架构合理，包括网络安全措施、访问控制、数据加密等，那么它可能会防止一些常见的网络攻击，例如：</p>
 <ol>
@@ -301,7 +306,7 @@
   
     <li><a href="/categories/Front-End/">Front-End</a><small>1</small></li>
   
-    <li><a href="/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1/">云服务</a><small>5</small></li>
+    <li><a href="/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1/">云服务</a><small>6</small></li>
   
   </ul>
 </div>
@@ -312,7 +317,7 @@
   <h3 class="title">Tags</h3>
   <ul class="entry">
   
-    <li><a href="/tags/AWS/">AWS</a><small>5</small></li>
+    <li><a href="/tags/AWS/">AWS</a><small>6</small></li>
   
     <li><a href="/tags/Hexo/">Hexo</a><small>1</small></li>
   

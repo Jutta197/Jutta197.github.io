@@ -104,7 +104,7 @@
                   <p>carry on</p>
 <span id="more"></span>
 
-<h2 id="Amazon-CloudWatch"><a href="#Amazon-CloudWatch" class="headerlink" title="Amazon CloudWatch"></a>Amazon CloudWatch</h2><p><small>是一个用于监控和管理AWS资源的工具，可实时跟踪性能、设置警报，并在仪表板上查看度量指标。</small></p>
+<h2 id="Amazon-CloudWatch"><a href="#Amazon-CloudWatch" class="headerlink" title="Amazon CloudWatch"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/cloudwatch/">Amazon CloudWatch</a></h2><p><small>是一个用于监控和管理AWS资源的工具，可实时跟踪性能、设置警报，并在仪表板上查看度量指标。</small></p>
 <ol>
 <li><p><strong>监控与管理</strong>：CloudWatch是AWS的监控与管理服务，可用于监视度量指标，并根据这些指标的数据配置警报操作。</p>
 </li>
@@ -115,9 +115,128 @@
 <li><p><strong>仪表板</strong>：CloudWatch的仪表板功能允许您从一个位置访问所有资源的度量指标。您可以创建多个自定义仪表板，以监视不同度量指标，如CPU利用率、请求次数等。</p>
 </li>
 </ol>
-<h2 id="AWS-CloudTrail"><a href="#AWS-CloudTrail" class="headerlink" title="AWS CloudTrail"></a>AWS CloudTrail</h2><p>是记录AWS账户中API调用的服务，包括API调用者、时间、IP地址等信息。它相当于记录操作历史的“面包屑路径”。</p>
+<h2 id="AWS-CloudTrail"><a href="#AWS-CloudTrail" class="headerlink" title="AWS CloudTrail"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/cloudtrail/">AWS CloudTrail</a></h2><p>是记录AWS账户中API调用的服务，包括API调用者、时间、IP地址等信息。它相当于记录操作历史的“面包屑路径”。</p>
 <p>通过CloudTrail，您可以查看用户活动和API调用的完整历史记录，可以根据时间、用户、资源类型等筛选事件。</p>
 <p>CloudTrail还提供CloudTrail Insights功能，可以自动检测异常API活动，帮助您及时发现问题并采取必要的措施。</p>
+<h2 id="CloudTrail-和-CloudWatch"><a href="#CloudTrail-和-CloudWatch" class="headerlink" title="CloudTrail 和 CloudWatch"></a>CloudTrail 和 CloudWatch</h2><p><small>CloudTrail用于审计和安全性跟踪，而CloudWatch用于监控和运维管理。</small></p>
+<p>AWS CloudTrail主要用于审计和日志记录AWS账户中的API调用和活动历史，提供安全性监控和合规性跟踪。它记录详细的API调用信息。</p>
+<p>Amazon CloudWatch主要用于监控AWS资源的性能指标，如CPU利用率、内存使用率等，以及自动触发操作。它用于性能监控和运维管理。</p>
+<h2 id="AWS-Trusted-Advisor"><a href="#AWS-Trusted-Advisor" class="headerlink" title="AWS Trusted Advisor"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/premiumsupport/technology/trusted-advisor/">AWS Trusted Advisor</a></h2><p>When you access the Trusted Advisor dashboard on the AWS Management Console, you can review completed checks for cost optimization, performance, security, fault tolerance, and service limits.</p>
+<p>For each category:</p>
+<p>The green check indicates the number of items for which it detected no problems.<br>The orange triangle represents the number of recommended investigations.<br>The red circle represents the number of recommended actions.</p>
+<p><img src="/assets/images/Snipaste_2023-09-24_15-19-51.png" alt="Question" title="Question"></p>
+<h2 id="AWS-Free-Tier"><a href="#AWS-Free-Tier" class="headerlink" title="AWS Free Tier"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all">AWS Free Tier</a></h2><p>Always free, 12 months free, and Trials. </p>
+<h2 id="AWS-Pricing-Concepts"><a href="#AWS-Pricing-Concepts" class="headerlink" title="AWS Pricing Concepts"></a>AWS Pricing Concepts</h2><ol>
+<li><p><strong>按使用付费</strong>：AWS采用按使用付费的定价模型，您只需支付您实际使用的资源量，无需长期合同或复杂的许可证。</p>
+</li>
+<li><p><strong>预留实例</strong>：某些服务提供了预留实例选项，相对于按需实例价格，可以提供显着的折扣。</p>
+</li>
+<li><p><strong>体积折扣</strong>：一些服务采用分层定价，随着使用量的增加，单位成本逐渐降低。</p>
+</li>
+<li><p><strong>AWS定价计算器 Pricing Calculator</strong>：AWS定价计算器允许您探索AWS服务，并<mark>估算</mark>您在AWS上使用用例的成本。您可以根据需要将估算值组织成不同的组。</p>
+</li>
+</ol>
+<h2 id="Billing-Dashboard"><a href="#Billing-Dashboard" class="headerlink" title="Billing Dashboard"></a>Billing Dashboard</h2><p>Use the <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html">AWS Billing &amp; Cost Management dashboard</a> to pay your AWS bill, monitor your usage, and analyze and control your costs.</p>
+<ul>
+<li>Compare your current month-to-date balance with the previous month, and get a forecast of the next month based on current usage.</li>
+<li>View month-to-date spend by service.</li>
+<li>View Free Tier usage by service.</li>
+<li>Access Cost Explorer and create budgets.</li>
+<li>Purchase and manage Savings Plans.</li>
+<li>Publish AWS Cost and Usage Reports.</li>
+</ul>
+<p><img src="/assets/images/Snipaste_2023-09-24_16-55-03.png" alt="Billing" title="Billing"></p>
+<h2 id="Consolidated-Billing"><a href="#Consolidated-Billing" class="headerlink" title="Consolidated Billing"></a>Consolidated Billing</h2><ol>
+<li><p><strong>AWS Organizations</strong>：AWS Organizations是一项服务，可让您从一个中心位置管理多个AWS账户。它还提供了合并计费选项。</p>
+</li>
+<li><p><strong>合并计费</strong>：AWS Organizations的合并计费功能允许您为组织中的所有AWS账户收到单一账单。这样，您可以轻松跟踪组织中所有关联账户的综合成本。</p>
+</li>
+<li><p><strong>账户数量</strong>：组织的默认最大账户数量为4个，但如果需要，您可以联系AWS支持以增加您的配额。</p>
+</li>
+<li><p><strong>透明度</strong>：月度账单中，您可以查看每个账户产生的明细费用，从而在维持单一月度账单的便利性的同时，更好地了解组织账户的费用。</p>
+</li>
+<li><p><strong>成本共享</strong>：合并计费还使您能够在组织内的所有账户之间共享批量折扣定价、Savings Plans和保留实例。这意味着即使一个账户的月度使用量不足以符合折扣定价要求，当多个账户合并时，它们的综合使用量可能会产生适用于组织中所有账户的折扣。</p>
+</li>
+</ol>
+<p>合并计费的示例：</p>
+<ul>
+<li>有3个AWS账户，每个用于不同的部门。</li>
+<li>创建一个组织并将这3个账户添加到组织中。</li>
+<li>通过主账户管理组织。</li>
+<li>每个月，AWS会为主付款账户收取合并账单，您还可以通过主账户获取每个关联账户的详细成本报告。</li>
+<li>合并账单包括主账户产生的使用成本，这不是因为有主账户而产生的额外费用。</li>
+<li>合并计费还允许跨账户共享容量定价折扣，以获取更低的价格。当多个账户合并时，AWS会根据每个账户的使用情况分配总体容量折扣的一部分。</li>
+</ul>
+<h2 id="AWS-Budgets"><a href="#AWS-Budgets" class="headerlink" title="AWS Budgets"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/aws-cost-management/aws-budgets/">AWS Budgets</a></h2><p>In AWS Budgets, you can create budgets to plan your service usage, service costs, and instance reservations.</p>
+<p>The information in AWS Budgets updates three times a day. This helps you to accurately determine how close your usage is to your budgeted amounts or to the AWS Free Tier limits.</p>
+<p>In AWS Budgets, you can also set custom alerts when your usage exceeds (or is forecasted to exceed) the budgeted amount.</p>
+<p><img src="/assets/images/Reading_5.22.jpeg" alt="Example: AWS Budgets:" title="Example: AWS Budgets"></p>
+<ul>
+<li>本月迄今为止您已经为Amazon EC2支付的金额（136.90美元）。</li>
+<li>基于您的使用模式，您预计将在本月支付的金额（195.21美元）。</li>
+<li>您还可以比较当前与预算的使用情况以及预测与预算的使用情况。</li>
+</ul>
+<h2 id="AWS-Cost-Explorer"><a href="#AWS-Cost-Explorer" class="headerlink" title="AWS Cost Explorer"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/aws-cost-management/aws-cost-explorer/">AWS Cost Explorer</a></h2><p><strong>AWS Cost Explorer 总结</strong>：</p>
+<ol>
+<li><p><strong>变动成本模型</strong>：AWS采用变动成本模型，用户只需支付实际使用的资源，而不是固定的月度账单金额。</p>
+</li>
+<li><p><strong>追踪支出</strong>：Cost Explorer允许用户深入了解他们的账单，查看他们如何花费资金。它显示用户在哪些服务上花费最多，并提供12个月的历史数据，以便用户随时间追踪支出。</p>
+</li>
+<li><p><strong>分析和自定义报告</strong>：用户可以根据不同属性对支出数据进行分组，例如服务、地区或标签。标签允许用户为AWS资源定义自定义键-值对，以便更精细地跟踪支出。Cost Explorer还允许用户创建自定义报告，以满足其特定需求。</p>
+</li>
+<li><p><strong>支出优化</strong>：Cost Explorer帮助用户识别成本驱动因素，并在必要时采取措施来控制支出。支出优化是需要密切关注的优先事项。</p>
+</li>
+</ol>
+<h2 id="AWS-Pricing-Calculator-AWS-Cost-Explorer"><a href="#AWS-Pricing-Calculator-AWS-Cost-Explorer" class="headerlink" title="AWS Pricing Calculator &amp; AWS Cost Explorer"></a>AWS Pricing Calculator &amp; AWS Cost Explorer</h2><p><strong>AWS Pricing Calculator</strong> helps you plan and estimate costs before you start using AWS services, while <strong>AWS Cost Explorer</strong> helps you analyze and manage costs after you’ve already started using AWS resources. </p>
+<h2 id="AWS-Support-plans"><a href="#AWS-Support-plans" class="headerlink" title="AWS Support plans"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/premiumsupport/plans/">AWS Support plans</a></h2><ol>
+<li><p><strong>Basic Support</strong>（基本支持）：</p>
+<ul>
+<li>免费提供给所有AWS客户。</li>
+<li>基本支持，包括基本文档和社区支持。</li>
+<li>可用于账单问题和服务限制咨询。</li>
+<li>提供有限数量的AWS Trusted Advisor检查。</li>
+</ul>
+</li>
+<li><p><strong>Developer Support</strong>（开发者支持）：</p>
+<ul>
+<li>包括Basic Support。</li>
+<li>提供通过电子邮件向AWS提出问题的支持，响应时间为24小时。</li>
+<li>无限数量的技术支持案例。</li>
+<li>提供最佳实践指导和建筑块架构支持。</li>
+</ul>
+</li>
+<li><p><strong>Business Support</strong>（商业支持）：</p>
+<ul>
+<li>包括Basic和Developer Support。</li>
+<li>提供用例指导和<mark>所有</mark>AWS Trusted Advisor检查。</li>
+<li>有限的第三方软件支持。</li>
+</ul>
+</li>
+<li><p><strong>Enterprise On-Ramp</strong>（企业入门支持）：</p>
+<ul>
+<li>包括Basic、Developer和Business Support。</li>
+<li>提供技术客户经理（TAM）支持，协调访问计划和AWS专家。</li>
+<li>提供成本优化研讨会、Concierge支持团队和监控工具。</li>
+</ul>
+</li>
+<li><p><strong>Enterprise Support</strong>（企业支持）：</p>
+<ul>
+<li>包括Basic、Developer、Business和Enterprise On-Ramp Support。</li>
+<li>提供专门的技术客户经理（TAM）支持，协调访问计划和AWS专家。</li>
+<li>提供操作评审、培训、监控工具和创新支持。</li>
+</ul>
+</li>
+</ol>
+<p><strong>Technical Account Manager (TAM)（技术客户经理）</strong>：</p>
+<ul>
+<li>是Enterprise On-Ramp和Enterprise Support计划的一部分。</li>
+<li>为客户提供专业工程指导，帮助设计高效的AWS解决方案。</li>
+<li>提供直接访问AWS计划和广泛的专家社区。</li>
+<li>协助集成多个AWS服务以满足客户特定需求。</li>
+</ul>
+<h2 id="AWS-Marketplace"><a href="#AWS-Marketplace" class="headerlink" title="AWS Marketplace"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/marketplace">AWS Marketplace</a></h2><p>AWS Marketplace is a digital catalog that includes thousands of software listings from independent software vendors. You can use AWS Marketplace to find, test, and buy software that runs on AWS.</p>
+<p>AWS Marketplace offers products in several categories, such as Infrastructure Software, DevOps, Data Products, Professional Services, Business Applications, Machine Learning, Industries, and Internet of Things (IoT).</p>
+<p>Within each category, you can narrow your search by browsing through product listings in subcategories. For example, subcategories in the DevOps category include areas such as Application Development, Monitoring, and Testing.</p>
 
                     
           </div>
@@ -161,7 +280,7 @@
   
     <li><a href="/categories/Front-End/">Front-End</a><small>1</small></li>
   
-    <li><a href="/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1/">云服务</a><small>5</small></li>
+    <li><a href="/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1/">云服务</a><small>6</small></li>
   
   </ul>
 </div>
@@ -172,7 +291,7 @@
   <h3 class="title">Tags</h3>
   <ul class="entry">
   
-    <li><a href="/tags/AWS/">AWS</a><small>5</small></li>
+    <li><a href="/tags/AWS/">AWS</a><small>6</small></li>
   
     <li><a href="/tags/Hexo/">Hexo</a><small>1</small></li>
   

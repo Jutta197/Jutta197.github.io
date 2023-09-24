@@ -103,7 +103,7 @@
             
                   <p>第三周：有空就学学，没空就不学 </p>
 <span id="more"></span>
-<h2 id="Instance-Stores-and-Amazon-Elastic-Block-Store-Amazon-EBS"><a href="#Instance-Stores-and-Amazon-Elastic-Block-Store-Amazon-EBS" class="headerlink" title="Instance Stores and Amazon Elastic Block Store (Amazon EBS)"></a>Instance Stores and Amazon Elastic Block Store (Amazon EBS)</h2><p><strong>Instance Store</strong>:</p>
+<h2 id="Instance-Stores-and-Amazon-Elastic-Block-Store-Amazon-EBS"><a href="#Instance-Stores-and-Amazon-Elastic-Block-Store-Amazon-EBS" class="headerlink" title="Instance Stores and Amazon Elastic Block Store (Amazon EBS)"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html">Instance Stores</a> and Amazon Elastic Block Store (Amazon <a target="_blank" rel="noopener" href="https://aws.amazon.com/ebs/">EBS</a>)</h2><p><strong>Instance Store</strong>:</p>
 <ul>
 <li>An Instance Store provides temporary block-level storage for an Amazon EC2 instance.</li>
 <li>It is disk storage physically attached to the host computer for an EC2 instance, sharing the same lifespan as the instance.</li>
@@ -116,13 +116,13 @@
 <li>To create an EBS volume, you define its configuration, including volume size and type, and then provision it. Once created, an EBS volume can be attached to an Amazon EC2 instance.</li>
 <li>Since EBS volumes are meant for data that needs to persist, it’s crucial to back up the data. Incremental backups of EBS volumes can be achieved by creating Amazon EBS snapshots.</li>
 </ul>
-<p><strong>Amazon EBS Snapshots</strong>:</p>
+<p><strong><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html">Amazon EBS Snapshots</a></strong>:</p>
 <ul>
 <li>An EBS snapshot is an incremental backup method. The initial backup of a volume copies all the data, while subsequent backups save only the blocks of data that have changed since the most recent snapshot.</li>
 <li>Incremental backups differ from full backups, where all data in a storage volume is copied during each backup. Full backups include data that hasn’t changed since the last backup.</li>
 </ul>
 <p>In summary, Instance Store is used for temporary data and is volatile, whereas Amazon EBS provides persistent block-level storage, requiring regular backups through EBS snapshots to protect data.</p>
-<h2 id="Amazon-Simple-Storage-Service-Amazon-S3"><a href="#Amazon-Simple-Storage-Service-Amazon-S3" class="headerlink" title="Amazon Simple Storage Service (Amazon S3)"></a>Amazon Simple Storage Service (Amazon S3)</h2><ol>
+<h2 id="Amazon-Simple-Storage-Service-Amazon-S3"><a href="#Amazon-Simple-Storage-Service-Amazon-S3" class="headerlink" title="Amazon Simple Storage Service (Amazon S3)"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/s3/">Amazon Simple Storage Service (Amazon S3)</a></h2><ol>
 <li><p><strong>Amazon S3 Standard</strong>:</p>
 <ul>
 <li>Designed for frequently accessed data.</li>
@@ -206,12 +206,12 @@
 </ul>
 </li>
 </ol>
-<h2 id="EFS-EBS"><a href="#EFS-EBS" class="headerlink" title="EFS &amp; EBS"></a>EFS &amp; EBS</h2><p>Amazon Elastic File System（EFS）是AWS提供的托管文件系统服务，适用于需要共享文件存储的企业应用，能够自动扩展、提供冗余性，并可供多个EC2实例同时访问。</p>
+<h2 id="EFS-EBS"><a href="#EFS-EBS" class="headerlink" title="EFS &amp; EBS"></a>EFS &amp; EBS</h2><p><a target="_blank" rel="noopener" href="https://aws.amazon.com/efs/">Amazon Elastic File System（EFS)</a> 是AWS提供的托管文件系统服务，适用于需要共享文件存储的企业应用，能够自动扩展、提供冗余性，并可供多个EC2实例同时访问。</p>
 <p>Amazon Elastic Block Store（EBS）是AWS提供的块级存储服务，附加到特定的EC2实例，适用于单一实例的存储需求，不具备自动扩展功能，且限定在同一可用性区域内。</p>
-<h2 id="Amazon-RDS-database-engines"><a href="#Amazon-RDS-database-engines" class="headerlink" title="Amazon RDS database engines"></a>Amazon RDS database engines</h2><p>Amazon RDS is available on six database engines, which optimize for memory, performance, or input&#x2F;output (I&#x2F;O).</p>
+<h2 id="Amazon-RDS-database-engines"><a href="#Amazon-RDS-database-engines" class="headerlink" title="Amazon RDS database engines"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/rds/">Amazon RDS</a> database engines</h2><p>Amazon RDS is available on six database engines, which optimize for memory, performance, or input&#x2F;output (I&#x2F;O).</p>
 <p><small>“提取和迁移”（Lift-and-Shift）</small></p>
-<h2 id="Amazon-Aurora"><a href="#Amazon-Aurora" class="headerlink" title="Amazon Aurora"></a>Amazon Aurora</h2><p>Amazon Aurora is an enterprise-grade relational database compatible with MySQL and PostgreSQL. It offers up to five times faster performance compared to standard MySQL databases and up to three times faster performance compared to standard PostgreSQL databases. Aurora reduces costs by optimizing input&#x2F;output operations and ensures high availability by replicating data across three Availability Zones and backing up data to Amazon S3.</p>
-<h2 id="Amazon-DynamoDB"><a href="#Amazon-DynamoDB" class="headerlink" title="Amazon DynamoDB"></a>Amazon DynamoDB</h2><p><small>Serverless, Automatic Scaling</small></p>
+<h2 id="Amazon-Aurora"><a href="#Amazon-Aurora" class="headerlink" title="Amazon Aurora"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/rds/aurora/">Amazon Aurora</a></h2><p>Amazon Aurora is an enterprise-grade relational database compatible with MySQL and PostgreSQL. It offers up to five times faster performance compared to standard MySQL databases and up to three times faster performance compared to standard PostgreSQL databases. Aurora reduces costs by optimizing input&#x2F;output operations and ensures high availability by replicating data across three Availability Zones and backing up data to Amazon S3.</p>
+<h2 id="Amazon-DynamoDB"><a href="#Amazon-DynamoDB" class="headerlink" title="Amazon DynamoDB"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/dynamodb/">Amazon DynamoDB</a></h2><p><small>Serverless, Automatic Scaling</small></p>
 <p>Amazon DynamoDB是一种无需管理底层基础设施的NoSQL数据库服务。它适用于需要高可用性和高性能的应用程序。DynamoDB不需要预定义的表结构，可以灵活存储和查询数据。这是一种高度扩展的服务，可处理大型工作负载，响应速度非常快。但它不使用传统的SQL查询语言，而是提供简单的查询功能，适用于某些特定用途的应用程序。</p>
 <p>In a key-value database, you can add or remove attributes from items in the table at any time. Additionally, not every item in the table has to have the same attributes.</p>
 <p>Example of data in a nonrelational database:</p>
@@ -249,7 +249,7 @@
 </ul>
 </li>
 </ol>
-<h2 id="Amazon-Redshift"><a href="#Amazon-Redshift" class="headerlink" title="Amazon Redshift"></a>Amazon Redshift</h2><p><small>Amazon Redshift是一种用于<mark>历史</mark>数据分析的高性能数据仓库服务</small></p>
+<h2 id="Amazon-Redshift"><a href="#Amazon-Redshift" class="headerlink" title="Amazon Redshift"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/redshift/">Amazon Redshift</a></h2><p><small>Amazon Redshift是一种用于<mark>历史</mark>数据分析的高性能数据仓库服务</small></p>
 <ol>
 <li><p><strong>历史数据分析需求</strong>：</p>
 <ul>
@@ -277,7 +277,7 @@
 </ul>
 </li>
 </ol>
-<h2 id="Amazon-Database-Migration-Service（DMS）"><a href="#Amazon-Database-Migration-Service（DMS）" class="headerlink" title="Amazon Database Migration Service（DMS）"></a>Amazon Database Migration Service（DMS）</h2><ol>
+<h2 id="Amazon-Database-Migration-Service（DMS"><a href="#Amazon-Database-Migration-Service（DMS" class="headerlink" title="Amazon Database Migration Service（DMS)"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/dms/">Amazon Database Migration Service（DMS)</a></h2><ol>
 <li><p><strong>简介</strong>：</p>
 <ul>
 <li>Amazon DMS是AWS提供的数据库迁移服务，用于将现有数据库从本地或其他云平台迁移到AWS上。</li>
@@ -285,7 +285,7 @@
 </li>
 <li><p><strong>迁移类型</strong>：</p>
 <ul>
-<li>同构<sup>homogenous</sup>迁移：即源<sup>source</sup>和目标<sup>target</sup>数据库类型相同，例如MySQL到Amazon RDS for MySQL，Microsoft SQL Server到Amazon RDS for SQL Server，或Oracle到Amazon RDS for Oracle。</li>
+<li>同构<sup>homogenous</sup>迁移：即<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/dms/">源<sup>source</sup>和目标<sup>target</sup>数据库</a>类型相同，例如MySQL到Amazon RDS for MySQL，Microsoft SQL Server到Amazon RDS for SQL Server，或Oracle到Amazon RDS for Oracle。</li>
 <li>异构<sup>heterogeneous</sup>迁移：即源和目标数据库类型不同，需要使用AWS Schema Conversion Tool将源架构<sup>schema</sup>和代码转换为目标数据库兼容格式，然后使用DMS迁移数据。</li>
 </ul>
 </li>
@@ -399,7 +399,7 @@ Amazon Managed Blockchain
   
     <li><a href="/categories/Front-End/">Front-End</a><small>1</small></li>
   
-    <li><a href="/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1/">云服务</a><small>5</small></li>
+    <li><a href="/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1/">云服务</a><small>6</small></li>
   
   </ul>
 </div>
@@ -410,7 +410,7 @@ Amazon Managed Blockchain
   <h3 class="title">Tags</h3>
   <ul class="entry">
   
-    <li><a href="/tags/AWS/">AWS</a><small>5</small></li>
+    <li><a href="/tags/AWS/">AWS</a><small>6</small></li>
   
     <li><a href="/tags/Hexo/">Hexo</a><small>1</small></li>
   
